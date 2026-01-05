@@ -19,6 +19,21 @@ default messy = False
 
 #crew 
 define brennan = Character('brennan')
+#a carefree guy who cares about his adventuring party a lot, knows the orginal character the best and loves food
+#flaw is that he is often reckless and thinks with his heart instead of his brain
+define maryanne = Character('maryanne')
+#genuinely doesnt really care about anything, super indifferent, the first to figure out you are the dopple ganger but because you dont cause trouble she doesnt care only cares about playing games
+#flaw is that she cares but hides it so people think she lowkey heartlessss 
+define annie = Character('annie')
+#anxious girl who was worried when you lost contact with them all suddenly, worries about the party a lot and often 
+#overly worries about things, leading to delayed actions during important moments
+define lou = Character('lou') #u can decide who lou is or even if he keeps this name lol
+
+#unknown labels 
+define unknown_brennan = Character('???',color = '#e9535311')
+define unknown_maryanne = Character('???',color = '#784cd811')
+define unknown_annie = Character('???',color = '#3bb91f11')
+define unknown_lou = Character('???',color = '#b11f1f11')
 
 label start:
 # scene open plains <- dont have image rn but just so u have idea 
@@ -116,7 +131,7 @@ label start:
     label silent:
         "..."
 
-        unknown "heyyyyyy did you hear meee???"
+        unknown "hey~ did you hear meee???"
 
         "You continue to stay silent, after all, yo mama told you not to talk to strangers."
 
@@ -291,7 +306,7 @@ label start:
     #MC finds a photo of "him" and a crew & documents, leaving the house to a mess
     label reckless: 
         $ messy = True
-        "you search through the house, opening drawers and " #cant thing right now fix later!!!!
+        "you search through the house, opening drawers halfhazardly and disregarding the orginal organization of the place." 
         # main idea finds 
         # finds photos of "him" and a crew
         # finds documents that explain the exact mission he was sent on 
@@ -340,13 +355,17 @@ label start:
     label photo:
         "your fingers brush over the photo, removing a soft layer of dust"
 
-        "the photo is of __ members with a big burly man in the center" #fix details of photo
+        "the photo is of 5 members with a big burly man in the center." #fix details of photo
 
         player "is that... me?" #assuming player knows what they look like
 
         player "but who are these people?"
 
-        "you notice that each of the people in the photo carry a large sack, storing their weapons"
+        "you notice that each of the people in the photo carry a large sack, storing their weapons."
+
+        "on the left stands a girl focused on a book instead of the camera, she wears over sized clothing that looks like it could swallow her whole while an axe hangs off her back."
+        
+        "the boy next to her has his hands around her and what you assume is a picture of you." #continue description will do later just wanted a skeleton
 
         player "an adventuring party?"
 
@@ -476,6 +495,15 @@ label start:
         unknown "bed is messy drawers are open WHY IS THERE PAPER ON THE FLOOR"
 
     label part_3_clean:
+        unknown_brennan "PLACEHOLDER! i was so worried."
+
+        "you look at the group of people in front of you and them seem to be a slightly older version of the group from the photo."
+
+        "you notice that they seem revlieved to see you, in particular the boy that just spoke." #spelling ahhhh 
+
+        ""
+
+
 
 
 # place this in the sections later, going to learn this later 
