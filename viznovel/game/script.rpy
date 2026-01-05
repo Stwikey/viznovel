@@ -15,6 +15,7 @@ define npc2 = Character ('Charles')
 define lil_boy = Character('fiz')
 define thief = Character('theif')
 define unknown = Character('???')
+default messy = False
 
 #crew 
 define brennan = Character('brennan')
@@ -144,9 +145,9 @@ label start:
         #scene goes to you entering 
         npc1 "PLACEHOLDER you're back? "
 
-        player "*i can't hear what name he's saying, its like its static or something*"
+        player "*I can't hear what name he's saying, its like its static or something*"
 
-        "i don't know what to do..."
+        "I don't know what to do..."
         
         menu: 
             "act natural":
@@ -235,7 +236,7 @@ label start:
 
         npc1 "he seems... different Charles."
 
-        npc2 "you worry too much old man, he's probably scattered from the mission. afterall if he's back that means..."
+        npc2 "you worry too much old man, he's probably scattered from the mission. after all, if he's back that means..."
 
         npc1 "they won't be an issue anymore." #bold the word they later 
 
@@ -253,7 +254,7 @@ label start:
 
         "fiz pauses as he starts tearing up." 
 
-        "he runs to your waist as he engulphs you in a hug." #spelling
+        "he runs to your waist as he engulfs you in a hug." #spelling
 
         player "i'm sorry. i promise i won't scare you like that again."
 
@@ -271,34 +272,163 @@ label start:
 
         #MC returns back to "his" house 
     label home: 
+        "At your home..."
+
         player "i don't understand what is happening."
 
         player "the people here seem to like me. but i can't help but feel unsettled."
 
     #MC can choose to rummage around for clues or to look but not touch, 1 allows him to discover more but higher chance of suspicion while other not as much but no sus
         menu: 
-            "rumamge through the drawers with no regard for cleanliness":
+            "rummage through the drawers with no regard for cleanliness":
                 jump reckless
             
             "leave everything untouched, but look around for clues.":
                 jump careful
 
 # this point onward there will be alternate pathways i think will figure out how to remember things later! 
+    
+    #MC finds a photo of "him" and a crew & documents, leaving the house to a mess
     label reckless: 
+        $ messy = True
         "you search through the house, opening drawers and " #cant thing right now fix later!!!!
         # main idea finds 
         # finds photos of "him" and a crew
         # finds documents that explain the exact mission he was sent on 
         #house is left messy will impact pt 3 gameplay 
 
-    label careful: 
-        #fill in later 
-        # main idea finds: 
-        # finds photo of him and his crew 
+        jump search
 
+    #MC finds a photo of him and his crew, leaving the house clean
+    label careful: 
+        jump search
+    
+    #menu for searching rooms
+    label search:
+        menu:
+            "start by checking the drawers":
+                jump check_drawers
+            "start by checking the bedroom":
+                jump check_bedroom
+            "start by checking the kitchen":
+                jump check_kitchen
+    
+    #searching through the house (add more)
+    label check_drawers:
+        if messy:
+            "you start by quickly rummaging through the drawers, sheets of papers flying out."
+            
+            "one of the papers circle's through the air, catching your eye"
+
+            "it lands quietly, face up, revealing a photo and lines of words written in black ink"
+
+            menu:
+                "check the photo":
+                    jump photo
+                "check the document":
+                    jump document
+        else:
+            "you open the drawers calmly, the wood quielty creaking, papers are neatly stacked on top of one another"
+
+            "as you go through the layers of papers, you notice a photo that catches your eye"
+
+            menu:
+                "check the photo":
+                    jump photo
+
+    #checks the photo of the adventuring party
+    label photo:
+        "your fingers brush over the photo, removing a soft layer of dust"
+
+        "the photo is of __ members with a big burly man in the center" #fix details of photo
+
+        player "is that... me?" #assuming player knows what they look like
+
+        player "but who are these people?"
+
+        "you notice that each of the people in the photo carry a large sack, storing their weapons"
+
+        player "an adventuring party?"
+
+        player "\"my\"... adventuring party?"
+
+        if messy:
+            menu:
+                "check document":
+                    jump document
+        else:
+            jump part_3
+
+    #checks the document of the quesst
+    label document:
+        "you pick up the document that had fallen on the floor."
+
+        menu:
+            "read the document":
+                jump read_document
+    
+    label read_document:
+        #LETTER HERE OF QUEST
+        jump part_3
+
+    #look through the bedroom but find nothing
+    label check_bedroom:
+        "you enter the bedroom. it feels familiar somehow."
+        
+        "you look around and see your bed neatly made. there are no hints of dust or cobwebs"
+        
+        "other than the bed, the room seems plain, as if the person living here had no personality"
+        
+        show player think
+
+        player "\"i\" must've been here recently... this house is spotless"
+        
+        if messy: 
+            "you begin by uncovering the bedsheets, but finding nothing."
+
+            "you check under the bed but only seeing emptiness"
+        
+        else:
+            "you silently observe the bedroom, but nothing stands out to you."
+
+            "you peek under the bed but notice nothing"
+        
+        show player think
+
+        player "hmmm... this room has nothing."
+
+        player "lets check someplace else"
+
+        jump search
+
+    #look through the kitchen but find nothing    
+    label check_kitchen:
+        "you enter the kitchen, feeling a sense of... nostalgia?"
+
+        "there's the stove and sink and the table is set nicely"
+
+        "dishes are neatly lined up on the drying rack and in cupboards"
+
+        "you feel a hint of satisfaction"
+
+        player "\"i\" must be a clean person"
+
+        if messy:
+            "you start by opening the dishwasher, finding nothing but lines of plates and other utensils"
+
+            "next, the cupboard, however nothing stands out to you"
+        else:
+            "you look through the kitchen, peering over to notice and unusual items, something to give you information."
+
+            "but nothing appears to be out of place or outside of the ordinary."
+        
+        jump search
     label part_3: 
         "it's becoming late in the night"
         # MC sleeps but has dreams 
+
+        "you begin to fall into a deep sleep"
+
         "PLACEHOLDER, this is stupid. why do you insist on killing yourself for this mission it's not worth it!"
         v "i have to. PLACEHOLDER2 needs us, they ALL need us."
 
@@ -322,14 +452,31 @@ label start:
 
         #meeting the orginal mcs crew eof adventurers 
         show brennan
+
         "you rush to the door, opening it to find a group of people you recognize from the photo. this must have been your crew."
+
+        if messy:
+            jump part_3_messy
+        else:
+            jump part_3_clean
 
         # this is different pathways comes into affect 
         # if player chose to be messy then brennan will notice immediately 
         # if player chose the sneaky looking then brennan will continue like nothing happened 
 
-# place this in the sections later, going to learn this later 
-        ''' 
+    label part_3_messy:
+        unknown "PLACEHOLDER! i-"
+
+        unknown "!"
+
+        "brennan narrows his eyes, scanning the room"
+
+        "he begins to mutter quietly under his breath"
         
-        '''
+        unknown "bed is messy drawers are open WHY IS THERE PAPER ON THE FLOOR"
+
+    label part_3_clean:
+
+
+# place this in the sections later, going to learn this later 
     
