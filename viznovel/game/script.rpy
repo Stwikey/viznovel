@@ -27,7 +27,9 @@ define maryanne = Character('maryanne')
 define annie = Character('annie')
 #anxious girl who was worried when you lost contact with them all suddenly, worries about the party a lot and often 
 #overly worries about things, leading to delayed actions during important moments
-define lou = Character('lou') #u can decide who lou is or even if he keeps this name lol
+define lou = Character('lou') 
+#keeps a level head for the party (keeps everyone in line)
+#overly critical of others, and thinks with his brain and often ignores feelings 
 
 #unknown labels 
 define unknown_brennan = Character('???',color = '#e9535311')
@@ -42,8 +44,15 @@ label start:
 
     player "*yawn* where am i?"
     
-    "as you look around you realize that there isn't much of 
-    anything to give you clues on where you could be "
+    "as you look around you realize that there isn't much of anything to give you clues on where you could be."
+
+    "you try to recall your own name to no avail, you can't seem to remember anything other than what you find on your person."
+
+    show notebook
+    "a notebook with messy scrawled on writing with symbols you can't seem to read." #yk like hyroglphs and stuff like that! 
+
+    "without any other clues you must decide your next choice of action."
+    hide notebook
 
     menu: 
         "look around and explore":
@@ -387,7 +396,10 @@ label start:
                 jump read_document
     
     label read_document:
-        #LETTER HERE OF QUEST
+        #i want mission reveal during food time so it is revealed to both messy and clean, the messy and clean is important for brennans sus later on though
+        "you look down at the document to find that it is all the same type of writing you could not read earlier."
+
+        "maybe pocketing this for later will be benifical."
         jump part_3
 
     #look through the bedroom but find nothing
@@ -465,9 +477,9 @@ label start:
 
         "*KNOCK KNOCK KNOCK*"
 
-        unknown "PLACEHOLDER I KNOW YOU'RE IN THERE!"
+        unknown_lou "PLACEHOLDER I KNOW YOU'RE IN THERE!"
 
-        unknown "I CAN'T BELIEVE YOU CAME BACK AND DIDN'T TELL ANY OF US! WE HAD TO FIND OUT THROUGH FIZ!"
+        unknown_brennan "I CAN'T BELIEVE YOU CAME BACK AND DIDN'T TELL ANY OF US! WE HAD TO FIND OUT THROUGH FIZ!"
 
         #meeting the orginal mcs crew eof adventurers 
         show brennan
@@ -484,15 +496,101 @@ label start:
         # if player chose the sneaky looking then brennan will continue like nothing happened 
 
     label part_3_messy:
-        unknown "PLACEHOLDER! i-"
+        unknown_brennan "PLACEHOLDER! i-"
 
-        unknown "!"
+        unknown_annie "!"
 
         "brennan narrows his eyes, scanning the room"
 
         "he begins to mutter quietly under his breath"
         
-        unknown "bed is messy drawers are open WHY IS THERE PAPER ON THE FLOOR"
+        unknown_brennan "why is everything... everywhere?!"
+
+        you "uhh i can explain!"
+
+        menu: # both lead to same result. 
+            "tell the truth.":
+                jump truth
+            
+            "come up with a lie.":
+                jump lie
+        
+    label truth:
+        you "i just don't remember anything. i woke up and somehow wandered here, and now i'm just trying to figure out what happened."
+
+        unknown_brennan "..."
+
+        unknown_maryanne "that was weak, even for your jokes."
+
+        unknown_annie "not your best work PLACEHOLDER. it's okay you can get a better sense of humour hopefully..."
+
+        unknown_brennan "annie was losing her mind over your dissapearance and you think these jokes are appropriate?" 
+
+        annie "i was not losing my mind! i was just worried but we were all. even maryanne was!"
+
+        maryanne "we are just coming up with false narratives aren't we?"
+
+        brennan "come on you were all like \"brennan what if he doesn't come back!\"" 
+
+        maryanne "i told you that in private!"
+
+        jump part_4_messy
+
+    label lie: 
+
+        you "i lost my glasses!"
+
+        unknown_brennan "oh that's why you aren't wearing them anymore."
+
+        unknown_maryanne "eh you look better without them."
+
+        unknown_annie "maryanne you can't say that!"
+
+        maryanne "i was told to be honest growing up annie."
+
+        "maryanne rolls her eyes."
+
+        annie "you are unbelievable."
+
+        jump part_4_messy
+
+    label part_4_messy:
+        
+        unknown_lou "okay okay, let's not be fighting and go to dinner already"
+        
+        brenna "you owe us some food now that you're loaded!"
+
+        "you dig your hands into your pocket in a panic and find a pouch of gold in each one."
+
+        you "*when did that get there...?*"
+
+        "you had checked your pockets earlier but they weren't there before..."
+
+        "something is wrong with this world..." 
+
+        show brennan excited 
+        brennan "SWEET YOU GOT LIKE DOUBLE THE PAYMENT!"
+
+        unknown_lou "brennan, volume."
+
+        brennan "sorry lou!"
+
+        lou "let's just get on our way before it gets dark."
+
+        "you walk out of your house, as brennan and lou whisper from behind you."
+
+        show brennan and lou in the background like shaded out 
+        brennan "there's something... wrong with PLACERHOLDER."
+
+        lou "i noticed as well but chalked it up to time."
+
+        brennan "i'm going to keep an eye on him, i think something messed with him during the hunt."
+
+        lou "he wouldn't get hurt during the hunt though."
+
+        brennan "yeah but... something's wrong."
+
+        jump part_5
 
     label part_3_clean:
         unknown_brennan "PLACEHOLDER! i was so worried."
@@ -501,10 +599,88 @@ label start:
 
         "you notice that they seem revlieved to see you, in particular the boy that just spoke." #spelling ahhhh 
 
-        ""
+        show brennan angry
+        unknown_brennan "man i was stress eating like crazy, you owe me three containers of almonds now!"
+
+        unknown_annie "brennan can you calm down, he's probably exhausted from the mission."
+
+        show brennan with arms up in surrender 
+        brennan "okay okay fine! i'm just glad you're back man."
+
+        unknown_maryanne "now that we know you aren't dead, you have to tell annie everything or else i think she'll explode or something."
+
+        annie "no i won't maryanne! i was just... worried as well you know?"
+
+        menu: 
+            #normal route finds out again little to no information as you try to blend in with the group 
+            "go along with them.":
+                jump normal
+            
+            #you pry for more information but brennan becomes more sus of you 
+            "try to pry for information":
+                jump detective
+    label normal: 
+        you "i'm sorry, really i just... lost track of time. but i'm back!"
+
+        "you scan their faces for any suspcion." #spelling
+
+        you "ummm..."
+
+        brennan "oh i see you're just trying to get out of paying for that dinner you owe us!"
+
+        annie "not cool! we helped you prepare for that mission, it's not our fault they said we couldn't follow. god knows lou would've just to make sure you survived."
+
+        lou "it's not because i care about you, i just..."
+
+        show lou looking not into your eyes 
+        lou "...want to make sure we get the reward!"
+
+        annie "yeah yeah whatever you softie."
+
+        jump part_4_clean:
+# in this path player should learn more information that will help them make better choices in the future but not as much as messy search
+    label detective: 
+        you "yeah the mission, what even was that task i mean it was so stupid, right?"
+
+        brennan "yeah but they said it only had to be you, something along the lines of the \"choosen\" one."
+
+        maryanne "glad that didn't get in your head or else you would've become even more intolerable than now."
+
+        show lou serious face
+        lou "but we all know what that mission really was."
+
+        annie "stop. let's just stop talking about it."
+
+        lou "face it. they wanted him to die."
+
+        show brennan happy 
+        brennan "but~ you didn't! and now we get to live our lives as heroes for the rest of our lives!"
+
+        brennan "the history books are gonna remember us!"
+
+        "maryanne approaches you, whispering in your ear."
+
+        maryanne "between you and me, he was crying when you stopped replying to our messages." 
+
+        "you couldn't help but feel a warm feeling in your stomach."
+
+        "but along side it was guilt."
+
+        "you forgot all about them." #again here we are still under the assumption that we are the dopple ganger and not that we just look like him
+
+        you "i'll treat you to a meal"
+
+        "you march out in a random direction, "
 
 
+# goes to dinner and learn about the backstory of the mission 
 
+    label part_4_clean: 
 
-# place this in the sections later, going to learn this later 
+    #mc was sent on a basically suicide mission where he had to kill a lot of people that were planning to take resources that the village he lives in needs to survive
+    #its like in transformers where the dinobots and autobots both need the blue liquid thing to survive but they did unjust things like morally grey mission 
+    #the whole party understands the politics associated because the village is known for having strong fighters so the "higher ups" rely on them to solve their issues through brutal force
+   label part_5: 
     
+
+        
