@@ -509,7 +509,7 @@ label part_3_messy:
     
     unknown_brennan "why is everything... everywhere?!"
 
-    you "uhh i can explain!"
+    player "uhh i can explain!"
 
     menu: # both lead to same result. 
         "tell the truth.":
@@ -520,7 +520,7 @@ label part_3_messy:
     
 label truth:
     $ trust_level += 1
-    you "i just don't remember anything. i woke up and somehow wandered here, and now i'm just trying to figure out what happened."
+    player "i just don't remember anything. i woke up and somehow wandered here, and now i'm just trying to figure out what happened."
 
     unknown_brennan "..."
 
@@ -543,7 +543,7 @@ label truth:
 label lie: 
     $ trust_level -= 1
 
-    you "i lost my glasses!"
+    player "i lost my glasses!"
 
     unknown_brennan "oh that's why you aren't wearing them anymore."
 
@@ -568,7 +568,7 @@ label part_4_messy:
 
     "you dig your hands into your pocket in a panic and find a pouch of gold in each one."
 
-    you "*when did that get there...?*"
+    player "*when did that get there...?*"
 
     "you had checked your pockets earlier but they weren't there before..."
 
@@ -598,7 +598,11 @@ label part_4_messy:
 
     brennan "yeah but... something's wrong."
 
-    jump part_5
+    maryanne "i'm hungry can we walk faster... ugh."
+
+    brennan "yeah, PLACEHOLDER you decide."
+
+    jump ribs
 
 label part_3_clean:
     unknown_brennan "PLACEHOLDER! i was so worried."
@@ -648,7 +652,9 @@ label normal:
 
     annie "yeah yeah whatever you softie."
 
-    jump part_4_clean
+    brennan "come on let's just go to eat! what's the plan?"
+
+    jump thinking
 
 # in this path player should learn more information that will help them make better choices in the future but not as much as messy search
 label detective: 
@@ -690,10 +696,10 @@ label detective:
     "as you struggle to come up with a beliveable answer, you spot a large, colourful sign in the distant village that reads RACK OF RIBS FOR ONLY 230 SHELLS"
 
     menu:
-        "Let's eat ribs!":
+        "let's eat ribs!":
             jump ribs
 
-        "Think about it longer":
+        "think about it longer":
             jump thinking
 
 #goes to eat ribs but is sussed because it isn't a food MC would usually go for
@@ -734,11 +740,11 @@ label thinking:
 
     player "GOULASH"
 
-    player "i want goulash"
+    player "i want goulash."
 
     "brennan smiles widely. He puts his arm around you"
 
-    brennan "now THATS the correct answer!"
+    brennan "now THAT'S the correct answer!"
 
     jump goulash_restaurant
 
@@ -751,7 +757,7 @@ label rib_restaurant:
 
     annie "mmmmm smells good!"
 
-    "you pull your plate closer to yourself, trying to avoid brennans eye that has been directed at you since you sat down"
+    "you pull your plate closer to yourself, trying to avoid brennans eye contact that has been directed at you since you sat down"
 
     "you take a whiff of the ribs, immediately knowing how good the quality is, but you suddenly get hit with a small sense of nausea and repulsion"
 
@@ -772,21 +778,29 @@ label eat:
 
     maryanne "wow."
 
-    annie "i didn't know you liked ribs"
+    annie "i didn't know you liked ribs?"
 
     menu:
         "come up with a lie":
-            jump lie
+            jump lie2
         "play it off":
             jump play_it_off
 
-label lie:
+label lie2:
     $ trust -=1 
     player "haha! it must have been the battle, i've changed a lot since then"
 
-    "annie looks worried"
+    "annie looks worried."
 
-    annie "yeah, we all did"
+    annie "yeah, we all did..."
+
+    "lou clears his throat, attempting to shift topics."
+
+    lou "we should go to the cemetary."
+
+    brennan "oh yeah, we should pay our respects at the very least. especially you PLACEHOLDER."
+
+    jump part_5
 
 label play_it_off:
     $ trust += 1
@@ -800,6 +814,13 @@ label play_it_off:
 
     player "yeah well, you should've known better"
 
+    "after a while of eating lou clears his throat, gaining everyones attention."
+
+    lou "we should go to the cemetary."
+
+    brennan "oh yeah, we should pay our respects at the very least."
+
+    jump part_5
 
 label goulash_restaurant:
     "you and the crew sits down in the goulash restaurant"
@@ -814,21 +835,105 @@ label goulash_restaurant:
 
     "the crew digs in, eating so quickly that you eat in silence"
 
-    brennan "nothing is better than a good bowl of goulash"
+    brennan "nothing is better than a good bowl of goulash!"
 
     annie "it really brings back memories! i'm so glad i got to eat with you all again"
 
-# goes to dinner and learn about the backstory of the mission 
+    "as you sit and eat the goulash, brennan starts talking."
 
+    brennan "um. i don't want to remind you of bad memories, but could you tell us about... what happened."
 
-label part_4_clean: 
-    "e"
+    player "haha... yeah, um i'm just not comfortable with talking about it right now."
+
+    annie "yeah... it's just umm..."
+
+    lou "to get to the point already, we need to go visit the cemetary."
+
+    player "huh? why?" #advantage for lying properly 
+
+    maryanne "wow one big mission and you forget."
+
+    "she rolls her eyes playfully."
+
+    brennan "you need to go repent before the gods strike a curse on you or something. just a superstition but you were always big about that stuff."
+
+    player "yeah. let's just play and get out."
 
 #mc was sent on a basically suicide mission where he had to kill a lot of people that were planning to take resources that the village he lives in needs to survive
 #its like in transformers where the dinobots and autobots both need the blue liquid thing to survive but they did unjust things like morally grey mission 
 #the whole party understands the politics associated because the village is known for having strong fighters so the "higher ups" rely on them to solve their issues through brutal force
 label part_5: 
-    "e"
+    "while walking on the way you can't help but pry for what happened."
 
+    player "guys..."
 
+    menu:
+        "why did they send me on that mission":
+            jump mission
+
+label mission:
+    brennan "no one wanted you to go man, we all told you not too. even maryanne."
+
+    annie "politics is confusing, but they said you were the best for the job. i mean, if you didn't go we would've all died."
+
+    "the party continues to walk towards the cemetary."
+
+    "you began trying to piece together information."
+
+    player "*so then i wanted to go?*"
+
+    "brennan begins to walk next to you, allowing the rest of the group to walk ahead."
+
+    show brennan serious
+    brennan "i don't know what you faced, well... i have a rough idea. but i just want you to know you can talk to me, you know that right?"
+
+    player "yeah, of course. i just..."
+
+    player "ever since i got back i've been feeling scrambled."
     
+    brennan "no that makes sense, anyone would feel that way if you they had to do what you did."
+
+    player "can i tell you something..."
+
+    brennan "always."
+
+    menu: 
+        "tell brennan the truth.":
+            jump memoryloss 
+
+label memoryloss: 
+    player "i can't remember anything."
+
+    if trust_level >= 3: #i dont even know if this number is possible 
+        brennan "..."
+
+        brennan "oh. that's why you haven't been all the way here."
+
+        player "..."
+
+        "brennan stops walking, and stares at you."
+
+        brennan "you always tell me when your coming back. you always reply to my messages, you always bring me back almonds even when your dead tired."
+
+        brennan "but you didn't this time."
+
+        brennan "PLACEHOLDER... why didn't you tell me sooner?"
+
+    else:
+        brennan "..."
+
+        brennan "i know your secret, and this isn't it."
+
+        player "???"
+
+        brennan "you aren't PLACEHOLDER."
+
+        player "..."
+
+        brennan "you haven't been, and i know that."
+
+        brennan "your memory has been terrible and i just chalked it up to you being stressed."
+
+        brennan "i kept making excuses for you in my head to rationalize why you were acting you way you were."
+
+        brennan "we shouldn't be adventuring with you anymore."
