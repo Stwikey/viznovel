@@ -17,6 +17,7 @@ define thief = Character('theif')
 define unknown = Character('???')
 default messy = False
 default trust_level = 0
+default document = False
 
 #crew 
 define brennan = Character('brennan')
@@ -345,9 +346,9 @@ label check_drawers:
     if messy:
         "you start by quickly rummaging through the drawers, sheets of papers flying out."
         
-        "one of the papers circle's through the air, catching your eye"
+        "one of the papers circle's through the air, catching your eye."
 
-        "it lands quietly, face up, revealing a photo and lines of words written in black ink"
+        "it lands quietly, face up, revealing a photo and lines of words written in black ink."
 
         menu:
             "check the photo":
@@ -355,9 +356,9 @@ label check_drawers:
             "check the document":
                 jump document
     else:
-        "you open the drawers calmly, the wood quielty creaking, papers are neatly stacked on top of one another"
+        "you open the drawers calmly, the wood quielty creaking, papers are neatly stacked on top of one another."
 
-        "as you go through the layers of papers, you notice a photo that catches your eye"
+        "as you go through the layers of papers, you notice a photo that catches your eye."
 
         menu:
             "check the photo":
@@ -403,6 +404,7 @@ label read_document:
     "you look down at the document to find that it is all the same type of writing you could not read earlier."
 
     "maybe pocketing this for later will be benifical."
+    $ document = True 
     jump part_3
 
 #look through the bedroom but find nothing
@@ -919,6 +921,40 @@ label memoryloss:
 
         brennan "PLACEHOLDER... why didn't you tell me sooner?"
 
+        player "i- i just i couldn't dissapoint you guys." #spelling ? 
+
+        player "you were just all so excited to see me again."
+
+        player "i couldn't... i couldn't tell you the truth."
+
+        brennan "..."
+
+        brennan "i believe you."
+
+        brennan "there's still some part of you that remembers, i can see it in your face."
+
+        show brennan thinking 
+
+        brennan "something must of happened during the hunt. when you left you were acting normal."
+
+        player "i don't remember anything, not even my own name."
+
+        brennan "your name? but we've been saying it all day."
+
+        player "but for some reason, i can't hear it."
+
+        "brennan whispers under his breath"
+
+        brennan "PLACEHOLDER?"
+
+        player "i really am sorry."
+
+        brennan "we will figure this out together, just like old times."
+
+        show brennan happier 
+
+        brennan "you'll be back to your old self in no time!"
+
     else:
         brennan "..."
 
@@ -937,3 +973,123 @@ label memoryloss:
         brennan "i kept making excuses for you in my head to rationalize why you were acting you way you were."
 
         brennan "we shouldn't be adventuring with you anymore."
+
+        player "brennan please i can explain-"
+
+        show brennan upset tears in eyes 
+        brennan "stop... talking."
+
+        show brennan wiping away his tears
+        brennan "damn it, you even sound like him."
+
+        brennan "listen, we can pretend everything is okay for one more day, but by tommorow you need to disappear."
+
+        player "..."
+
+        brennan "i want you gone. i can't... you can't stay here."
+
+        player "brennan... i'm sorry."
+
+        brennan "i just don't think i can be around you... especially when you look just like him."
+
+        player "brennan, i don't mean any harm i promise. i just want to remember what happened!"
+
+        "you plead, if you were to leave the village all hopes in remembering the past would be gone."
+
+        brennan "fine. whoever you are. because i know..."
+
+        brennan "i know MY PLACEHOLDER, wouldn't forget."
+
+        brennan "he would never."
+
+        hide brennan 
+
+    "brennan walks away from you to join the rest of the group. you stay behind trying to process what just happened."
+
+    "at least someone knows now, information should come easier..."
+
+    "or that is the idea." 
+
+    jump part_6
+
+# cemetary scene now that brennan knows information from him is more specific to what happened as he is trying to jog your memory 
+#broken trust brennen will be more snarky and angry (his heart guides him versus his head)
+#trustful brennan will be a lot more useful, he is trying his best to help you and will explain concepts in more detail ie. esstitally spelling out to the mc what is happening/happened
+label part_6: 
+    "as you arrive to the cemetary, the graves look all unvisited except one." 
+
+    "the grave is polished, the grass around it well taken care of with fresh flowers planted near."
+
+    "you glance at the headstone to be met with the same writing you could never read."
+
+    "from the headstone you can deduct what your name should look like... but you still can't read it."
+
+    maryanne "sorry we buried you, thought you died."
+
+    "lou hits maryanne on the shoulder."
+
+    lou "sorry, it's just..."
+
+    annie "after we lost contact with you, we thought it was over."
+
+    annie "of course there was never a body to bury but, we just wanted somewhere to visit."
+
+    lou "a place where we could go to."
+
+    brennan "you know..."
+
+    brennan "because you went on the mission, or better known as the hunt."
+
+    "you aren't stupid, you could tell that brennan was spelling things out for you."
+
+    annie "the hunt is stupid. there's too many dangers and they know we didn't stand a chance."
+
+    lou "hey we set PLACEHOLDER with the best chances, statistically it was the highest it would've ever been."
+
+    annie "but maybe if i sent you with more food you wouldn't have come back so much slimmer."
+
+    show annie worried #this is where her like indecisivness leads to delayed action 
+
+    brennan "the hunt was nessecary." #my spelling1!!
+
+    maryanne "it's a scam. we all know it."
+
+    if trust_level >= 3:
+        # brennan will fully explain the hunt
+        brennan "the hunt... was controversial but it was us or them."
+
+        brennan "and if we chose them, they would've killed us."
+
+        show brennan telling story and images of history #this similar to like the honor thing in genshin where it starts telling the history of the weapons 
+
+        brennan "we weren't always like this..."
+
+        show village 
+
+        brennan "we didn't need it."
+
+        show adventures finding the very first source of mad honey #brennan doesnt explicitly say mad honey but its shown
+
+        brennan "but once they started, they couldn't live without it."
+
+        brennan "the bees use specific flowers only found on the montune reagion." #lol made up montune idek what that is 
+
+        brennan "consuming even just a tablespoon leads to godlike powers, all of a sudden you feel stronger, wiser, your reaction time is lightning speed."
+
+        annie "and after that it's anyones guess." 
+        
+
+    
+    else: 
+        #brennan refuses to explain the hunt. 
+        brennan "yeah we SHOULD all know it."
+
+        "brennan stares at you. he has something he wants to say but is holding back."
+
+    lou "gang" #lol fix this don't know how to continue rn 
+
+    #summary: 
+    # lou should refocus the crew while they tip toe and dance around what dopple ganger 
+
+    #lines that i want but dunno where to put rn 
+    # "even in death you are blessed." hahah d20 core
