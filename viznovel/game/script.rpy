@@ -13,7 +13,7 @@ define v = Character('voice', color='#657aac')
 define npc1 = Character ('npc1') #an old man
 define npc2 = Character ('Charles')
 define lil_boy = Character('fiz')
-define thief = Character('theif')
+define cassia_unknown = Character('???')
 define unknown = Character('???')
 default messy = False
 default trust_level = 0
@@ -32,7 +32,8 @@ define annie = Character('annie')
 define lou = Character('lou') 
 #keeps a level head for the party (keeps everyone in line)
 #overly critical of others, and thinks with his brain and often ignores feelings 
-
+define cassia = Character('cassia')
+#idk relationship to mc, the thief that tries to rob mc in the beginning (cypher from hsr vibes)
 #unknown labels 
 define unknown_brennan = Character('???',color = '#e9535311')
 define unknown_maryanne = Character('???',color = '#784cd811')
@@ -120,15 +121,15 @@ label forest:
 label question:
     "A hint of suspicion flickers over the girl's face, too quick to notice."
     
-    unknown "oh comeee on! Are you seriously pretending to not know me? After all we've been through?"
+    unknown_cassia "oh comeee on! Are you seriously pretending to not know me? After all we've been through?"
 
     player "uhhh yeah, can you get off me now? I'm a busy man."
 
     "UNKNOWN steps back."
 
-    unknown "ah, I see how it is. This is one of your silly pranks again huh?" #idk how to end this
+    unknown_cassia "ah, I see how it is. This is one of your silly pranks again huh?" #idk how to end this
 
-    unknown "well I'll be off on my way then."
+    unknown_cassia "well I'll be off on my way then."
 
     "UNKNOWN leaps away into the bushes." 
 
@@ -859,7 +860,7 @@ label goulash_restaurant:
 
     brennan "you need to go repent before the gods strike a curse on you or something. just a superstition but you were always big about that stuff."
 
-    player "yeah. let's just play and get out."
+    player "yeah. let's just pay and get out."
 
 #mc was sent on a basically suicide mission where he had to kill a lot of people that were planning to take resources that the village he lives in needs to survive
 #its like in transformers where the dinobots and autobots both need the blue liquid thing to survive but they did unjust things like morally grey mission 
@@ -1050,7 +1051,7 @@ label part_6:
 
     show annie worried #this is where her like indecisivness leads to delayed action 
 
-    brennan "the hunt was nessecary." #my spelling1!!
+    brennan "the hunt was necessary." 
 
     maryanne "it's a scam. we all know it."
 
@@ -1077,8 +1078,6 @@ label part_6:
         brennan "consuming even just a tablespoon leads to godlike powers, all of a sudden you feel stronger, wiser, your reaction time is lightning speed."
 
         annie "and after that it's anyones guess." 
-        
-
     
     else: 
         #brennan refuses to explain the hunt. 
@@ -1086,10 +1085,176 @@ label part_6:
 
         "brennan stares at you. he has something he wants to say but is holding back."
 
-    lou "gang" #lol fix this don't know how to continue rn 
+    "The group stares silently at the makeshift grave for a moment until lou cuts through the silence"
+
+    lou "lets return home, shall we? it's getting dark now" 
+
+    "lou pats annie reassuringly on her back and they slowly start walking to the direction of the village" #(?)not sure where they live
+
+    "slowly, the rest of the group follows until only you and brennan remain"
+
+    #some stuff here
 
     #summary: 
     # lou should refocus the crew while they tip toe and dance around what dopple ganger 
 
     #lines that i want but dunno where to put rn 
     # "even in death you are blessed." hahah d20 core
+
+    "you wake up, still groggy, to the sun shining in your face"
+
+    menu:
+        "leave":
+            jump leave
+        "stay":
+            jump stay
+label stay:
+
+label leave:
+    "you quietly tiptoe through the inn, hoping nobody the tiny creaks off the wooden floorboards under your feet"
+
+    "you take one last glance behind you, before opening the door and getting hit in the face with a gust of fresh wind"
+
+    #could add choice here
+    jump forest
+
+label forest:
+    "you walk towards the direction of the forest, not sure what you are hoping to find, but hopefully something"
+
+    player "that girl that was here before... I wonder who she was to \"me\""
+
+    unknown_cassia "oh? i guess brennan was right huh?"
+
+    unknown_cassia "thats odd 'cus he usually isn't"
+
+    "you jolt by the touch of someone poking your shoulder and turn around to look over your shoulder"
+
+    player "speak of the devil"
+
+    unknown_cassia "i KNEW it! something was odd about you"
+
+    unknown_cassia "you really aren't PLACEHOLDER are you?"
+
+    player "..."
+
+    unknown_cassia "stop pretending you don't know"
+
+    "the girl uncrumples a scroll and holds it to your face for you to read"
+
+    "the scroll reads \"he's not really PLACEHOLDER\" - brennan"
+
+    "the girl crumples the scroll back up and tosses it over her shoulder and rolls her eyes"
+
+    unknown_cassia "ugh hes such a dry man i don't know how you traveled with him"
+
+    unknown_cassia "oh, well, i guess not YOU but YOU you know?"
+
+    menu:
+        "who are you?":
+            jump who_are_you
+        "who am i?":
+            jump who_am_i
+
+label who_are_you:
+    unknown_cassia "number one rule of an adventurer is to NOT give out information for free"
+
+    unknown_cassia "what makes you think i can trust you?"
+
+    menu:
+        "i have money":
+            jump i_have_money
+        "tell the truth":
+            jump tell_the_truth
+
+
+label who_am_i:
+    unknown_cassia "YOU? what makes you think i know who you are if YOU don't even know who you are"
+
+    player "i mean, who was \"i\""
+
+    "the girl scrunches her face, annoyed"
+
+    unknown_cassia "now why would i tell you anything?"
+
+    menu:
+        "i have money":
+            jump i_have_money
+        "tell the truth":
+            jump tell_the_truth
+
+
+label i_have_money:
+    "you pull out the puch of gold coins still left in your pocket"
+
+    player "is this enough?"
+
+    "the girl's face lights up almost instantly"
+
+    unknown "WOAH YOU'RE LOADED"
+
+    "the girl snatches the pouch quicker before you can react" #she could probably run away with the money but also wants to know whats up with mc 
+
+    player "Hey-!"
+
+    cassia "i'm cassia nice to meet you by the way i have a 101-100 win lose score against you right now"
+
+    player "what?"
+
+    cassia "come, let's go somewhere more quieter, i have a bounty on my head right now"
+
+    "you follow cassia through the forest, not sure where you are going but you have a feeling you can trust her"
+
+
+label travelling:
+    "cassia leads you to ____"#black market or somewhere else idk
+
+    "cassia sits down in one of the wooden chairs and starts counting the coins in her pouch of money"
+
+    cassia "with this i might be able to finally get a sip of that mad honey kekekekkeke"
+
+    player "answer my question"
+
+    "cassia sighs"
+
+    cassia "alright PLACEHOLDER"
+
+    #cutscene with images so dialogue isn't too boring, this is how mc finds out backstory if brennan doesnt trust him maybe (?)
+
+    #### cutscene with summary
+
+    #stuff happens
+
+    cassia "so you can't hear your name at all?"
+
+    player "yeah... its like static. I also can't read it either"
+
+    "cassia thinks for a moment, before a smug grin slowly appears on her face"
+
+    cassia "hey PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER"
+
+    "you stare at her, unimpressed"
+
+label discussion:
+    player "do you have any idea what happened to me? or what quest i went on" #since brennan didn't tell mc
+
+    cassia "hmmmm...i don't know"
+
+    cassia "you just...disappeared" #confidential right
+
+    player "...i'm sorry"
+
+    show cassia smile
+
+    cassia "it's okay, i mean, it wasn't you"
+
+    cassia "i think the only people that know about the quest is the ones that sent you on it"
+
+    cassia "...brennan and your party"
+
+    player "yeah thats what i figured...i don't think brennan is going to tell me anytime soon though"
+
+    #path 1 find out from annie path 2 find out about mad honey from underground market maybe?
+
+
+
+
