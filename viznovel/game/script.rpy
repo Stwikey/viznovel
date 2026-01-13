@@ -956,6 +956,10 @@ label memoryloss:
 
         brennan "you'll be back to your old self in no time!"
 
+        brennan "we just gotta get you back into the groove of things."
+
+        "a part of you was comforted by that fact, but the other part knew that even brennan wasn't sure you would remember."
+
     else:
         brennan "..."
 
@@ -1078,30 +1082,126 @@ label part_6:
         brennan "consuming even just a tablespoon leads to godlike powers, all of a sudden you feel stronger, wiser, your reaction time is lightning speed."
 
         annie "and after that it's anyones guess." 
+
+        maryanne "they say it's for our protection, so that we have a constant supply of food, water, etc. but we all know what that really means."
+
     
     else: 
         #brennan refuses to explain the hunt. 
         brennan "yeah we SHOULD all know it."
 
         "brennan stares at you. he has something he wants to say but is holding back."
+   
+    show brennan upset 
+    brennan "it isn't fair. the only reason they chose you is because you were stupid enough to volunteer."
 
-    "The group stares silently at the makeshift grave for a moment until lou cuts through the silence"
+    lou "calm down brennan, we get it."
 
-    lou "lets return home, shall we? it's getting dark now" 
+    show brenna shouting 
+    brennan "no you don't!"
+
+    brennan "PLACEHOLDER DIDN'T HAVE TO GO!"
+
+    brennan "HE CHOSE TO!"
+
+    "annie slaps brennan in the face."
+
+    "BAM."
+
+    annie "if he didn't choose to go they would've sent you, or me, or god knows who."
+
+    annie "we all know they don't care about us."
+
+    annie "god brennan, i know you blame yourself but you need to move past it."
+
+    annie "PLACEHOLDER is here now and that's all that matters."
+
+    "you feel the world shift. there's cracks in the sky that appear in your vision. as if the world was telling you otherwise."
+
+    "it seems like the others don't notice the cracks. only visable to you."
+
+    "the group stares silently at the makeshift grave for a moment until lou cuts through the silence"
+
+    lou "let's return home, shall we? it's getting dark now" 
 
     "lou pats annie reassuringly on her back and they slowly start walking to the direction of the village" #(?)not sure where they live
 
     "slowly, the rest of the group follows until only you and brennan remain"
 
-    #some stuff here
+    brennan "i..."
 
-    #summary: 
-    # lou should refocus the crew while they tip toe and dance around what dopple ganger 
+    brennan "i'm sorry."
+
+    player "no i understand it must be-"
+
+    brennan "stop talking."
+
+    if trust_level >= 3:
+        brennan "it's just... it's all my fault you don't remember."
+
+        brennan "when they asked who wanted to go, none of us wanted to."
+
+        brennan "they were going to choose me."
+
+        brennan "we all knew they were going to."
+
+        brennan "so you volunteered."
+
+        brennan "i should've stopped you before you submitted your name."
+
+        brennan "i should've known you would go behind our backs to do it to."
+
+        brennan "lou would never let you do something that stupid."
+
+    brennan "we tried our best to prepare you."
+
+    brennan "maryanne stopped playing her little games, annie was running around the village gathering anything she could."
+
+    brennan "and i..."
+
+    brennan "...i gave you the stupid honey."
+
+    brennan "i was so angry."
+
+    brennan "so... so angry."
+
+    brennan "i stole. i stole from the higher ups."
+
+    show flashback
+    brennan "because we all knew you wouldn't survive. lou was losing his mind, maryanne was trying her hardest to pick up the slack."
+
+    brennan "it's was stupid."
+
+    if trust_level >=3:
+        brennan "but maybe thats why you don't remember."
+
+    else:
+        brennan "maybe that's why..."
+
+        brennan "you aren't you."
+
+    hide brennan 
+
+    "he starts walking ahead. you walk next to him but don't speak."
+    
+    "you reach the village as brennan drops you off at your house."
+
+    brennan "you live here by the way."
+
+    if trust_level >= 3:
+        show brennan bashful 
+
+        brennan "i didn't know if you would remember."
+    
+    else:
+        show brennan annoyed
+
+        brennan "wouldn't know if you remembered."
 
     #lines that i want but dunno where to put rn 
     # "even in death you are blessed." hahah d20 core
 
-    "you wake up, still groggy, to the sun shining in your face"
+    "you wake up, still groggy, to the sun shining in your face."
 
     menu:
         "leave":
@@ -1109,6 +1209,11 @@ label part_6:
         "stay":
             jump stay
 label stay:
+    "you lay around in bed for longer."
+
+    player "i should get up."
+
+    jump leave
 
 label leave:
     "you quietly tiptoe through the inn, hoping nobody the tiny creaks off the wooden floorboards under your feet"
@@ -1129,9 +1234,9 @@ label forest:
 
     "you jolt by the touch of someone poking your shoulder and turn around to look over your shoulder"
 
-    player "speak of the devil"
+    player "speak of the devil."
 
-    unknown_cassia "i KNEW it! something was odd about you"
+    unknown_cassia "i KNEW it! something was odd about you."
 
     unknown_cassia "you really aren't PLACEHOLDER are you?"
 
@@ -1166,7 +1271,6 @@ label who_are_you:
         "tell the truth":
             jump tell_the_truth
 
-
 label who_am_i:
     unknown_cassia "YOU? what makes you think i know who you are if YOU don't even know who you are"
 
@@ -1182,35 +1286,54 @@ label who_am_i:
         "tell the truth":
             jump tell_the_truth
 
+label tell_the_truth:
+    player "i don't remember anything."
+
+    player "i need help."
+
+    player "please?"
+
+    unknown_cassia "hmmm... i don't speak without a price."
+
+    unknown_cassia "you think information grows on trees?"
+
+    menu: 
+        "i have money":
+            jump i_have_money
 
 label i_have_money:
-    "you pull out the puch of gold coins still left in your pocket"
+    "you pull out the pouch of gold coins still left in your pocket"
 
     player "is this enough?"
 
     "the girl's face lights up almost instantly"
 
-    unknown "WOAH YOU'RE LOADED"
+    unknown_cassia "WOAH YOU'RE LOADED"
 
     "the girl snatches the pouch quicker before you can react" #she could probably run away with the money but also wants to know whats up with mc 
 
-    player "Hey-!"
+    player "hey-!"
 
     cassia "i'm cassia nice to meet you by the way i have a 101-100 win lose score against you right now"
 
     player "what?"
 
-    cassia "come, let's go somewhere more quieter, i have a bounty on my head right now"
+    cassia "come, let's go somewhere more quieter, i have a bounty on my head right now."
 
-    "you follow cassia through the forest, not sure where you are going but you have a feeling you can trust her"
+    player "!?"
 
+    "you follow cassia through the forest, not sure where you are going but you have a feeling you can trust her."
+
+    jump travelling
 
 label travelling:
-    "cassia leads you to ____"#black market or somewhere else idk
+    "cassia leads you to night market."
+
+    "although, during the day it stands to be filled with less... obvious illegal activites."
 
     "cassia sits down in one of the wooden chairs and starts counting the coins in her pouch of money"
 
-    cassia "with this i might be able to finally get a sip of that mad honey kekekekkeke"
+    cassia "with this i might be able to finally get a sip of that mad honey kekekekkeke" #HAHAH KEKEKEKEKEKE
 
     player "answer my question"
 
@@ -1218,21 +1341,39 @@ label travelling:
 
     cassia "alright PLACEHOLDER"
 
-    #cutscene with images so dialogue isn't too boring, this is how mc finds out backstory if brennan doesnt trust him maybe (?)
+    cassia "mad honey is said to give you the powers that only gods can weild."
 
-    #### cutscene with summary
+    cassia "information is limited, if the general public found out?"
 
-    #stuff happens
+    cassia "the whole system would collapse."
+
+    cassia "what's up with you PLACEHOLDER?"
+
+    player "yeah... i can't hear my own name, it just sounds like muffled and i can't make out anything."
 
     cassia "so you can't hear your name at all?"
 
-    player "yeah... its like static. I also can't read it either"
+    player "yeah... its like static. i also can't read it either. or i guess read in general. all the writing looks like gibberish." #mc cant read just like me frfr 
 
-    "cassia thinks for a moment, before a smug grin slowly appears on her face"
+    "cassia thinks for a moment, before a smug grin slowly appears on her face."
 
     cassia "hey PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER"
 
     "you stare at her, unimpressed"
+
+    cassia "oh~ PLACEHOLDER"
+
+    "you push her away from you." # liek a shove 
+
+    if trust < 3:
+        player "i've been meaning to ask"
+
+        menu: 
+            "ask about the quest":
+                jump discussion
+    
+    else:
+        jump part_7
 
 label discussion:
     player "do you have any idea what happened to me? or what quest i went on" #since brennan didn't tell mc
@@ -1253,8 +1394,13 @@ label discussion:
 
     player "yeah thats what i figured...i don't think brennan is going to tell me anytime soon though"
 
-    #path 1 find out from annie path 2 find out about mad honey from underground market maybe?
 
+ #find out the stuff through snooping around the night market
+ #visit different vendors and they have like little tid bits of information ie. "i heard they sent someone to handle it", "the honey. everyone knows"
+ #lots of different vendors that lead the player to the answer there will be two options to like keep going ie. party_7 jump or to be detective in which we fully explain then just part_7
+label night_market: 
+    cassia "we might be able to find out more if we stay here."
 
+    cassia "this place isn't... the safest."
 
-
+label part_7: 
