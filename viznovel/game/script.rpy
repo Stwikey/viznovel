@@ -8,6 +8,10 @@ spoiler alert: ur other u is a morally grey person crazy!
 #player character
 define player = Character('player', color="#c8c8ff")
 
+#dopple ganger
+
+define og = Character('???') #come up with name later 
+
 #npcs 
 define v = Character('voice', color='#657aac')
 define npc1 = Character ('npc1') #an old man
@@ -18,6 +22,11 @@ define unknown = Character('???')
 default messy = False
 default trust_level = 0
 default document = False
+
+#black market vendors
+define vendor1 = Character('garry')
+define vendor2 = Character('john')
+define vendor3 = Character('wagner')
 
 #crew 
 define brennan = Character('brennan')
@@ -1077,7 +1086,7 @@ label part_6:
 
         brennan "but once they started, they couldn't live without it."
 
-        brennan "the bees use specific flowers only found on the montune reagion." #lol made up montune idek what that is 
+        brennan "the bees use specific flowers only found on the montune region." #lol made up montune idek what that is 
 
         brennan "consuming even just a tablespoon leads to godlike powers, all of a sudden you feel stronger, wiser, your reaction time is lightning speed."
 
@@ -1196,10 +1205,7 @@ label part_6:
     else:
         show brennan annoyed
 
-        brennan "wouldn't know if you remembered."
-
-    #lines that i want but dunno where to put rn 
-    # "even in death you are blessed." hahah d20 core
+        brennan "you wouldn've known if you remembered."
 
     "you wake up, still groggy, to the sun shining in your face."
 
@@ -1220,7 +1226,6 @@ label leave:
 
     "you take one last glance behind you, before opening the door and getting hit in the face with a gust of fresh wind"
 
-    #could add choice here
     jump forest
 
 label forest:
@@ -1246,13 +1251,19 @@ label forest:
 
     "the girl uncrumples a scroll and holds it to your face for you to read"
 
-    "the scroll reads \"he's not really PLACEHOLDER\" - brennan"
+    "the scroll reads..."
+
+    "you still can't read."
+
+    player "i can't read."
 
     "the girl crumples the scroll back up and tosses it over her shoulder and rolls her eyes"
 
-    unknown_cassia "ugh hes such a dry man i don't know how you traveled with him"
+    unknown_cassia "it says that YOU are YOU. you know?"
 
-    unknown_cassia "oh, well, i guess not YOU but YOU you know?"
+    unknown_cassia "some guy gave this to me, didn't trust it at first but now seeing you..."
+
+    unknown_cassia "starting to think it's actually real."
 
     menu:
         "who are you?":
@@ -1365,6 +1376,8 @@ label travelling:
 
     "you push her away from you." # liek a shove 
 
+    # story loses its flow here fix later 
+
     if trust < 3:
         player "i've been meaning to ask"
 
@@ -1376,11 +1389,11 @@ label travelling:
         jump part_7
 
 label discussion:
-    player "do you have any idea what happened to me? or what quest i went on" #since brennan didn't tell mc
+    player "do you have any idea what happened to me? or what quest i went on" 
 
     cassia "hmmmm...i don't know"
 
-    cassia "you just...disappeared" #confidential right
+    cassia "you just...disappeared"
 
     player "...i'm sorry"
 
@@ -1395,12 +1408,249 @@ label discussion:
     player "yeah thats what i figured...i don't think brennan is going to tell me anytime soon though"
 
 
- #find out the stuff through snooping around the night market
- #visit different vendors and they have like little tid bits of information ie. "i heard they sent someone to handle it", "the honey. everyone knows"
- #lots of different vendors that lead the player to the answer there will be two options to like keep going ie. party_7 jump or to be detective in which we fully explain then just part_7
+#find out the stuff through snooping around the night market
+#visit different vendors and they have like little tid bits of information ie. "i heard they sent someone to handle it", "the honey. everyone knows"
+#lots of different vendors that lead the player to the answer there will be two options to like keep going ie. party_7 jump or to be detective in which we fully explain then just part_7
 label night_market: 
     cassia "we might be able to find out more if we stay here."
 
-    cassia "this place isn't... the safest."
+    cassia "this place isn't... the nicest towards newbies."
+
+    cassia "just follow my lead yeah?"
+
+    "as the sun looms over you, the hooded figures around the market lurk in the shadows."
+
+    player "they don't seem... very big on talking..."
+
+    cassia "well it is called the NIGHT market for a reason."
+
+    menu:
+        "let's wait until nightfall.":
+            jump nightime
+
+        "let's just ask them now.":
+            jump daytime
+label daytime:
+    "you continue to push forward even though the sun shines down."
+
+    "the market is mostly empty except for a few vendors."
+
+    cassia "MARCUS MY MAN!"
+
+    vendor1 "my name is garry."
+
+    cassia "oh what?"
+
+    vendor2 "psst cass over here!"
+
+    "you hear heavy foot steps behind you, a figure placing a hand on your shoulder."
+
+    vendor2 "and who might you be..."
+
+    cassia "he's with me! we are trying to find out information about... the hunt."
+
+    vendor2 "shhh not so loud."
+
+    vendor2 "come with me."
+
+    "you follow him to a booth in the back."
+
+    vendor2 "i can't help you a lot but..."
+
+    vendor2 "i hear there's a guy, he knows all about it but he's only here tonight."
+
+    player "how does he know?"
+
+    vendor2 "we don't ask questions, i just know that he paid a great price for something..." #hint to brennan! 
+
+    vendor2 "so he's selling off information about the hunt to repay the price."
+
+    cassia "we should come back at night."
+
+    menu: 
+        "return at night":
+            jump nighttime
+
+label nighttime:
+    "you come back with cassia at night, the market is filled with people, all concealing their identity."
+
+    player "everyone looks like they have something to hide?"
+
+    cassia "that's because they do. you only do shady business here."
+
+    cassia "there's a sign over there."
+
+    "you look at the sign, you still can't read. it seems as though cassia forgot about that."
+
+    player "i still can't read."
+
+    cassia "i forgot you're stupid now."
+
+    cassia "it says \'HUNTing equipment for a PRICE\'"
+
+    player "uhhh we don't need hunting equipment."
+
+    "cassia hits you in the shoulder."
+
+    cassia "no you idiot it's the guy who knows about the hunt."
+
+    "you walk towards the booth."
+
+    cassia "wait before we actually start talking to people, take this."
+
+    "she hands you a cloak, and pulls up her hood to cover her face."
+
+    player "???"
+
+    cassia "to cover yourself. we don't know anyone here and we don't want to. we just want information."
+
+    player "okay cool cool cool, i can do that."
+
+    cassia "after that response no. you are banned from talking."
+
+    player "no fair!"
+
+    cassia "nope i decided. you are just here to be the muscle in case things go south."
+
+    player "fine."
+
+    "you walk to the front of the booth to be meeted with another hooded figure."
+
+    cassia "..."
+
+    unknown_brennan "..."
+
+    "the vendor points towards a sign."
+
+    "you still can't read."
+
+    "cassia moves to place a bag of coins on the table. the same bag she stole from you earlier."
+
+    "you see the vendor perk up a bit in surprise."
+
+    unknown_brennan "thank you for the business. it'll be my last day here so you are lucky."
+
+    cassia "we want to know everything."
+
+    unknown_brennan "and i'll gladly tell you."
+
+    "a rune appears in front of you as the vendor begins his story. the magic feels... familliar."
+
+    unknown_brennan "the hunt... was controversial but it was us or them."
+
+    unknown_brennan "and if we chose them, they would've killed us."
+
+    show story scenes 
+
+    unknown_brennan "we weren't always like this..."
+
+    unknown_brennan "we didn't need it."
+
+    unknown_brennan "but once they started, they couldn't live without it."
+
+    unknown_brennan "the bees use specific flowers only found on the montune region."
+
+    unknown_brennan "consuming even just a tablespoon leads to godlike powers, all of a sudden you feel stronger, wiser, you reaction time is lightning speed."
+
+    unknown_brennan "and after that... it's anyones guess."
+
+    unknown_brennan "they say it's for our protection, so that we have a constant supply of food, water, etc. but we all know what that really means."
+
+    player "..."
+
+    cassia "so it's a suicide mission all for some honey?"
+
+    unknown_brennan "they were eyeing someone for the job before..."
+
+    "the vendor stops talking."
+
+    unknown_brennan  "...it was taken by someone else last minute."
+
+    cassia "do you happen to know what happened on the latest hunt?"
+
+    unknown_brennan "*chuckles*, god i wish i did. but the guy they sent on it doesn't remember a thing."
+
+    cassia "thank you for your time."
+
+    "you both walk away."
+
+    cassia "so the higher ups send some lab rat to go do their dirty work."
+
+    player "i still can't remember anything. nothing from the quest or mission or whatver it was."
+
+    "you can feel yourself growing angry."
+
+    menu:
+        "try to calm down.":
+            jump calmdown 
+
+        "screw this, get angry!":
+            jump gointoarage
+
+label calmdown:
+    "you breathe in and out."
+
+    cassia "are you okay?"
+
+    player "i just..."
+
+    "you continue to breathe but can't help what happens next."
+
+    jump gointoarage
+
+label gointoarage:
+    "your body experiences hot flashes, as you can feel yourself physically grow."
+
+    player "I JUST DON'T UNDERSTAND!"
+
+    player "I DIDN'T ASK TO LOSE MY MEMORIES AND NOW BRENNAN'S UPSET AT ME AND FOR SOME REASON THAT KILLS ME."
+
+    player "IT HURTS."
+
+    player "it hurts."
+
+    player "my friends expect me to be someone that i'm not."
+
+    player "and i don't even remember my friends."
+
+    player "man he was right. i should just leave the village and start a new life."
+
+    cassia "..."
+
+    cassia "we made good progress today though."
+
+    cassia "we'll recover those memories one way or another."
+
+    "you part ways with cassia for the day and return back to \"your\" house."
+
+    jump part_7
 
 label part_7: 
+    "you lie down in your bed."
+
+    "you close your eyes, drifting off to sleep."
+    
+    show like mystery people here 
+    v "even in death you are blessed."
+
+    og "i miss them."
+
+    v "that is known, but you cannot return."
+
+    og "i wish i could've said goodbye at the very least."
+
+    v "maybe we can find a workaround."
+
+    "the figure lifts something up to the other"
+
+    og "i can't. that would destroy them."
+
+    v "this is the best solution that i have..."
+
+    og "fine. but, how will they know?"
+
+    v "they'll know."
+
+    "BANG BANG BANG" 
+
+    #door knocked on its brennan! 
