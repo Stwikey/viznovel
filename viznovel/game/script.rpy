@@ -1374,9 +1374,7 @@ label travelling:
 
     cassia "oh~ PLACEHOLDER"
 
-    "you push her away from you." # liek a shove 
-
-    # story loses its flow here fix later 
+    "you push her away from you." 
 
     if trust < 3:
         player "i've been meaning to ask"
@@ -1386,6 +1384,58 @@ label travelling:
                 jump discussion
     
     else:
+        player "do you happened to know more about... the old me?"
+
+        cassia "hmmm..."
+
+        cassia "well you were really nice, a bit stupid like you are now but, in a more endearing way."
+
+        player "..."
+
+        cassia "you and your friend group were like super close. which is why i found it quite odd when you suddenly stopped hanging out with them as much."
+
+        player "i didn't stop. i just... i was sent on a quest or the hunt, heard of it before?"
+
+        cassia "oh yeah that."
+
+        cassia "the information is all hush hush you know?"
+
+        cassia "i don't really know why but it's all for some mad honey resource."
+
+        player "yeah brennan filled me in."
+
+        cassia "i'm surprised he doesn't resent you or something."
+
+        cassia "especially after hearing what you did back then."
+
+        player "and that was...?"
+
+        cassia "you volunteered behind his back."
+
+        player "oh... right."
+
+        cassia "well you're back now, albeit a bit different."
+
+        player "different?"
+
+        cassia "yeah like... you look like you were reborn or something."
+
+        cassia "you're you but not?"
+
+        player "oh."
+
+        cassia "anyways you should work on learning how to read, it would help you out a ton."
+
+        player "uhhh got any suggestions on reading materials?"
+
+        cassia "i don't know go home and pick up a book."
+
+        "cassia waves you goodbye as she wanders back into the forest."
+
+        "you decide its better to head home, after all maybe you could learn to read."
+
+        "as you step back in you feel an overwhelming urge to sleep."
+
         jump part_7
 
 label discussion:
@@ -1407,10 +1457,6 @@ label discussion:
 
     player "yeah thats what i figured...i don't think brennan is going to tell me anytime soon though"
 
-
-#find out the stuff through snooping around the night market
-#visit different vendors and they have like little tid bits of information ie. "i heard they sent someone to handle it", "the honey. everyone knows"
-#lots of different vendors that lead the player to the answer there will be two options to like keep going ie. party_7 jump or to be detective in which we fully explain then just part_7
 label night_market: 
     cassia "we might be able to find out more if we stay here."
 
@@ -1653,4 +1699,183 @@ label part_7:
 
     "BANG BANG BANG" 
 
-    #door knocked on its brennan! 
+    annie "hello? come on and answer the door already!"
+
+    menu:
+        "answer the door"
+
+        "don't answer the door"
+    
+    annie "come to the door already, no point in hiding!"
+
+    "you get up and open the door to find annie there."
+
+    player "???"
+
+    annie "brennan wanted me to give you this."
+
+    "she hands you a box."
+
+    player "what is this?"
+
+    annie "don't know, he told me specifically not to open it."
+
+    player "uh... thanks?"
+
+    "annie stands there like she's expecting something."
+
+    menu: 
+        "give her money."
+
+            annie "what the heck. i don't want that."
+
+            player "???"
+
+            annie "..."
+
+        "stare back at her."
+
+            annie "..."
+
+            player "..."
+
+    annie "he was right."
+
+    "she turns away and leaves."
+
+    player "does she know? did brennan tell everyone?"
+
+    "you look at the box in your hands. maybe it could provide you with the answers you were seeking."
+
+    menu:
+        "open the box."
+
+    "opening the box you see a number of objects."
+
+    "photos of you when you were younger, a trinket, and a dirty rag."
+
+    jump choices
+
+label choices:
+    menu:
+        "look at the photo.":
+            jump childhood_photo
+
+        "look at the trinket.":
+            jump trinket
+
+        "look at the dirty rag.":
+            jump dirty_rag
+
+        "put the box away":
+            jump part_8
+
+label childhood_photo:
+    "touching the photo, visions appear in your head."
+
+    show expression happy
+    "children run around the field."
+
+    "you look down to see your hands are also that of a childs."
+
+    brennan "PLACEHOLDER come here!"
+
+    "that voice sounded like brennan's except a lot younger."
+
+    og "comming!"
+
+    "your body starts moving without your permission."
+
+    "as you continue to run you see the rest of your friends."
+
+    "they look significantly younger."
+
+    maryanne "my parents said if i did really good on the next evaluation then they'll get me that new game!"
+
+    lou "no fair! ugh my parents said that i can only get books. what if i become a big nerd."
+
+    annie "you already are~"
+
+    "lou starts chasing annie around."
+
+    lou "get back over here!"
+
+    player "... it seems like everyone is happy..."
+
+    player "lou seems a lot more carefree."
+
+    player "annie seems to be worry free."
+
+    player "maryanne seems to actually have emotions."
+
+    maryanne "are you done staring? come on we said we wouldn't be late today."
+
+    og "sorry just let me take a photo the leaves make it look pretty!"
+
+    "you feel yourself pull out a camera and snap a photo"
+
+    og "perfect!"
+
+    "you feel yourself move through time. this time you are back in the village."
+
+    show brennan 
+    og "here... um. i have to leave on the quest in a bit but i wanted you to have this."
+
+    brennan "why are you acting like you aren't coming back."
+
+    og "you know the reality of this."
+
+    brennan "who cares what lou said!"
+
+    brennan "numbers can tell you what's likely to happen but not what will!"
+
+    brennan "i can't believe you're giving up."
+
+    og "i'm not giving up. i just... i know myself well"
+
+    brennan "it's not fair."
+
+    jump choices
+
+label trinket:
+    "you pick up the trinket."
+
+    annie "lookie here!"
+
+    annie "i got this for scoring all perfect on the last assessment."
+
+    lou "so what i could score that in my sleep."
+
+    annie "yeah which is why it's not that big of a deal to you."
+
+    annie "maryanne look!"
+
+    maryanne "..."
+
+    brennan "save your breath, ever since she got that game she's been gone."
+
+    "brennan snatches maryannes game out of her hands."
+
+    maryanne "HEY I WAS PLAYING WITH THAT!"
+
+    annie "hey lesser of the two ann's here look at what i got!"
+
+    "maryanne pauses her chase of brennan to look."
+
+    maryanne "oh neat what even is that?"
+
+    annie "uhh... actually i'm not sure."
+
+    og "looks like a..."
+
+    #looks like one of those rorschach test 
+    menu: 
+        "looks like a bear.":
+            jump bear
+
+        "looks like a late 1800's painting of the esteemed dr louis pierre wilson teaching a class to a group of depressed university students.":
+            jump louispierre
+
+label bear: 
+
+label louispierre:
