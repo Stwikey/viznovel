@@ -1702,11 +1702,16 @@ label part_7:
     annie "hello? come on and answer the door already!"
 
     menu:
-        "answer the door"
+        "answer the door":
+            jump door
 
-        "don't answer the door"
+        "don't answer the door":
+            jump door
     
+label door:
     annie "come to the door already, no point in hiding!"
+
+    "i guess there's no hiding from this."
 
     "you get up and open the door to find annie there."
 
@@ -1782,7 +1787,7 @@ label childhood_photo:
 
     "that voice sounded like brennan's except a lot younger."
 
-    og "comming!"
+    og "coming!"
 
     "your body starts moving without your permission."
 
@@ -1794,9 +1799,9 @@ label childhood_photo:
 
     lou "no fair! ugh my parents said that i can only get books. what if i become a big nerd."
 
-    annie "you already are~"
+    cassia "you already are~"
 
-    "lou starts chasing annie around."
+    "lou starts chasing cassia around."
 
     lou "get back over here!"
 
@@ -1852,15 +1857,17 @@ label trinket:
 
     maryanne "..."
 
-    brennan "save your breath, ever since she got that game she's been gone."
+    cassia "save your breath, ever since she got that game she's been gone."
 
-    "brennan snatches maryannes game out of her hands."
+    "cassia snatches maryannes game out of her hands."
 
     maryanne "HEY I WAS PLAYING WITH THAT!"
 
+    "brennan bursts out laughing, putting an arm around your shoulder."
+
     annie "hey lesser of the two ann's here look at what i got!"
 
-    "maryanne pauses her chase of brennan to look."
+    "maryanne pauses her chase of cassia to look."
 
     maryanne "oh neat what even is that?"
 
@@ -1873,9 +1880,349 @@ label trinket:
         "looks like a bear.":
             jump bear
 
-        "looks like a late 1800's painting of the esteemed dr louis pierre wilson teaching a class to a group of depressed university students.":
+        "looks like a late 1800's painting of the esteemed dr. louis pierre wilson teaching a class to a group of depressed university students.":
             jump louispierre
 
 label bear: 
+    og "that looks like a bear."
+
+    annie "i mean i guess if i tilt my head i can see it."
+
+    brennan "yeah i see it, the nose is right there."
+
+    maryanne "and the excess squiggles?"
+
+    og "just ignore those."
+
+    jump choices 
 
 label louispierre:
+    og "looks like a late 1800's painting of the esteemed dr. louis pierre wilson teaching a class to a group of depressed university students."
+
+    maryanne "what are you going on about."
+
+    og "no look do you not see it?" 
+
+    lou "no."
+
+    maryanne "yeah... yeah, yeah no this is crazy how did you even come up with that."
+
+    cassia "no no, i see it."
+
+    og "really?"
+
+    cassia "nah."
+
+    "you feel yourself become flustered."
+
+    og "uh... yeah okay fine i was onto nothing."
+
+    jump choices 
+
+label part_8: 
+    player "..."
+
+    player "i remember..."
+
+    player "I REMEMBER!"
+
+    player "not everything makes sense but i remember these moments as if i was there."
+
+    player "i need to talk to someone."
+
+    menu: #"all roads lead to sepsis" but in this case brennan
+        "talk to brennan.":
+            jump brennan
+
+        "talk to annie":
+            jump annie
+
+        "talk to lou":
+            jump lou
+
+        "talk to maryanne":
+            jump maryanne
+
+        "talk to cassia":
+            jump cassia 
+label annie:
+    "you run to catch up with annie."
+
+    "you see her in the far distance before shouting."
+
+    player "annie! annie!"
+
+    annie "???"
+
+    annie "oh it's you."
+
+    player "i remember. not what happened but i remember you guys"
+
+    annie "you forgot?"
+
+    "you sweatdrop and realize you actually never told anyone other than cassia that you're memory failed you."
+
+    "well that and brennan finding out on his own."
+
+    player "oh right."
+
+    "you explain everything that has happened."
+
+    annie "that explains why brennan was acting so weird around you."
+
+    player "oh, so you noticed?"
+
+    annie "yeah. well, i eventually caught on."
+
+    player "i'm sorry."
+
+    annie "no, it's not your fault. it's ours."
+
+    player "???"
+
+    annie "i think you should talk to brennan."
+
+    player "alright."
+
+    "you walk away."
+
+    menu: 
+        "talk to brennan.":
+            jump brennan
+
+        "talk to lou":
+            jump lou
+
+        "talk to maryanne":
+            jump maryanne
+
+        "talk to cassia":
+            jump cassia 
+
+label lou:
+    player "HEY LOU!"
+    
+    "you run to see him walking presumably back to his house."
+
+    lou "???"
+
+    lou "oh PLACEHOLDER."
+
+    player "i remember!"
+
+    lou "oh. yeah. he did tell me about this, but hearing you say it really makes it true."
+
+    player "oh."
+
+    player "so brennan told you all?"
+
+    lou "it's best you go talk to brennan."
+
+    "you walk away."
+
+    menu:
+    "talk to brennan.":
+            jump brennan
+
+        "talk to annie":
+            jump annie
+
+        "talk to maryanne":
+            jump maryanne
+
+        "talk to cassia":
+            jump cassia 
+
+label maryanne:
+    "you walk over to see maryanne laying by a tree, engrossed in her video game."
+
+    player "maryanne!"
+
+    maryanne "..."
+
+    player "hello?"
+
+    maryanne "oh! what's up?"
+
+    player "i remember!"
+
+    maryanne "sure you do bud."
+
+    player "???"
+
+    maryanne "i knew the whole time you aren't you."
+
+    player "i mean i am now."
+
+    maryanne "no you aren't."
+
+    maryanne "you aren't PLACEHOLDER."
+
+    player "yeah i know, but i'm remembering who i was now."
+
+    maryanne "you still don't understand."
+
+    maryanne "the only reason i havent told anyone is because you haven't hurt anyone."
+
+    maryanne "and because... for selfish reasons i couldn't accept that you were gone."
+
+    "you stood in front of her confused."
+
+    player "i'm sorry, but i'm back now."
+
+    maryanne "sure \"you\" are."
+
+    maryanne "maybe you should go talk to brennan."
+
+    player "ah okay."
+
+    menu:
+    "talk to brennan.":
+            jump brennan
+
+        "talk to annie":
+            jump annie
+
+        "talk to lou":
+            jump lou
+
+        "talk to cassia":
+            jump cassia 
+
+label cassia:
+    "you run into the forest, the twigs hitting you in the face as you shout."
+
+    player "CASSIA!"
+
+    "the trees shook as a gust of wind blew."
+
+    cassia "PLACEHOLDER, i'm glad you came here i was jsut about to come find you."
+
+    player "cassia i rem-"
+
+    "she cuts you off"
+
+    cassia "you have to find brennan."
+
+    player "what?"
+
+    cassia "he's missing, everyone's been worried sick."
+
+    player "what? how?"
+
+    cassia "no one's seen him since this morning."
+
+    "you run back to the village"
+
+        menu:
+        "find to brennan.":
+            jump brennan
+
+        "talk to annie":
+            jump annie
+
+        "talk to lou":
+            jump lou
+
+        "talk to maryanne":
+            jump maryanne
+
+label brennan:
+    player "i need to talk to brennan."
+
+    "you run in the direction of his house. or at least where you think his house is."
+
+    player "BRENNAN! BRENNAN!"
+
+    "you run up to his house, knocking on the door."
+
+    player "i'm sorry i forgot but i remember now."
+
+    "..."
+
+    "there comes no reply."
+
+    player "???"
+
+    player "brennan? are you there?"
+
+    "you look around the villge and see no one around."
+
+    player "annie? lou? maryanne? cassia? someone?"
+
+    player "anyone?"
+
+    "you look up at the sky and see cracks forming"
+
+    "your head hurts."
+
+    "you grip onto your hair, pulling at it to distract you from the headache that is forming in your head."
+
+    player "what is happening."
+
+    "you can't think as your vision starts to blur."
+
+    player "what... is... going on?"
+
+    fade with black
+
+    jump part_9
+
+label part_9: 
+    v "i told you it would be too much."
+
+    og "..."
+
+    v "he can't handle it."
+
+    og "..."
+
+    og "but i need them to know."
+
+    v "you didn't NEED them to know"
+
+    og "I DID!"
+
+    og "they mean everything to me."
+
+    player "hello?"
+
+    v "!!!"
+
+    og "!!!"
+
+    og "how are you here?"
+
+    player "uh where even is here?"
+
+    v "the _____"
+
+    player "???"
+
+    v "oh, for the living you can't hear."
+
+    v "there are somethings that are redacted."
+
+    v "they stay that way for a reason."
+
+    og "yeah which is why you can't hear \"your\" name."
+
+    player "why do you say it as if it's not?"
+
+    v "you cannot say PLACEHOLDER."
+
+    og "why not."
+
+    "you hear him getting angry."
+
+    og "i can't do this, i can't do that. why? what's stopping me."
+
+    v "..."
+
+    v "i cannot say."
+
+    og "exactly, you can't even tell me!"
+
+    og "i spent all this time watching and waiting."
+
+    #og guy gets angry and spills the beans about the whole story tbc... 
