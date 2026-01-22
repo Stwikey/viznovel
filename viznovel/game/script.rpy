@@ -19,9 +19,12 @@ define npc2 = Character ('Charles')
 define lil_boy = Character('fiz')
 define cassia_unknown = Character('???')
 define unknown = Character('???')
+
+#variables
 default messy = False
 default trust_level = 0
 default document = False
+default friendly_og = False
 
 #black market vendors
 define vendor1 = Character('garry')
@@ -2225,4 +2228,284 @@ label part_9:
 
     og "i spent all this time watching and waiting."
 
-    #og guy gets angry and spills the beans about the whole story tbc... 
+    v "calm down PLACEHOLDER you are going to throw everything you worked so hard for away."
+
+    og "i don't care. you don't understand. this isn't just another life for me."
+
+    og "it's mine!"
+
+    og "and HE gets to continue living it?"
+
+    "the man points a figure at you."
+
+    "looking at him carefully you see that he looks like you."
+
+    "except, he has more scars on him, his body is more worked out."
+
+    "he has more of a build than you do. he looked... just like you."
+
+    player "what is going on?"
+
+    v "you cannot afford to say anything anymore."
+
+    og "i- you can't stop me!"
+
+    "the man lunges for the other."
+
+    menu:
+        "help the other you.":
+            jump help_other_you
+        
+        "stand there and watch.":
+            jump do_nothing
+
+label help_other_you:
+    "you see the other you get pinned down, seemingly significantly weaker than the man on top of him."
+
+    "you run and push him off."
+
+    og "nice work other me."
+
+    v "you don't understand what forces you are playing with, you cannot keep this up."
+
+    og "i know."
+
+    "before you have a second to react, or to stop, you see \"you\" raise your hand before blasting the other in the face."
+
+    og "now that he's finally taken care of."
+
+    show og happy 
+
+    og "we have much to discuss."
+
+    og "..."
+
+    "suddenly he bursts out laughing."
+
+    og "kekekeke, man i cannot keep that facade up."
+
+    og "that just isn't me, or i guess you figured that out through my friends right?"
+
+    player "???"
+
+    og "yeah i'm sorry i just really got angry for a moment."
+
+    og "i'm still not all the way there ever since the hunt, you'd think all my issues would be cleared now because i'm dead but *sigh*."
+
+    $ friendly_og = True
+
+    jump part_10
+
+label do_nothing:
+    "you stand there and watch the struggle."
+
+    #figure out if a scene can be animated here
+
+    og "now that he's finally taken care of..."
+
+    show og scary face 
+
+    og "aren't you just useless hm?"
+
+    player "um... i'm sorry i just..."
+
+    menu:
+        "i felt like it wasn't my place to get involved.":
+            jump appease
+        
+        "...":
+            jump nothing
+
+label appease: 
+    og "hmm, yeah good point."
+
+    show og netural 
+
+    og "well we have much to discuss"
+
+    jump part_10
+
+label nothing:
+    og "..."
+
+    og "didn't know other me was such a loser."
+
+    og "come on do something already."
+
+    og "all you've been doing is just reacting to the things around you, where's that fighting spirit huh?"
+
+    og "what you push it all onto \"your\" friends?"
+
+    og "they don't care about you."
+    
+    og "not after finding out the real truth."
+
+    menu:
+        "punch him.":
+            jump punch_og
+        
+        "do nothing":
+            jump do_nothing_again
+
+label do_nothing_again:
+    og "wow, i really must've chosen the wrong soul for this."
+
+    og "and i thought you would have really begged for an opportunity like this."
+
+    og "after all, you last life ended early."
+
+    og "whatever."
+
+    jump part_10
+
+label punch_og:
+    "you aren't going to stand here and take this from this guy."
+
+    "you raise your hand and punch him in the face."
+
+    "SMACK"
+
+    og "..."
+
+    og "maybe you do know how to throw a punch kekeke."
+
+    player "???"
+
+    show og happy 
+
+    og "man i tried being all tough and stuff but that isn't me."
+
+    $ friendly_og = True
+    jump part_10
+
+label part_10: 
+    if friendly_og == True:
+        show og happy
+        og "i should probably tell you everything."
+
+        hide og 
+        #show flip of images of the hunt 
+
+        og "my name is PLACEHOLDER."
+
+        og "you might be under the impression that that's your name."
+
+        og "you'd be wrong."
+
+        og "but, we can get into the details of that later."
+
+        og "i'm not sure how long you'll be here, so i'll make this short."
+
+    else: 
+        og "i don't know how long you'll be here before they drag you back down."
+
+        og "but at this rate..."
+
+        og "maybe i could replace you."
+
+        og "after all you are... a lesser version."
+
+    og "you should know by now that you, or whoever you think you are. that's not you."
+
+    og "i'm sorry."
+
+    og "it's my fault you can't rest."
+
+    player "rest...?"
+
+    og "you aren't technically... alive?"
+
+    player "what."
+
+    og "here's the thing, i might of maybe sorta grabbed your soul before you know... stuffing it into a vessel."
+
+    player "WHAT?"
+
+    show og nervous 
+
+    og "haha enough about that though!"
+
+    menu:
+        "pry further.":
+            jump tell_me_now
+
+        "just allow him to keep going.":
+            jump leave_it
+
+label leave_it:
+    og "i died on the hunt."
+
+    og "i failed."
+
+    #show images of the hunt in the background 
+
+    og "i could tell from the looks on their faces when i volunteered, we all knew what that meant."
+
+    og "no one ever returns."
+
+    og "but if i didn't go, if i didn't volunteer."
+
+    show og tearing up 
+
+    og "they would've picked brennan."
+
+    og "he'll deny it."
+
+    og "he kept saying"
+
+    og  "\"no way they'll choose any of us! maryanne doesn't train, annie's build like a twig, cassia has a criminal record, and lou is all brains no brawns\""
+
+    show brennan in the background 
+
+    og "but we all knew."
+
+    og "they were going to choose him."
+
+    og "and for some reason i'll never understand, he was going to let them?"
+
+    og "man he sucks."
+
+    og "but i love him so."
+
+    player "!!!"
+
+    og "...he gave me mad honey before i left."
+
+    #flash to the scene 
+
+    og "where did you get this from?"
+
+    brennan "don't worry about it."
+
+    brennan "please just, return to the village?"
+
+    og "i-"
+
+    brennan "just say you will."
+
+    brennan "even if you think it's a lie."
+
+    og "i'll return to you."
+
+    brennan "..."
+
+    og "..."
+
+    #flash back to present 
+
+    og "i never did get the chance to return."
+
+    # continue here 
+
+label tell_me_now:
+    player "no, i want to know about me."
+
+    player "you keep avoiding the topic of me."
+
+    og "..."
+
+    og "i know, and i'm sorry but i don't know much about you prior to now."
+
+    og "i will tell you what i know, but i first need to tell you how you got here to begin with."
+
+    jump leave_it
