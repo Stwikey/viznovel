@@ -7,13 +7,15 @@ spoiler alert: ur other u is a morally grey person crazy!
 '''
 #player character
 define player = Character('player', color="#c8c8ff")
+define you = Character('[name]')
+
 
 #dopple ganger
 
 define og = Character('???') #come up with name later 
 
 #npcs 
-define v = Character('voice', color='#657aac')
+define v = Character('voice', color='#a6b4d3')
 define npc1 = Character ('npc1') #an old man
 define npc2 = Character ('Charles')
 define lil_boy = Character('fiz')
@@ -25,6 +27,9 @@ default messy = False
 default trust_level = 0
 default document = False
 default friendly_og = False
+default stuffed_elephant = False 
+default glasses = False
+default rope = False 
 
 #black market vendors
 define vendor1 = Character('garry')
@@ -2495,7 +2500,11 @@ label leave_it:
 
     og "i never did get the chance to return."
 
-    # continue here 
+    menu:
+        "you shouldn't have volunteered":
+            jump mean_hater 
+        "how did you die?":
+            jump hunt_story
 
 label tell_me_now:
     player "no, i want to know about me."
@@ -2509,3 +2518,247 @@ label tell_me_now:
     og "i will tell you what i know, but i first need to tell you how you got here to begin with."
 
     jump leave_it
+
+label mean_hater:
+    player "they should've gone with brennan, then maybe he wouldn't have died."
+
+    player "volunteering was stupid."
+
+    og "..."
+
+    og "yeah i guess."
+
+    jump hunt_story
+
+label hunt_story: 
+    og "i had to climb up a mountain, it's always raining in that region."
+
+    og "the floors become slippery and you can't grip onto anything."
+
+    og "before even reaching a quarter of the way through, i had fallen countless of times."
+
+    og "they told me i HAD to find \"mad honey\" whatever that is."
+
+    og "lou did his research, he told me everything and anything i would need to know."
+
+    #flash back
+    lou "you should bring a torch with you, the smoke with prevent them from communicating with each other."
+
+    og "but he didn't account for me consuming it."
+
+    #flash back scene change 
+    brennan "just, if you are in a pickle. take some."
+
+    og "what? where did you even get this."
+
+    brennan "don't worry about it."
+
+    brennan "they say you get powers, you get stronger, faster, whatever."
+
+    brennan "it's just... a safety net. a just in case."
+    
+    #flash to mountain
+
+    og "i ended up using it."
+
+    og "i had to."
+
+    og "within minutes i felt it hit."
+
+    og "at first i thought i was going to die."
+
+    og "my body started sweating rapidly, i couldn't make sense of anything."
+
+    og "i laid there on the ground until it passed."
+
+    og "after i felt like i was on a high, my muscles no longer ached and the rain felt like a mere inconvience."
+
+    og "i made it up the mountain in record time."
+
+    og "but what they don't tell you is what's waiting for you up there."
+
+    og "it was a planned sacrifice."
+
+    og "they waited with their swords, by the time any regular person gets up to the hill they collpase."
+
+    og "but because of the honey flowing through me, i felt as good as new."
+
+    og "better even."
+
+    og "turns out..."
+
+    og "when you have something like that in your system."
+
+    og "you can't get enough of it."
+
+    og "i beat them. obviously."
+
+    "you see as his gaze gets lost in the distance."
+
+    menu: 
+        "try to snap him out of it.":
+            jump snap_out 
+
+label snap_out:
+    player "hey you okay?"
+
+    "you wave a hand in front of his face."
+
+    og "sorry."
+
+    og "i got distracted."
+
+    og "yeah, so i volunteered."
+
+    menu: 
+        "but how did you... yk?":
+            jump og_death
+        
+        "you still haven't told me how you died and why the heck i'm here.":
+            jump og_death
+
+label og_death: 
+    og "oh yeah... sorry."
+
+    og "after... killing them."
+
+    og "i harvested the rest of the honey."
+
+    og "well tried to kinda got stung a bunch."
+
+    og "i was going to return to the village, share what i gathered."
+
+    og "rub it in annie's face for being so worried, tell lou that his calculations were right, buy maryanne a new video game with the money i got,"
+
+    og "i was going to thank brennan, tell him i owed him one big time."
+
+    og "but it turns out i didn't really do a good job on the killing part."
+
+    og "maybe it was because i hadn't ever done a murder before."
+
+    og "i was gone before i even knew what hit me."
+    
+    og "maybe i was asking for it at that point."
+
+    og "i mean i was the one that volunteered."
+    
+    og "it's just, nothing seemed... fun anymore?"
+    
+    og "we went on every adventure, every journey, did things that no one our age has ever done."
+    
+    og "became village heroes for a short period of time."
+    
+    og "everything that i used to find joy in..."
+    
+    og "got stale."
+    
+    og "i kept putting my friends in greater and greater danger because of my own selfishness."
+    
+    og "so i stopped."
+    
+    og "ugh i was so stupid."
+
+    "you see PLACEHOLDER gesture towards the body of the other person."
+
+    og "that thing took pity on me."
+
+    og "nice i guess, but thought it was funny to make me watch."
+
+    menu:
+        "watch what?":
+            jump og_death_pt2
+
+label og_death_pt2:
+    player "watch what?"
+
+    og "..."
+
+    og "it was going to make me watch you kill them."
+
+    og "i have nothing against you, even if you are taking my life and acting as if it's your own."
+
+    og "but i really do hate you."
+
+    menu:
+        "i won't kill them.":
+            jump og_death_pt3
+        "i would never do something like that.":
+            jump og_death_pt3
+
+label og_death_pt3:
+    og "you don't get to decide that."
+
+    "before you could ask further you felt your head begin to hurt again."
+
+    og "are... are you okay?"
+
+    "you couldn't form any words, the only thing that came out was a groan."
+
+    player "AUGH"
+
+    og "shoot, you're leaving to go back."
+
+    og "brennan was taken by the same people that killed me, tell everyone in the party to head towards kallisto."
+
+    "you look at him confused."
+
+    og "they'll know what you mean!"
+
+    og "and please for the love of all that is good please-"
+
+    fade with black 
+
+    "you wake up lying on the floor, annie looking worriedly over you."
+
+    annie "are you okay?"
+
+    "you could only groan out a word."
+
+    player "kallisto."
+
+    annie "???"
+
+    "you grab her by the shoulders, shaking her a bit."
+
+    player "we need to go to kallisto!"
+
+    annie "!!!"
+
+    "you see her face become shocked before returning with a serious look."
+
+    annie "i'll tell the others, you start taking what you need from your house."
+
+    jump part_11
+
+label part_11:
+    "you return back to \"your\" house."
+
+    "now that you know that you aren't whatever everyone keeps calling you."
+
+    "you can't help but wonder what your name is."
+
+    "maybe you should just give yourself a name."
+
+    $ name = renpy.input(.lower("what will you name yourself?", length 20))
+
+    you "hmmm. [name]."
+
+    you "i like the sound of that."
+
+    "you look around your house and pack the necessities."
+
+    you "i can only fit so much in my bag so i'll have to make a choice."
+
+    menu:
+        "take rope with you.":
+            jump take_rope
+
+        "take \"your\" glasses":
+            jump take_glasses
+
+        "take the stuffed elephant with you.":
+            jump take_elephant
+
+        "take nothing":
+            jump took_nothing
+
