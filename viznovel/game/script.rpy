@@ -19,7 +19,6 @@ define v = Character('voice', color='#a6b4d3')
 define npc1 = Character ('npc1') #an old man
 define npc2 = Character ('Charles')
 define lil_boy = Character('fiz')
-define cassia_unknown = Character('???')
 define unknown = Character('???')
 
 #variables
@@ -30,6 +29,7 @@ default friendly_og = False
 default stuffed_elephant = False 
 default glasses = False
 default rope = False 
+default takenothing = False 
 
 #black market vendors
 define vendor1 = Character('garry')
@@ -56,6 +56,7 @@ define unknown_brennan = Character('???',color = '#e9535311')
 define unknown_maryanne = Character('???',color = '#784cd811')
 define unknown_annie = Character('???',color = '#3bb91f11')
 define unknown_lou = Character('???',color = '#b11f1f11')
+define cassia_unknown = Character('???')
 
 label start:
 # scene open plains <- dont have image rn but just so u have idea 
@@ -2762,3 +2763,159 @@ label part_11:
         "take nothing":
             jump took_nothing
 
+label take_rope: 
+    you "this will come in handy."
+    $rope = True 
+    jump part_11a
+
+label take_glasses:
+    you "they aren't mine, but maybe they will come in handy."
+    $glasses = True 
+    jump part_11a
+
+label take_elephant:
+    you "cute, not sure how it'll help but you never know."
+    $stuffed_elephant = True 
+    jump part_11a
+
+label takenothing:
+    you "the less stuff i have, the lighter my bag."
+    $took_nothing = True
+    jump part_11a
+
+label part_11a:
+    "you do one final sweep of the house before running to meet up with the group."
+
+    "you see lou up ahead writing furiously on a piece of paper."
+
+    cassia "you need to calm down."
+
+    lou "no, this means that there isn't enough time so i'm making time."
+
+    annie "you can't make time!"
+
+    lou "yes i can! we can take a shorter path."
+
+    "as you approach they take notice of your arrival."
+
+    annie "we have to get moving, at this rate he'll be a goner."
+
+    show annie scared 
+
+    "maryanne hits annie in the side of her head."
+
+    annie "ow!"
+
+    maryanne "no ones turning to the dark side, we'll be fine. he'll be fine."
+
+    "you open you mouth to talk but annie shoots you a strange look."
+
+    annie "i didn't forget what brennan told me about you."
+
+    menu:
+        "stare at her back.":
+            jump stare
+
+        "reintroduce yourself with your new name.":
+            jump reintroduction
+
+label stare:
+    "you stare at her."
+
+    you "..."
+
+    annie "..."
+
+    you "..."
+
+    lou "can you guys stop staring at each other and get a move on?"
+
+    jump part_12
+
+label reintroduction:
+    you "hi my name is-"
+
+    annie "i don't care."
+
+    "you are caught off-guard. this isn't the annie you were used to."
+
+    lou "quit talking we have to start moving."
+
+    jump part_12 
+
+label part_12:
+    "the group continues to travel, you don't really know where you are going so when you get ahead of the group you end up having to circle back awkwardly."
+
+    maryanne "this better be worth it, brennan better buy me like 100 games after this."
+
+    cassia "if he's still there to buy you the games."
+
+    lou "knock it off. now isn't the time to argue."
+
+    "you have no idea what is going on."
+
+    "you consider telling them the truth."
+
+    menu:
+        "tell them the truth.":
+            jump tell_truth
+
+        "lie to them":
+            jump tell_lie 
+
+label tell_truth:
+    you "guys before we go."
+
+    "everyone pauses in their footsteps, lou seemingly annoyed."
+
+    lou "what did i say? we don't have time for this."
+
+    you "just listen to me!"
+
+    you "i-"
+
+    you "i'm not PLACEHOLDER!" #maybe go back and use wattsons kinetic text tags to make text more interesting here
+
+    annie "..."
+
+    annie "yeah."
+
+    annie "you didn't think i wouldn't have told everyone by now?"
+    
+    you "oh."
+
+    lou "that's what you stopped us for?"
+
+    lou "get over yourself, brennan's in trouble let's get back to moving."
+
+    "the group continues moving leaving you standing there a bit shocked and embarssed."
+
+    "cassia approaches you"
+
+    cassia "what's your name now?"
+
+    you "[name]..."
+
+    cassia "nice to meet yout [name]."
+
+    you ":D" #ok remove this later 
+
+    fade with black
+
+    jump part_13
+
+    
+label tell_lie:
+    "a shooting pain goes through your head."
+
+    you "stupid whatever his name is."
+
+    menu:
+        "tell them the truth.":
+            jump tell_truth
+        
+        "tell them the truth":
+            jump tell_truth 
+
+label part_13: 
+    
