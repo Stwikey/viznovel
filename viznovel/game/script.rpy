@@ -6,7 +6,7 @@ is a super famous hero, but as you adventure you realize the true indentions of 
 spoiler alert: ur other u is a morally grey person crazy! 
 '''
 #player character
-define player = Character('player', color="#c8c8ff")
+define player = Character('you', color="#c8c8ff")
 define you = Character('[name]')
 
 
@@ -20,6 +20,7 @@ define npc1 = Character ('npc1') #an old man
 define npc2 = Character ('Charles')
 define lil_boy = Character('fiz')
 define unknown = Character('???')
+define server = Character ('Server')
 
 #variables
 default messy = False
@@ -30,6 +31,9 @@ default stuffed_elephant = False
 default glasses = False
 default rope = False 
 default takenothing = False 
+
+#constants
+define fade = Fade(0.5, 0.0, 0.5)
 
 #black market vendors
 define vendor1 = Character('garry')
@@ -56,24 +60,21 @@ define unknown_brennan = Character('???',color = '#e9535311')
 define unknown_maryanne = Character('???',color = '#784cd811')
 define unknown_annie = Character('???',color = '#3bb91f11')
 define unknown_lou = Character('???',color = '#b11f1f11')
-define cassia_unknown = Character('???')
+define unknown_cassia = Character('???')
 
 label start:
-# scene open plains <- dont have image rn but just so u have idea 
-    #start on a black screen and open as if eyes are opening 
-    # put audio here as well like some peaceful music 
-
+    scene bg gass_lands with fade
     player "*yawn* where am i?"
     
     "as you look around you realize that there isn't much of anything to give you clues on where you could be."
 
     "you try to recall your own name to no avail, you can't seem to remember anything other than what you find on your person."
 
-    show notebook
+    scene bg notebook
     "a notebook with messy scrawled on writing with symbols you can't seem to read." #yk like hyroglphs and stuff like that! 
 
     "without any other clues you must decide your next choice of action."
-    hide notebook
+    scene bg grass_lands
 
     menu: 
         "look around and explore":
@@ -81,11 +82,14 @@ label start:
 
         "go back to sleep in hopes you regain your memories":
             jump sleep 
-# player will find different bugs, something thats not existent irl (combos of animals scorpion beetle or something)
+
 label explore: 
     "sleep is for the weak!"
+
     "you spring up and begin looking around"
+
     player "there doesn't seem to be anyone here, and the more I look around the more i risk starvation or worse."
+   
     menu: 
         "go into the forest":
             jump forest 
@@ -95,61 +99,101 @@ label explore:
 
 # player has a dream and gathers information on their past 
 label sleep: 
+    scene black with dissolve
     "you close your eyes and feel yourself drifting away"
 
-    scene black
-    with fade 
+    scene bg dream1 with fade
 
-# note for later me to add player name 
-    v "stop! get away from me please, PLACEHOLDER. you said this would stop after you invaded "
+    unknown "stop! get away from me please, PLACEHOLDER. this was just a misunderstanding!"
 
-    player "huh? who are you..."
+    menu:
+        "huh? who are you?":
+            you "huh? who are you?"
+        
+        "what's happening?":
+            you "what's happening?"
 
-    "you reach out for no one "
+    "you reach out for no one."
 
+    unknown "how did you even make it up here?"
+
+    unknown "you stole from the embassy didn't you?"
+
+    menu: 
+        "the embassy?":
+
+    "it seems like no one can hear you"
+
+    og "you deserve this."
+
+    unknown "i haven't done anything!"
+
+    "you feel yourself waking up."
+
+    scene bg grass_lands 
+
+    player "that was weird."
+
+    "there isn't much left to do here now."
+
+    menu:
+        "go into the forest.":
+            jump forest 
+
+        "find civilization.":
+            jump village
 
 #MC meets a stranger in the forest, they act like they know you but you have no memory of them
 label forest:
     # turn bg into some forest 
-    "You walk through the forest, unsure where you are travelling to."
+    scene bg forest_clearing
+    "you walk through the forest, unsure where you are travelling to."
 
-    "You look around, hoping to identify some kind of landmark that can indetify this place."
+    "you look around, hoping to identify some kind of landmark that can indetify this place."
 
-    "As you step, insects scurry across, their form indescribable."
+    "as you step, insects scurry across, their form indescribable."
 
-    player "okay, there seems to be a bunch creatures of some sort."
+    "there seems to be a bunch creatures of some sort."
 
-    "A voice cuts through the forest."
+    "a voice cuts through the forest."
 
-    v "PLACEHOLDER!!!!"
+    unknown "PLACEHOLDER!!!!"
 
-    "A shadow rushes through the trees."
+    "a shadow rushes through the trees."
+
+    show cassia happy 
 
     unknown "oh how i've MISSED YOU!"
 
-    "The girl hugs you and you jump back in shock."
+    "the girl hugs you and you jump back in shock."
 
     menu:
-        "do I know you?":
+        "do i know you?":
+            you "do i know you?"
+
             jump question
-        "stay silent":
+        "stay silent.":
+            you "..."
             jump silent
 
-# if MC acts like they dont know her, she gets suspicious
 label question:
-    "A hint of suspicion flickers over the girl's face, too quick to notice."
+    show cassia confused 
+    "a hint of suspicion flickers over the girl's face, too quick to notice."
+
+    show cassia happy
+    unknown_cassia "oh comeee on! are you seriously pretending to not know me? after all we've been through?"
+
+    player "uhhh yeah, can you get off me now? i'm a busy man."
+
+    "she steps back."
+
+    unknown_cassia "ah, I see how it is. this is one of your silly pranks."
+
+    unknown_cassia "not very funny."
     
-    unknown_cassia "oh comeee on! Are you seriously pretending to not know me? After all we've been through?"
+    unknown_cassia "whatever, i have places to be."
 
-    player "uhhh yeah, can you get off me now? I'm a busy man."
-
-    "UNKNOWN steps back."
-
-    unknown_cassia "ah, I see how it is. This is one of your silly pranks again huh?" #idk how to end this
-
-    unknown_cassia "well I'll be off on my way then."
-
-    "UNKNOWN leaps away into the bushes." 
+    "the strange girl leaps away into the bushes." 
 
     player "what an odd interaction."
 
@@ -165,34 +209,38 @@ label silent:
 
     "You continue to stay silent, after all, yo mama told you not to talk to strangers."
 
-    "after a while, UNKNOWN grows frustrated and disappears in a flash"
+    "after a while, she grows frustrated and disappears in a flash"
+
+    hide cassia
 
     "The rustles in the bushes grow quieter and she prances away."
 
     jump forest_end
 
-
 label forest_end:
     #cut back to unknown
+    scene bg grass_lands_2
+    show cassia confused 
+    unknown_cassia "somethings off... PLACEHOLDER should've noticed when I tried to rob him earlier"
 
-    unknown "somethings off... PLACEHOLDER should've noticed when I tried to rob him earlier"
-
-    unknown "his biceps have also gotten skinnier..."
+    unknown_cassia "his biceps have also gotten skinnier..."
 
     player "that was... interesting, i should turn back and head to a village"
 
     jump village
 
-
 label village: 
+    scene grassy_lands
     "after wandering around for a while you discover theres a village, finally people!"
 
+    scene bg village
     #scene goes to you entering 
+    show npc1
     npc1 "PLACEHOLDER you're back? "
 
-    player "*I can't hear what name he's saying, its like its static or something*"
+    player "*i can't hear what name he's saying, it's like its static or something*"
 
-    "I don't know what to do..."
+    "i don't know what to do..."
     
     menu: 
         "act natural":
@@ -655,11 +703,11 @@ label part_3_clean:
             jump detective
 label normal: 
     $ trust_level += 1
-    you "i'm sorry, really i just... lost track of time. but i'm back!"
+    player "i'm sorry, really i just... lost track of time. but i'm back!"
 
     "you scan their faces for any suspicion." 
 
-    you "ummm..."
+    player "ummm..."
 
     brennan "oh i see you're just trying to get out of paying for that dinner you owe us!"
 
@@ -808,7 +856,7 @@ label eat:
             jump play_it_off
 
 label lie2:
-    $ trust -=1 
+    $ trust_level -=1 
     player "haha! it must have been the battle, i've changed a lot since then"
 
     "annie looks worried."
@@ -824,7 +872,7 @@ label lie2:
     jump part_5
 
 label play_it_off:
-    $ trust += 1
+    $ trust_level += 1
     player "haha! get PRANKED"
 
     player "i've always loved ribs, i just lied to you guys and you fell for it!"
@@ -1235,9 +1283,9 @@ label leave:
 
     "you take one last glance behind you, before opening the door and getting hit in the face with a gust of fresh wind"
 
-    jump forest
+    jump forest_2
 
-label forest:
+label forest_2:
     "you walk towards the direction of the forest, not sure what you are hoping to find, but hopefully something"
 
     player "that girl that was here before... I wonder who she was to \"me\""
@@ -1385,7 +1433,7 @@ label travelling:
 
     "you push her away from you." 
 
-    if trust < 3:
+    if trust_level < 3:
         player "i've been meaning to ask"
 
         menu: 
@@ -1739,20 +1787,37 @@ label door:
     "annie stands there like she's expecting something."
 
     menu: 
-        "give her money."
+        "give her money.":
+            jump give_money_to_annie
+        
+        "stare back at her.":
+            jump stare_at_annie
 
-            annie "what the heck. i don't want that."
+label give_money_to_annie:
+    annie "what the heck. i don't want that."
 
-            player "???"
+    player "???"
 
-            annie "..."
+    annie "..."
 
-        "stare back at her."
+    player "just prankin' you!"
 
-            annie "..."
+    jump door_pt2
 
-            player "..."
+label stare_at_annie:
+    "stare back at her."
 
+    annie "..."
+
+    player "..."
+
+    "annie blinks."
+
+    player "HAH I WIN!"
+
+    jump door_pt2
+
+label door_pt2:
     annie "he was right."
 
     "she turns away and leaves."
@@ -1762,8 +1827,10 @@ label door:
     "you look at the box in your hands. maybe it could provide you with the answers you were seeking."
 
     menu:
-        "open the box."
+        "open the box.":
+            jump open_the_box
 
+label open_the_box:
     "opening the box you see a number of objects."
 
     "photos of you when you were younger, a trinket, and a dirty rag."
@@ -2030,7 +2097,7 @@ label lou:
     "you walk away."
 
     menu:
-    "talk to brennan.":
+        "talk to brennan.":
             jump brennan
 
         "talk to annie":
@@ -2086,7 +2153,7 @@ label maryanne:
     player "ah okay."
 
     menu:
-    "talk to brennan.":
+        "talk to brennan.":
             jump brennan
 
         "talk to annie":
@@ -2123,7 +2190,7 @@ label cassia:
 
     "you run back to the village"
 
-        menu:
+    menu:
         "find to brennan.":
             jump brennan
 
@@ -2173,7 +2240,7 @@ label brennan:
 
     player "what... is... going on?"
 
-    fade with black
+    #fade with black
 
     jump part_9
 
@@ -2461,7 +2528,7 @@ label leave_it:
 
     og  "\"no way they'll choose any of us! maryanne doesn't train, annie's build like a twig, cassia has a criminal record, and lou is all brains no brawns\""
 
-    show brennan in the background 
+    show brennan
 
     og "but we all knew."
 
@@ -2707,7 +2774,7 @@ label og_death_pt3:
 
     og "and please for the love of all that is good please-"
 
-    fade with black 
+    #fade with black 
 
     "you wake up lying on the floor, annie looking worriedly over you."
 
@@ -2740,7 +2807,7 @@ label part_11:
 
     "maybe you should just give yourself a name."
 
-    $ name = renpy.input(.lower("what will you name yourself?", length 20))
+    $name = renpy.input("what will you name yourself?", length=20).lower()
 
     you "hmmm. [name]."
 
@@ -2900,7 +2967,7 @@ label tell_truth:
 
     you ":D" #ok remove this later 
 
-    fade with black
+    #fade with black
 
     jump part_13
 
