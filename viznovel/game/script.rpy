@@ -30,7 +30,11 @@ default friendly_og = False
 default stuffed_elephant = False 
 default glasses = False
 default rope = False 
-default takenothing = False 
+default took_nothing = False 
+
+#evil guys 
+define evil1 = Character ('Viktor')
+define evil2 = Character('Wagner')
 
 #constants
 define fade = Fade(0.5, 0.0, 0.5)
@@ -38,7 +42,6 @@ define fade = Fade(0.5, 0.0, 0.5)
 #black market vendors
 define vendor1 = Character('garry')
 define vendor2 = Character('john')
-define vendor3 = Character('wagner')
 
 #crew 
 define brennan = Character('brennan')
@@ -108,10 +111,10 @@ label sleep:
 
     menu:
         "huh? who are you?":
-            you "huh? who are you?"
+            player "huh? who are you?"
         
         "what's happening?":
-            you "what's happening?"
+            player "what's happening?"
 
     "you reach out for no one."
 
@@ -121,6 +124,7 @@ label sleep:
 
     menu: 
         "the embassy?":
+            player "the embassy?"
 
     "it seems like no one can hear you"
 
@@ -169,11 +173,11 @@ label forest:
 
     menu:
         "do i know you?":
-            you "do i know you?"
+            player "do i know you?"
 
             jump question
         "stay silent.":
-            you "..."
+            player "..."
             jump silent
 
 label question:
@@ -284,7 +288,7 @@ label freak:
 
     npc1 "you need to control yourself."
 
-    npc1 "you saved the village and we are forever indebted to you... but i heed you to remember where you drew all that power from." #spelling? idk
+    npc1 "you saved the village and we are forever indebted to you... but i heed you to remember that we all know how you won." #spelling? idk
 
     "you feel your heart race, just what in the world did the person before you do?"
 
@@ -298,6 +302,7 @@ label freak:
 
 # more exploration of the village, getting a feel for how people react to you as a person
 label part_2: 
+    scene bg village 
     player "he was... odd"
 
     unknown "PLACEHOLDER I KNEW YOU COULD DO IT!"
@@ -324,6 +329,8 @@ label part_2:
     "i must've lost my memories in the adventure i was in"
 
     "i'm not sure who these people are but they must be important to me... or to the old me at the very least"
+
+    scene bg village
 
     "elsewhere..."
 
@@ -839,7 +846,7 @@ label rib_restaurant:
             jump no_eat
 
 label eat:
-    $ trush -= 1
+    $ trust_level -= 1
 
     "you dive into the ribs, eating it hungrily while ignoring the uncomfortable feeling in the back of your throat"
 
@@ -2845,7 +2852,7 @@ label take_elephant:
     $stuffed_elephant = True 
     jump part_11a
 
-label takenothing:
+label took_nothing:
     you "the less stuff i have, the lighter my bag."
     $took_nothing = True
     jump part_11a
@@ -2965,8 +2972,6 @@ label tell_truth:
 
     cassia "nice to meet yout [name]."
 
-    you ":D" #ok remove this later 
-
     #fade with black
 
     jump part_13
@@ -2985,4 +2990,74 @@ label tell_lie:
             jump tell_truth 
 
 label part_13: 
-    
+    scene bg kallisto 
+    show evil1 at left 
+    show evil2 at right 
+    "???" "and now..."
+
+    "???" "we are thankful to be joined by a special guest today!"
+
+    "???" "brennan..."
+
+    annie "what do we do [name]?"
+
+    menu:
+        "hide and watch what happens.":
+            you "i think we should take cover and watch for now."
+            jump hide_and_watch
+
+        "charge in and free brennan.":
+            you "we need to free him now."
+            jump attack_now
+
+label hide_and_watch:
+    brennan "i already told you what i know!"
+
+    evil1 "there isn't much you could tell us that we wouldn't already know..."
+
+    evil1 "your majesty..."
+
+    lou "what?"
+
+    "you watch lou's face twist in confusion before his fists clench."
+
+    evil2 "you've done a good job prince, tricking that poor little adventurer to go in your place?"
+
+    evil2 "cowards way out."
+
+    brennan "..."
+
+    evil1 "you steal from the capital, you get your so called \"best friend\" killed, so now why are you still trying to hard to deny your path?"
+
+    evil2 "your... destiny."
+
+    brennan "because you both are evil."
+
+    evil1 "how could you speak about your parents that way."
+
+    brennan "i didn't steal for no good reason and i didn't get PLACEHOLDER killed!"
+
+    "you watch brennan struggle against his restraints."
+
+    brennan "you both sent him on a death mission! you knew he was going to go on my behalf!"
+
+    brennan "you just couldn't stand the fact that someone might rival your power without the use of mad honey!"
+
+    "the crowd of people gasp."
+
+    evil1 "son you are speaking nonsense."
+
+    evil1 "mad honey is not used freely. it is soley for the protection of the nation."
+
+    brennan "come on pops, we all know you're a liar."
+
+#put later 
+    menu: 
+        "look away":
+            "you can't."
+
+        "run towards him.":
+            "your legs are frozen."
+
+        "shout for help, for anyone to stop it.":
+            "nothing comes out."
