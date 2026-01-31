@@ -12,7 +12,7 @@ define you = Character('[name]')
 
 #dopple ganger
 
-define og = Character('???') #come up with name later 
+define og = Character('*****') #keep as ***** because the goal isnt to find out the name
 
 #npcs 
 define v = Character('voice', color='#a6b4d3')
@@ -65,13 +65,23 @@ define unknown_annie = Character('???',color = '#3bb91f11')
 define unknown_lou = Character('???',color = '#b11f1f11')
 define unknown_cassia = Character('???')
 
+#character images
+#brennan
+image brennan_normal  = Transform("brennan.png", zoom = 0.7)
+image brennan_talking  = Transform("brennan_talking.png", zoom = 0.7)
+image brennan_scared = Transform("brennan_scared.png", zoom = 0.7)
+
 label start:
     scene bg gass_lands with fade
-    player "*yawn* where am i?"
+    menu:
+        "where am i?":
+            player "where am i?"
+        "who let me sleep on the ground?":
+            player "who let me sleep on the ground?"
     
     "as you look around you realize that there isn't much of anything to give you clues on where you could be."
 
-    "you try to recall your own name to no avail, you can't seem to remember anything other than what you find on your person."
+    "you try to recall your own name to no avail, you can't seem to remember anything other than what you find in your pockets."
 
     scene bg notebook
     "a notebook with messy scrawled on writing with symbols you can't seem to read." #yk like hyroglphs and stuff like that! 
@@ -91,7 +101,7 @@ label explore:
 
     "you spring up and begin looking around"
 
-    player "there doesn't seem to be anyone here, and the more I look around the more i risk starvation or worse."
+    player "there doesn't seem to be anyone here, and the more I look around the more i risk starvation, or worse."
    
     menu: 
         "go into the forest":
@@ -106,8 +116,9 @@ label sleep:
     "you close your eyes and feel yourself drifting away"
 
     scene bg dream1 with fade
+    #show 
 
-    unknown "stop! get away from me please, PLACEHOLDER. this was just a misunderstanding!"
+    "???" "stop! get away from me please, PLACEHOLDER. this was just a misunderstanding!"
 
     menu:
         "huh? who are you?":
@@ -118,25 +129,38 @@ label sleep:
 
     "you reach out for no one."
 
-    unknown "how did you even make it up here?"
+    "???" "how did you even make it up here?"
 
-    unknown "you stole from the embassy didn't you?"
+    "???" "you stole some too didn't you?"
 
     menu: 
-        "the embassy?":
-            player "the embassy?"
+        "stole?":
+            player "stole? what got stolen?"
 
     "it seems like no one can hear you"
 
-    og "you deserve this."
+    og "i finally understand, why you keep sending people to die for this stuff."
 
-    unknown "i haven't done anything!"
+    "???" "you... hahahaha"
+
+    "the man on the floor starts cackling."
+
+    "???" "you are no better."
+
+    og "at least i don't pretend like i am."
 
     "you feel yourself waking up."
 
     scene bg grass_lands 
 
-    player "that was weird."
+    menu:
+        "try to dig for more clues":
+            player "erm..."
+
+            "you try to will yourself to remember more but end up just looking constipated."
+
+        "start exploring elsewhere."
+            player "i should start going somewhere else."
 
     "there isn't much left to do here now."
 
@@ -161,7 +185,7 @@ label forest:
 
     "a voice cuts through the forest."
 
-    unknown "PLACEHOLDER!!!!"
+    unknown "*****"
 
     "a shadow rushes through the trees."
 
@@ -174,8 +198,8 @@ label forest:
     menu:
         "do i know you?":
             player "do i know you?"
-
             jump question
+
         "stay silent.":
             player "..."
             jump silent
@@ -185,7 +209,7 @@ label question:
     "a hint of suspicion flickers over the girl's face, too quick to notice."
 
     show cassia happy
-    unknown_cassia "oh comeee on! are you seriously pretending to not know me? after all we've been through?"
+    unknown_cassia "oh come on! are you seriously pretending to not know me? after all we've been through?"
 
     player "uhhh yeah, can you get off me now? i'm a busy man."
 
@@ -194,14 +218,21 @@ label question:
     unknown_cassia "ah, I see how it is. this is one of your silly pranks."
 
     unknown_cassia "not very funny."
+
+    menu:
+        "i thought it was funny.":
+            player "i thought it was funny."
+        "kekekekeke":
+            "you let out a weird laugh."
+            player "kekekekeke"
     
     unknown_cassia "whatever, i have places to be."
 
     "the strange girl leaps away into the bushes." 
 
-    player "what an odd interaction."
+    player "she seemed to know me?"
 
-    "You exit the forest."
+    "you decide to exit the forest."
 
     jump forest_end
 
@@ -211,27 +242,33 @@ label silent:
 
     unknown "hey~ did you hear meee???"
 
-    "You continue to stay silent, after all, yo mama told you not to talk to strangers."
+    "you continue to stay silent, after all, your mom always told you not to talk to strangers."
 
-    "after a while, she grows frustrated and disappears in a flash"
+    "or at least that's what you think your mom would have told you, if you remembered who your mom was or who you were."
+
+    "after a while, she grows frustrated and disappears in a flash."
 
     hide cassia
 
-    "The rustles in the bushes grow quieter and she prances away."
+    "the rustles in the bushes grow quieter and she prances away."
 
     jump forest_end
 
 label forest_end:
     #cut back to unknown
-    scene bg grass_lands_2
-    show cassia confused 
+    scene black with fade
     unknown_cassia "somethings off... PLACEHOLDER should've noticed when I tried to rob him earlier"
 
     unknown_cassia "his biceps have also gotten skinnier..."
 
-    player "that was... interesting, i should turn back and head to a village"
+    scene bg forest_clearing
+    player "that was... interesting."
+    menu: 
+        "find clues on who you are.":
+            jump village
 
-    jump village
+        "go find civilization.":
+            jump village
 
 label village: 
     scene grassy_lands
@@ -240,9 +277,9 @@ label village:
     scene bg village
     #scene goes to you entering 
     show npc1
-    npc1 "PLACEHOLDER you're back? "
+    npc1 "***** you're back?"
 
-    player "*i can't hear what name he's saying, it's like its static or something*"
+    "you can't hear what name he's saying, the only noise you hear is static."
 
     "i don't know what to do..."
     
@@ -264,14 +301,34 @@ label natural:
 
     player "right! i hate all of you!"
 
+    "the old man looks at you weird."
+
+    npc1 "you do know i was joking right?"
+
+    menu:
+        "act natural.":
+            player "of course i do."
+
+            player "i'm just playing along."
+
+        "???":
+            player "yeppers!"
+
+            npc1 "yeppers?"
+
+            player "haha just something i learned on the road!"
+
+            npc1 "okay..."
+
     "there's something up with the people here..."
 
     npc1 "you seem to be acting weird, are you sure your okay?"
 
     player "yeah, just peachy."
     
-    show npc1 scary looking 
-    npc1 "i hope you don't forget your allies. especially after your success..."
+    npc1 "we didn't expect you to return, to be quite honest."
+
+    npc1 "*****, we are glad you have returned. really, we are."
 
     jump part_2
 
@@ -288,11 +345,13 @@ label freak:
 
     npc1 "you need to control yourself."
 
-    npc1 "you saved the village and we are forever indebted to you... but i heed you to remember that we all know how you won." #spelling? idk
+    npc1 "you earned the village great honor, but please remember to calm down before i call brennan." 
 
     "you feel your heart race, just what in the world did the person before you do?"
 
-    player "right..."
+    menu:
+        "right, got it.":
+            player "right, got it."
 
     show npc1 happy
 
@@ -303,16 +362,18 @@ label freak:
 # more exploration of the village, getting a feel for how people react to you as a person
 label part_2: 
     scene bg village 
-    player "he was... odd"
+    "you finally part ways with the old man, continuing to walk."
 
     unknown "PLACEHOLDER I KNEW YOU COULD DO IT!"
 
     "a little boy's voice calls out from the distance as footsteps rapidly approach you."
 
-    player "huh...?"
+    menu:
+        "huh?":
+            player "huh?"
 
     show lil_boy happy
-    unknown "TELL ME EVERYTHING! did you get me the gift you promised? or did you forget me?"
+    unknown "TELL ME EVERYTHING! did you get me the gift you promised? or did you forget about me?"
 
     show lil_boy sad 
 
@@ -326,21 +387,22 @@ label part_2:
 
     "what allies could i have that i must remember?"
 
-    "i must've lost my memories in the adventure i was in"
+    "i must've lost my memories in the adventure i was in."
 
-    "i'm not sure who these people are but they must be important to me... or to the old me at the very least"
+    "i'm not sure who these people are but they must be important to me... or to the old me at the very least?"
 
-    scene bg village
+    scene bg village with fade 
 
     "elsewhere..."
 
-    npc1 "he seems... different Charles."
+    npc1 "he seems... different charles."
 
     npc2 "you worry too much old man, he's probably scattered from the mission. after all, if he's back that means..."
 
-    npc1 "they won't be an issue anymore." #bold the word they later 
+    npc1 "they won't be an issue anymore." 
 
-    "back to you" #lmao put better transistion here haha
+    scene village with fade 
+    show lil_boy sad 
 
     player "yeah, i'm sorry i'm just tired from... where i've been. because i go places. i'm sorry fiz."
 
@@ -354,11 +416,11 @@ label part_2:
 
     "fiz pauses as he starts tearing up." 
 
-    "he runs to your waist as he engulfs you in a hug." #spelling
+    "he runs to your waist as he engulfs you in a hug." 
 
     player "i'm sorry. i promise i won't scare you like that again."
 
-    show lil_boy playfully angry 
+    show lil_boy happy 
     lil_boy "you better not."
 
     show npc1 lightly scolding
@@ -372,6 +434,7 @@ label part_2:
 
     #MC returns back to "his" house 
 label home: 
+    scene bg home with fade
     "At your home..."
 
     player "i don't understand what is happening."
@@ -420,17 +483,17 @@ label check_drawers:
     if messy:
         "you start by quickly rummaging through the drawers, sheets of papers flying out."
         
-        "one of the papers circle's through the air, catching your eye."
+        "two of the papers circle's through the air, catching your eye."
 
-        "it lands quietly, face up, revealing a photo and lines of words written in black ink."
+        "they land quietly, face up, revealing a photo and paper with lines of words written in black ink."
 
         menu:
-            "check the photo":
+            "check the photo.":
                 jump photo
-            "check the document":
+            "check the document.":
                 jump document
     else:
-        "you open the drawers calmly, the wood quielty creaking, papers are neatly stacked on top of one another."
+        "you open the drawers calmly, the wood quietly creaking, papers are neatly stacked on top of one another."
 
         "as you go through the layers of papers, you notice a photo that catches your eye."
 
@@ -440,9 +503,10 @@ label check_drawers:
 
 #checks the photo of the adventuring party
 label photo:
+    scene bg photo
     "your fingers brush over the photo, removing a soft layer of dust"
 
-    "the photo is of 5 members with a big burly man in the center." #fix details of photo
+    "the photo is of 6 members with a big burly man in the center." #fix details of photo
 
     player "is that... me?" #assuming player knows what they look like
 
@@ -450,9 +514,15 @@ label photo:
 
     "you notice that each of the people in the photo carry a large sack, storing their weapons."
 
+    "a girl is taking a selfie in front of a group of people."
+
     "on the left stands a girl focused on a book instead of the camera, she wears over sized clothing that looks like it could swallow her whole while an axe hangs off her back."
     
-    "the boy next to her has his hands around her and what you assume is a picture of you." #continue description will do later just wanted a skeleton
+    "the boy next to her has his hands around her and what you assume is a picture of you." 
+    
+    "to the right another girl stands, anxiously pulling at the ends of her sleeves."
+
+    "finally the boy standing next to her holds a serious expression, staring at the camera with a straight face."
 
     player "an adventuring party?"
 
@@ -483,27 +553,26 @@ label read_document:
 
 #look through the bedroom but find nothing
 label check_bedroom:
+    scene bg bedroom
     "you enter the bedroom. it feels familiar somehow."
     
     "you look around and see your bed neatly made. there are no hints of dust or cobwebs"
+
+    "a stuffed elephant lies next to the pillow. it looks worn from years of usage."
     
-    "other than the bed, the room seems plain, as if the person living here had no personality"
-    
-    show player think
+    "other than that, the room seems plain, as if the person living here had no personality."
 
     player "\"i\" must've been here recently... this house is spotless"
     
     if messy: 
         "you begin by uncovering the bedsheets, but finding nothing."
 
-        "you check under the bed but only seeing emptiness"
+        "you check under the bed but only seeing emptiness."
     
     else:
         "you silently observe the bedroom, but nothing stands out to you."
 
-        "you peek under the bed but notice nothing"
-    
-    show player think
+        "you peek under the bed but notice nothing."
 
     player "hmmm... this room has nothing."
 
@@ -521,6 +590,8 @@ label check_kitchen:
 
     "you feel a hint of satisfaction"
 
+    "there seems to be a recipe for goulash on the fridge."
+
     player "\"i\" must be a clean person"
 
     if messy:
@@ -533,18 +604,42 @@ label check_kitchen:
         "but nothing appears to be out of place or outside of the ordinary."
     
     jump search
+
 label part_3: 
-    "it's becoming late in the night"
+    "it's becoming late in the night."
     # MC sleeps but has dreams 
 
-    "you begin to fall into a deep sleep"
+    "you decide to lay on your bed and begin to fall into a deep sleep."
 
-    "PLACEHOLDER, this is stupid. why do you insist on killing yourself for this mission it's not worth it!"
-    v "i have to. PLACEHOLDER2 needs us, they ALL need us."
+    menu: 
+        "cozy up to the stuffed elephant.":
+            "you snuggled up next to the elephant, falling asleep quickly."
 
-    "but you do it at the expense of ######"
+        "push the elephant off the bed.":
+            "you reach to push the elephant off the bed."
 
-    v "i'm sorry, but it must be done." 
+            "you miss and end up falling out of bed instead."
+
+            "you decide that it's best to just snuggle next to the elephant instead of being a heartless monster."
+
+    scene black with fade 
+    unknown_brennan "*****, why did you lie to us? to me?"
+
+    og "i knew you'd stop me if i told you."
+
+    unknown_annie "this isn't fair."
+
+    unknown_cassia "you didn't want to consider any of our opinions on the matter either?"
+
+    unknown_brennan "*****, this is stupid. why do you insist on killing yourself for this adventure it's not worth it!"
+
+    og "if it wasn't me, it was going to be one of you!"
+
+    unknown_lou "if you go through with this \"adventure\", it will be your last."
+
+    og "i'm sorry."
+
+    "the voice fades away."
 
     "you wake up in a cold sweat." 
 
@@ -554,16 +649,21 @@ label part_3:
 
     "suddenly a knock at the door, makes you jump."
 
-    "*KNOCK KNOCK KNOCK*"
-
     unknown_lou "PLACEHOLDER I KNOW YOU'RE IN THERE!"
 
     unknown_brennan "I CAN'T BELIEVE YOU CAME BACK AND DIDN'T TELL ANY OF US! WE HAD TO FIND OUT THROUGH FIZ!"
 
     #meeting the orginal mcs crew eof adventurers 
-    show brennan
 
-    "you rush to the door, opening it to find a group of people you recognize from the photo. this must have been your crew."
+    "you rush to the door" 
+
+    #figure out placement when all models are made 
+    show brennan_normal at left
+    show maryanne_normal at middle 
+    show annie_normal at right 
+    #show lou_normal at middle right 
+
+    "opening it to find a group of people you recognize from the photo. this must have been your crew."
 
     if messy:
         jump part_3_messy
@@ -575,7 +675,7 @@ label part_3:
     # if player chose the sneaky looking then brennan will continue like nothing happened 
 
 label part_3_messy:
-    unknown_brennan "PLACEHOLDER! i-"
+    unknown_brennan "*****! i-"
 
     unknown_annie "!"
 
@@ -602,7 +702,7 @@ label truth:
 
     unknown_maryanne "that was weak, even for your jokes."
 
-    unknown_annie "not your best work PLACEHOLDER. it's okay you can get a better sense of humour hopefully..."
+    unknown_annie "not your best work *****. it's okay you can get a better sense of humour hopefully..."
 
     unknown_brennan "annie was losing her mind over your dissapearance and you think these jokes are appropriate?" 
 
@@ -612,7 +712,9 @@ label truth:
 
     brennan "come on you were all like \"brennan what if he doesn't come back!\"" 
 
-    maryanne "i told you that in private!"
+    maryanne "i told you that in private?"
+
+    maryanne "why are you airing out my business?"
 
     jump part_4_messy
 
@@ -623,7 +725,7 @@ label lie:
 
     unknown_brennan "oh that's why you aren't wearing them anymore."
 
-    unknown_maryanne "eh you look better without them."
+    unknown_maryanne "eh you look better without them. glad we made you take them off for that photo."
 
     unknown_annie "maryanne you can't say that!"
 
@@ -638,19 +740,19 @@ label lie:
 #sussing MC for being messy
 label part_4_messy:
     
-    unknown_lou "okay okay, let's not be fighting and go to dinner already"
+    unknown_lou "okay okay, let's not be fighting and go to dinner already, brennan was most excited for that."
     
     brennan "you owe us some food now that you're loaded!"
 
     "you dig your hands into your pocket in a panic and find a pouch of gold in each one."
 
-    player "*when did that get there...?*"
+    "when did that get there...?"
 
     "you had checked your pockets earlier but they weren't there before..."
 
-    "something is wrong with this world..." 
+    "something is wrong with this world." 
 
-    show brennan excited 
+    show brennan_normal 
 
     brennan "SWEET YOU GOT LIKE DOUBLE THE PAYMENT!"
 
@@ -664,7 +766,7 @@ label part_4_messy:
 
     show brennan and lou 
 
-    brennan "there's something... wrong with PLACERHOLDER."
+    brennan "there's something... wrong with *****."
 
     lou "i noticed as well but chalked it up to time."
 
@@ -676,16 +778,18 @@ label part_4_messy:
 
     maryanne "i'm hungry can we walk faster... ugh."
 
-    brennan "yeah, PLACEHOLDER you decide."
+    brennan "yeah, ***** you decide."
+
+    "brennan stares at you suspicously."
 
     jump ribs
 
 label part_3_clean:
-    unknown_brennan "PLACEHOLDER! i was so worried."
+    unknown_brennan "*****! i was so worried."
 
     "you look at the group of people in front of you and them seem to be a slightly older version of the group from the photo."
 
-    "you notice that they seem revlieved to see you, in particular the boy that just spoke." #spelling ahhhh 
+    "you notice that they seem relieved to see you, in particular the boy that just spoke." 
 
     show brennan angry
     unknown_brennan "man i was stress eating like crazy, you owe me three containers of almonds now!"
@@ -708,6 +812,7 @@ label part_3_clean:
         #you pry for more information but brennan becomes more sus of you 
         "try to pry for information":
             jump detective
+
 label normal: 
     $ trust_level += 1
     player "i'm sorry, really i just... lost track of time. but i'm back!"
@@ -737,7 +842,11 @@ label detective:
     $ trust_level -= 1
     player "yeah the mission, what even was that task i mean it was so stupid, right?"
 
-    brennan "yeah but they said it only had to be you, something along the lines of the \"chosen\" one."
+    brennan "you volunteered."
+
+    brennan "went behind our backs to do it too, don't think we forgot about that."
+
+    annie "yeah then you went on about how if you came back you'd be \"the choosen one\""
 
     maryanne "glad that didn't get in your head or else you would've become even more intolerable than now."
 
@@ -746,7 +855,7 @@ label detective:
 
     annie "stop. let's just stop talking about it."
 
-    lou "face it. they wanted him to die."
+    lou "face it. they were trying to kill him."
 
     show brennan happy 
     brennan "but~ you didn't! and now we get to live our lives as heroes for the rest of our lives!"

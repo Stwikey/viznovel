@@ -291,9 +291,12 @@ screen navigation():
 
     vbox:
         style_prefix "navigation"
-
-        xalign 0.5
-        yalign 0.9
+        if main_menu:
+            xpos gui.navigation_xpos
+            yalign 0.2
+        else:
+            xoffset 60
+            yalign 0.5
 
         spacing gui.navigation_spacing
 
