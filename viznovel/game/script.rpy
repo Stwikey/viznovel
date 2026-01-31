@@ -67,9 +67,9 @@ define unknown_cassia = Character('???')
 
 #character images
 #brennan
-image brennan_normal  = Transform("brennan.png", zoom = 0.7)
-image brennan_talking  = Transform("brennan_talking.png", zoom = 0.7)
-image brennan_scared = Transform("brennan_scared.png", zoom = 0.7)
+image brennan normal  = Transform("brennan normal.png", zoom = 0.7)
+image brennan talking  = Transform("brennan talking.png", zoom = 0.7)
+image brennan scared = Transform("brennan scared.png", zoom = 0.7)
 
 label start:
     scene bg gass_lands with fade
@@ -159,7 +159,7 @@ label sleep:
 
             "you try to will yourself to remember more but end up just looking constipated."
 
-        "start exploring elsewhere."
+        "start exploring elsewhere.":
             player "i should start going somewhere else."
 
     "there isn't much left to do here now."
@@ -658,9 +658,9 @@ label part_3:
     "you rush to the door" 
 
     #figure out placement when all models are made 
-    show brennan_normal at left
-    show maryanne_normal at middle 
-    show annie_normal at right 
+    show brennan normal at left
+    #show maryanne normal at middle 
+    show annie normal at right 
     #show lou_normal at middle right 
 
     "opening it to find a group of people you recognize from the photo. this must have been your crew."
@@ -675,15 +675,19 @@ label part_3:
     # if player chose the sneaky looking then brennan will continue like nothing happened 
 
 label part_3_messy:
+    show brennan talking at right
     unknown_brennan "*****! i-"
+
+    show brennan normal
 
     unknown_annie "!"
 
     "brennan narrows his eyes, scanning the room"
 
     "he begins to mutter quietly under his breath"
-    
+    show brennan talking at right 
     unknown_brennan "why is everything... everywhere?!"
+    show brennan normal 
 
     player "uhh i can explain!"
 
@@ -752,7 +756,7 @@ label part_4_messy:
 
     "something is wrong with this world." 
 
-    show brennan_normal 
+    show brennan normal 
 
     brennan "SWEET YOU GOT LIKE DOUBLE THE PAYMENT!"
 
@@ -858,57 +862,60 @@ label detective:
     lou "face it. they were trying to kill him."
 
     show brennan happy 
-    brennan "but~ you didn't! and now we get to live our lives as heroes for the rest of our lives!"
+    brennan "but~ he didn't die! and now we get to live the rest of our lives in peace."
 
     brennan "the history books are gonna remember us!"
 
     "maryanne approaches you, whispering in your ear."
 
-    maryanne "between you and me, he was crying when you stopped replying to our messages." 
+    maryanne "between you and me, he was crying the entire time you were gone." 
 
     "you couldn't help but feel a warm feeling in your stomach."
 
     "but along side it was guilt."
 
-    "you forgot all about them." #again here we are still under the assumption that we are the dopple ganger and not that we just look like him
+    "you forgot all about them."
 
-    player "i'll treat you to a meal"
+    player "i'll treat you to a meal!"
 
     "you march out in a random direction, hoping that parts of your memory would come back to remind you."
 
-    brennan "so... what we feeling today PLACEHOLDER?"
+    brennan "so... what we feeling today *****?"
 
-    "as you struggle to come up with a beliveable answer, you spot a large, colourful sign in the distant village that reads RACK OF RIBS FOR ONLY 230 SHELLS"
+    "as you struggle to come up with a believable answer, you spot a large, colourful sign in the distant village that reads \"RACK OF RIBS FOR ONLY 18 GOLD\""
 
     menu:
         "let's eat ribs!":
             jump ribs
 
-        "think about it longer":
+        "think about it longer.":
             jump thinking
 
 #goes to eat ribs but is sussed because it isn't a food MC would usually go for
 label ribs:
+    show annie at right 
+    show maryanne at left
+
     player "hmmm.. how about some ribs today?"
 
     annie "ribs? sounds tasty!"
 
     maryanne "...since when did you like ribs?"
 
-    "lou and brennan exchange glances"
+    "lou and brennan exchange glances."
 
-    player "oh no, i must've chosen the wrong answer..." #whisper
+    "must've been the wrong answer."
 
     menu:
-        "play it off cooly":
+        "play it off cooly.":
             jump cooly
-        "choose a different location":
+        "choose a different location.":
             jump thinking
 
 label cooly:
     player "haha yeah! why don't we try something new today!"
 
-    maryanne "....alright then"
+    maryanne "...alright then?"
 
     jump rib_restaurant
 
@@ -917,24 +924,26 @@ label cooly:
 label thinking:
     $ trust_level += 1
 
-    "you start thinking frantically"
+    "you start thinking frantically."
 
     player "what would \"i\" want to eat?" #whisper
 
-    "suddenly, a thought, a craving appears in your mind"
+    "suddenly, a thought, a craving appears in your mind."
 
-    player "GOULASH"
+    menu: 
+        "I WANT GOULASH!":
+            player "I WANT GOULASH!"
 
-    player "i want goulash."
-
-    "brennan smiles widely. He puts his arm around you"
+    "brennan smiles widely. he puts his arm around you."
 
     brennan "now THAT'S the correct answer!"
 
     jump goulash_restaurant
 
 label rib_restaurant:
-    "you and the group sit down in an old, beat down rib restaurant"
+    "you and the group sit down in an old, beat down rib restaurant."
+
+    "maybe thats why it was on sale."
 
     player "six servings of rack of ribs, thank you"
 
@@ -942,24 +951,24 @@ label rib_restaurant:
 
     annie "mmmmm smells good!"
 
-    "you pull your plate closer to yourself, trying to avoid brennans eye contact that has been directed at you since you sat down"
+    "you pull your plate closer to yourself, trying to avoid brennans eye contact that has been directed at you since you sat down."
 
-    "you take a whiff of the ribs, immediately knowing how good the quality is, but you suddenly get hit with a small sense of nausea and repulsion"
+    "you take a whiff of the ribs, immediately knowing how good the quality is, but you suddenly get hit with a small sense of nausea and repulsion."
 
-    player "!"
+    player "!?"
 
     menu:
-        "eat the ribs":
+        "eat the ribs.":
             jump eat
-        "uhhh no thanks":
+        "uhhh no thanks.":
             jump no_eat
 
 label eat:
     $ trust_level -= 1
 
-    "you dive into the ribs, eating it hungrily while ignoring the uncomfortable feeling in the back of your throat"
+    "you dive into the ribs, eating it hungrily while ignoring the uncomfortable feeling in the back of your throat."
 
-    "you raise your head slightly, just enough to see your crew staring at you, not touching their food"
+    "you raise your head slightly, just enough to see your crew staring at you, not touching their food."
 
     maryanne "wow."
 
@@ -973,7 +982,7 @@ label eat:
 
 label lie2:
     $ trust_level -=1 
-    player "haha! it must have been the battle, i've changed a lot since then"
+    player "haha! it must have been the hunt, i've changed a lot since then"
 
     "annie looks worried."
 
@@ -981,19 +990,23 @@ label lie2:
 
     "lou clears his throat, attempting to shift topics."
 
-    lou "we should go to the cemetary."
+    lou "we should go to the burial."
 
-    brennan "oh yeah, we should pay our respects at the very least. especially you PLACEHOLDER."
+    "now if that wasn't supposed to give you whiplash, not sure what would."
+
+    "you keep yourself composed."
+
+    brennan "oh yeah, we need to catch you up on what you missed *****."
 
     jump part_5
 
 label play_it_off:
     $ trust_level += 1
-    player "haha! get PRANKED"
+    player "haha! get PRANKED!"
 
     player "i've always loved ribs, i just lied to you guys and you fell for it!"
 
-    brennan "WHATT? YOU KNOW I LOVE RIBS! and we always ate GOULASH instead"
+    brennan "what?! you know i love ribs but you never could stomach them and we had to eat goulash instead."
 
     brennan "we could've ate ribs all those times back then!"
 
@@ -1001,9 +1014,9 @@ label play_it_off:
 
     "after a while of eating lou clears his throat, gaining everyones attention."
 
-    lou "we should go to the cemetary."
+    lou "we should go to the burial."
 
-    brennan "oh yeah, we should pay our respects at the very least."
+    brennan "oh yeah, we need to catch you up on what you missed *****."
 
     jump part_5
 
@@ -1016,23 +1029,23 @@ label goulash_restaurant:
 
     "when the food arrives, you instantly get hit with a familiar and heartwarming smell"
 
-    player "mmmmm, now THATS what i'm talking about"
+    player "mmmmm, now THAT'S what i'm talking about"
 
-    "the crew digs in, eating so quickly that you eat in silence"
+    "the crew digs in, eating so quickly that you eat in silence."
 
     brennan "nothing is better than a good bowl of goulash!"
 
-    annie "it really brings back memories! i'm so glad i got to eat with you all again"
+    annie "it really brings back memories! i'm so glad i got to eat with you all again."
 
     "as you sit and eat the goulash, brennan starts talking."
 
-    brennan "um. i don't want to remind you of bad memories, but could you tell us about... what happened."
+    brennan "um. i don't want to remind you of bad memories, but could you tell us... about how it went?"
 
     player "haha... yeah, um i'm just not comfortable with talking about it right now."
 
-    annie "yeah... it's just umm..."
+    annie "yeah... it's just-"
 
-    lou "to get to the point already, we need to go visit the cemetary."
+    lou "to get to the point already, we need to go visit the burial."
 
     player "huh? why?" #advantage for lying properly 
 
@@ -1040,32 +1053,41 @@ label goulash_restaurant:
 
     "she rolls her eyes playfully."
 
-    brennan "you need to go repent before the gods strike a curse on you or something. just a superstition but you were always big about that stuff."
+    brennan "remember? death mission? we had a whole burial for you before you left."
 
-    player "yeah. let's just pay and get out."
+    menu: 
+        "oh right.":
+            player "oh yeah... let's just pay and get out."
+            jump part_5
 
-#mc was sent on a basically suicide mission where he had to kill a lot of people that were planning to take resources that the village he lives in needs to survive
-#its like in transformers where the dinobots and autobots both need the blue liquid thing to survive but they did unjust things like morally grey mission 
-#the whole party understands the politics associated because the village is known for having strong fighters so the "higher ups" rely on them to solve their issues through brutal force
 label part_5: 
     "while walking on the way you can't help but pry for what happened."
 
     player "guys..."
 
     menu:
-        "why did they send me on that mission":
-            jump mission
+        "why did they send me on that hunt.":
+            player "why didn't hey send me on that... hunt?"
 
-label mission:
-    brennan "no one wanted you to go man, we all told you not too. even maryanne."
+    "brennan's face turns dark."
 
-    annie "politics is confusing, but they said you were the best for the job. i mean, if you didn't go we would've all died."
+    brennan "they didn't send you."
+
+    "lou elbows brennan."
+
+    lou "hey cut it out. not the time."
+
+    annie "let's not pretend we don't know the politics behind it."
+
+    maryanne "it's in the past, what matters is that he returned, shouldn't we be happy about that?"
 
     "the party continues to walk towards the cemetary."
 
     "you began trying to piece together information."
 
-    player "*so then i wanted to go?*"
+    menu:
+        "did \"i\" choose to go then?":
+            "you were left wondering what caused you to make that choice."
 
     "brennan begins to walk next to you, allowing the rest of the group to walk ahead."
 
@@ -1076,7 +1098,7 @@ label mission:
 
     player "ever since i got back i've been feeling scrambled."
     
-    brennan "no that makes sense, anyone would feel that way if you they had to do what you did."
+    brennan "no that makes sense, anyone would feel that way if they had to do what you did."
 
     player "can i tell you something..."
 
@@ -1084,12 +1106,9 @@ label mission:
 
     menu: 
         "tell brennan the truth.":
-            jump memoryloss 
+        player "i can't remember anything."
 
-label memoryloss: 
-    player "i can't remember anything."
-
-    if trust_level >= 3: #i dont even know if this number is possible 
+    if trust_level >= 2: 
         brennan "..."
 
         brennan "oh. that's why you haven't been all the way here."
@@ -1098,17 +1117,37 @@ label memoryloss:
 
         "brennan stops walking, and stares at you."
 
+        brennan "i figured something was up."
+
+        brennan "thought it was because of what i gave you before you left."
+
+        brennan "well maybe that's what causes it, i told you only to use it if you're dying."
+
+        brennan "so i guess you did \"die\" huh?"
+
+        show brennan getting upset 
+        menu:
+            "i don't understand.":
+                player "i'm sorry, i don't understand."
+
         brennan "you always tell me when your coming back. you always reply to my messages, you always bring me back almonds even when your dead tired."
 
         brennan "but you didn't this time."
 
-        brennan "PLACEHOLDER... why didn't you tell me sooner?"
+        brennan "*****... why didn't you tell me sooner?"
 
-        player "i- i just i couldn't dissapoint you guys." #spelling ? 
+        menu:
+            "i couldn't dissapoint you guys.":
+                player "i- i just i couldn't dissapoint you guys." 
 
-        player "you were just all so excited to see me again."
+                player "you were just all so excited to see me again."
 
-        player "i couldn't... i couldn't tell you the truth."
+                player "i couldn't... i couldn't tell you the truth."
+
+            "i thought i could figure it out myself.":
+                player "i thought i could figure it out myself."
+
+                player "i snooped around my own house, looking for clues even."
 
         brennan "..."
 
@@ -1116,27 +1155,37 @@ label memoryloss:
 
         brennan "there's still some part of you that remembers, i can see it in your face."
 
+        brennan "or at least, something that's leading you in the right direction."
+
         show brennan thinking 
 
-        brennan "something must of happened during the hunt. when you left you were acting normal."
+        brennan "something happened during the hunt."
 
-        player "i don't remember anything, not even my own name."
+        brennan "everyone believed in you, really we all did."
+
+        brennan "but we all thought you'd never return."
+
+        brennan "do you remember what happened?"
+
+        menu: 
+            "i don't remember anything.":
+                player "i don't remember anything, not even my own name."
 
         brennan "your name? but we've been saying it all day."
 
-        player "but for some reason, i can't hear it."
+        player "but for some reason, all i hear is static. like a big censor or something."
 
-        "brennan whispers under his breath"
+        "brennan whispers under his breath you can't hear, before saying your name."
 
-        brennan "PLACEHOLDER?"
+        brennan "*****?"
 
-        player "i really am sorry."
+        player "i can't hear anything, i'm sorry."
 
-        brennan "we will figure this out together, just like old times."
+        brennan "it's alright, we can figure this out together. just like old times."
 
         show brennan happier 
 
-        brennan "you'll be back to your old self in no time!"
+        brennan "then you'll be back to your old self in no time!"
 
         brennan "we just gotta get you back into the groove of things."
 
@@ -1149,7 +1198,7 @@ label memoryloss:
 
         player "???"
 
-        brennan "you aren't PLACEHOLDER."
+        brennan "you aren't *****."
 
         player "..."
 
@@ -1161,6 +1210,8 @@ label memoryloss:
 
         brennan "we shouldn't be adventuring with you anymore."
 
+        brennan "the ***** we knew died in that hunt."
+
         player "brennan please i can explain-"
 
         show brennan upset tears in eyes 
@@ -1169,9 +1220,15 @@ label memoryloss:
         show brennan wiping away his tears
         brennan "damn it, you even sound like him."
 
-        brennan "listen, we can pretend everything is okay for one more day, but by tommorow you need to disappear."
+        brennan "listen, we can pretend everything is okay for one more day, but by tommorow your gone. you hear me?"
+        menu:
+            "...":
+                player "..."
 
-        player "..."
+            "please just hear me out.":
+                player "please just hear me out."
+
+                brennan "didn't i already tell you to stop."
 
         brennan "i want you gone. i can't... you can't stay here."
 
@@ -1179,13 +1236,15 @@ label memoryloss:
 
         brennan "i just don't think i can be around you... especially when you look just like him."
 
-        player "brennan, i don't mean any harm i promise. i just want to remember what happened!"
+        menu: 
+            "i didn't mean to offend you":
+                player "brennan, i don't mean any harm i promise. i just want to remember what happened!"
 
         "you plead, if you were to leave the village all hopes in remembering the past would be gone."
 
         brennan "fine. whoever you are. because i know..."
 
-        brennan "i know MY PLACEHOLDER, wouldn't forget."
+        brennan "i know MY *****, wouldn't forget."
 
         brennan "he would never."
 
@@ -1203,70 +1262,95 @@ label memoryloss:
 #broken trust brennen will be more snarky and angry (his heart guides him versus his head)
 #trustful brennan will be a lot more useful, he is trying his best to help you and will explain concepts in more detail ie. esstitally spelling out to the mc what is happening/happened
 label part_6: 
-    "as you arrive to the cemetary, the graves look all unvisited except one." 
+    "as you arrive to the burial, a large mountain of dirt stood in front of you." 
 
-    "the grave is polished, the grass around it well taken care of with fresh flowers planted near."
+    "the grave has a wooden cross stuck at the front, the grass around it well taken care of with fresh flowers planted near."
 
-    "you glance at the headstone to be met with the same writing you could never read."
+    "you glance at the signage only to be met with the same writing you could never read."
 
     "from the headstone you can deduct what your name should look like... but you still can't read it."
 
-    maryanne "sorry we buried you, thought you died."
+    maryanne "sorry we buried you, thought you wouldn't return."
 
     "lou hits maryanne on the shoulder."
 
+    maryanne "hey he thought so too!"
+
+    "she points a finger at you."
+
     lou "sorry, it's just..."
 
-    annie "after we lost contact with you, we thought it was over."
+    annie "after we lost contact with you, we thought it was over. like for real."
 
     annie "of course there was never a body to bury but, we just wanted somewhere to visit."
 
     lou "a place where we could go to."
 
+    annie "so it looks a bit nicer than when you last saw it."
+
     brennan "you know..."
 
-    brennan "because you went on the mission, or better known as the hunt."
+    brennan "because you went on the hunt, and thought you would die. so you told us to fake burry you."
 
     "you aren't stupid, you could tell that brennan was spelling things out for you."
 
-    annie "the hunt is stupid. there's too many dangers and they know we didn't stand a chance."
+    maryanne "kekeke, you were all goofy with it too."
 
-    lou "hey we set PLACEHOLDER with the best chances, statistically it was the highest it would've ever been."
+    maryanne "\"remember me as a super strong handsome guy... bleh\""
+
+    "the party smiles at the memory."
+
+    annie "the hunt is stupid. there's too many dangers and we never even reap the rewards of the thing."
+
+    brennan "i mean the payment isn't nothing."
+
+    annie "yeah but it's nothing in comparison to you know... death?"
+
+    lou "hey! i sent ***** with the best possible route, statistically it was the highest it would've ever been."
 
     annie "but maybe if i sent you with more food you wouldn't have come back so much slimmer."
 
     show annie worried #this is where her like indecisivness leads to delayed action 
 
-    brennan "the hunt was necessary." 
+    brennan "the hunt is necessary." 
+
+    annie "no it's not."
 
     maryanne "it's a scam. we all know it."
 
-    if trust_level >= 3:
+    if trust_level >= 2:
         # brennan will fully explain the hunt
-        brennan "the hunt... was controversial but it was us or them."
+        brennan "it's controversial but what isn't?"
 
-        brennan "and if we chose them, they would've killed us."
+        brennan "i tried finding out what i could, but ever since... getting kicked. i can't really figure out much."
 
-        show brennan telling story and images of history #this similar to like the honor thing in genshin where it starts telling the history of the weapons 
+        scene black with fade 
 
-        brennan "we weren't always like this..."
+        brennan "all i know is that we weren't always like this..."
 
-        show village 
+        show viktor and wagner 
 
         brennan "we didn't need it."
 
-        show adventures finding the very first source of mad honey #brennan doesnt explicitly say mad honey but its shown
+        show adventures finding the very first source of mad honey 
 
         brennan "but once they started, they couldn't live without it."
 
-        brennan "the bees use specific flowers only found on the montune region." #lol made up montune idek what that is 
+        brennan "it changed them."
+
+        brennan "the bees use specific flowers only found on the melissa region."
 
         brennan "consuming even just a tablespoon leads to godlike powers, all of a sudden you feel stronger, wiser, your reaction time is lightning speed."
+
+        brennan "but it changes how you think. makes you act irrationally and selfishly."
 
         annie "and after that it's anyones guess." 
 
         maryanne "they say it's for our protection, so that we have a constant supply of food, water, etc. but we all know what that really means."
 
+        lou "blackmail. they've hated us ever since didn't kick brennan out like they did."
+
+        "brennan looks away. kicking at a rock."
     
     else: 
         #brennan refuses to explain the hunt. 
@@ -1275,14 +1359,14 @@ label part_6:
         "brennan stares at you. he has something he wants to say but is holding back."
    
     show brennan upset 
-    brennan "it isn't fair. the only reason they chose you is because you were stupid enough to volunteer."
+    brennan "it isn't fair. the only reason you went is because you volunteered."
 
     lou "calm down brennan, we get it."
 
-    show brenna shouting 
+    show brennan shouting 
     brennan "no you don't!"
 
-    brennan "PLACEHOLDER DIDN'T HAVE TO GO!"
+    brennan "***** DIDN'T HAVE TO GO!"
 
     brennan "HE CHOSE TO!"
 
@@ -1296,19 +1380,33 @@ label part_6:
 
     annie "god brennan, i know you blame yourself but you need to move past it."
 
-    annie "PLACEHOLDER is here now and that's all that matters."
+    annie "***** is here now and that's all that matters."
 
-    "you feel the world shift. there's cracks in the sky that appear in your vision. as if the world was telling you otherwise."
+    if trust_level >= 2:
+        brennan "yeah your right. sorry."
 
-    "it seems like the others don't notice the cracks. only visable to you."
+        annie "everything's gonna be okay."
 
-    "the group stares silently at the makeshift grave for a moment until lou cuts through the silence"
+        "the world seems to react, there's cracks in the sky that appear in your vision. as if the world was telling you otherwise."
 
-    lou "let's return home, shall we? it's getting dark now" 
+        "it seems like the others don't notice the cracks. only visable to you."
 
-    "lou pats annie reassuringly on her back and they slowly start walking to the direction of the village" #(?)not sure where they live
+    else:
+        brennan "yeah, \"he's\" here."
 
-    "slowly, the rest of the group follows until only you and brennan remain"
+        "the world seems to react."
+
+        "you hear a voice, almost like a whisper in your ear."
+
+        "???" "stupid stupid stupid. and i'm just supposed to watch now?"
+
+    "the group stares silently at the makeshift grave for a moment until lou cuts through the silence."
+
+    lou "let's return home, shall we? it's getting dark now." 
+
+    "lou pats annie reassuringly on her back and they slowly start walking to the direction of the village." 
+
+    "slowly, the rest of the group follows until only you and brennan remain."
 
     brennan "i..."
 
@@ -1318,7 +1416,7 @@ label part_6:
 
     brennan "stop talking."
 
-    if trust_level >= 3:
+    if trust_level >= 2:
         brennan "it's just... it's all my fault you don't remember."
 
         brennan "when they asked who wanted to go, none of us wanted to."
