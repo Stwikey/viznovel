@@ -31,6 +31,7 @@ default stuffed_elephant = False
 default glasses = False
 default rope = False 
 default took_nothing = False 
+default forestpick = False
 
 #evil guys 
 define evil1 = Character ('Viktor')
@@ -118,7 +119,7 @@ label sleep:
     scene bg dream1 with fade
     #show 
 
-    "???" "stop! get away from me please, PLACEHOLDER. this was just a misunderstanding!"
+    "???" "stop! get away from me please, *****. this was just a misunderstanding!"
 
     menu:
         "huh? who are you?":
@@ -174,6 +175,7 @@ label sleep:
 #MC meets a stranger in the forest, they act like they know you but you have no memory of them
 label forest:
     # turn bg into some forest 
+    $forestpick = True 
     scene bg forest_clearing
     "you walk through the forest, unsure where you are travelling to."
 
@@ -257,7 +259,7 @@ label silent:
 label forest_end:
     #cut back to unknown
     scene black with fade
-    unknown_cassia "somethings off... PLACEHOLDER should've noticed when I tried to rob him earlier"
+    unknown_cassia "somethings off... ***** should've noticed when I tried to rob him earlier"
 
     unknown_cassia "his biceps have also gotten skinnier..."
 
@@ -364,7 +366,7 @@ label part_2:
     scene bg village 
     "you finally part ways with the old man, continuing to walk."
 
-    unknown "PLACEHOLDER I KNEW YOU COULD DO IT!"
+    unknown "***** I KNEW YOU COULD DO IT!"
 
     "a little boy's voice calls out from the distance as footsteps rapidly approach you."
 
@@ -649,7 +651,7 @@ label part_3:
 
     "suddenly a knock at the door, makes you jump."
 
-    unknown_lou "PLACEHOLDER I KNOW YOU'RE IN THERE!"
+    unknown_lou "***** I KNOW YOU'RE IN THERE!"
 
     unknown_brennan "I CAN'T BELIEVE YOU CAME BACK AND DIDN'T TELL ANY OF US! WE HAD TO FIND OUT THROUGH FIZ!"
 
@@ -1412,26 +1414,36 @@ label part_6:
 
     brennan "i'm sorry."
 
-    player "no i understand it must be-"
+    menu:
+        "no i understand it must be hard.":
+
+            player "no i understand it must be-"
+
+        "i don't mean to forget.":
+            player "i don't mean to for-"
 
     brennan "stop talking."
 
     if trust_level >= 2:
         brennan "it's just... it's all my fault you don't remember."
 
-        brennan "when they asked who wanted to go, none of us wanted to."
+        brennan "they were going to take me back and there was no stopping it."
 
-        brennan "they were going to choose me."
+        brennan "but then you decided to be the hero."
 
-        brennan "we all knew they were going to."
+        show brennan upset
 
-        brennan "so you volunteered."
+        brennan "i should've told you to take it back."
 
-        brennan "i should've stopped you before you submitted your name."
+        brennan "but the rest of the party wouldn't let me."
 
-        brennan "i should've known you would go behind our backs to do it to."
+        brennan "lou would never let me do something that stupid."
 
-        brennan "lou would never let you do something that stupid."
+        menu:
+            "why would that be stupid?":
+                brennan "because then they would've took me back."
+
+                brennan "back to where i ran away from."
 
     brennan "we tried our best to prepare you."
 
@@ -1445,15 +1457,17 @@ label part_6:
 
     brennan "so... so angry."
 
-    brennan "i stole. i stole from the higher ups."
+    brennan "i stole. i stole from the kingdom."
 
     show flashback
     brennan "because we all knew you wouldn't survive. lou was losing his mind, maryanne was trying her hardest to pick up the slack."
 
     brennan "it's was stupid."
 
-    if trust_level >=3:
+    if trust_level >=2:
         brennan "but maybe thats why you don't remember."
+
+        brennan "because i caused it to happen."
 
     else:
         brennan "maybe that's why..."
@@ -1468,7 +1482,7 @@ label part_6:
 
     brennan "you live here by the way."
 
-    if trust_level >= 3:
+    if trust_level >= 2:
         show brennan bashful 
 
         brennan "i didn't know if you would remember."
@@ -1478,6 +1492,20 @@ label part_6:
 
         brennan "you wouldn've known if you remembered."
 
+        menu:
+            "...":
+
+                brennan "whatever bye."
+        
+            "bashing me won't bring my memories back.":
+                brennan "..."
+
+                brennan "whatever man."
+
+    scene black with fade 
+    "you walk into your house and decide to rest for the night."
+
+    scene bg bedroom 
     "you wake up, still groggy, to the sun shining in your face."
 
     menu:
@@ -1493,28 +1521,34 @@ label stay:
     jump leave
 
 label leave:
-    "you quietly tiptoe through the inn, hoping nobody the tiny creaks off the wooden floorboards under your feet"
+    "you quietly tiptoe through the house, something about the mornings makes you feel like you should be quiet."
 
-    "you take one last glance behind you, before opening the door and getting hit in the face with a gust of fresh wind"
+    "you take one last glance behind you, before opening the door and getting hit in the face with a gust of fresh wind."
 
     jump forest_2
 
 label forest_2:
-    "you walk towards the direction of the forest, not sure what you are hoping to find, but hopefully something"
+    "something pulls you towards the woods."
 
-    player "that girl that was here before... I wonder who she was to \"me\""
+    "you walk in the direction of the forest, not sure what you are hoping to find, but hopefully something."
+
+    if forestpick == True:
+        "you suddenly remember the girl you "
+
+        player "that girl that was here before... I wonder who she was to \"me\""
 
     unknown_cassia "oh? i guess brennan was right huh?"
 
-    unknown_cassia "thats odd 'cus he usually isn't"
+    unknown_cassia "that's odd 'cus he usually isn't"
 
-    "you jolt by the touch of someone poking your shoulder and turn around to look over your shoulder"
-
-    player "speak of the devil."
+    "you jolt by the touch of someone poking your shoulder and turn around to look over your shoulder."
+    
+    if forestpick == True:
+        player "speak of the devil."
 
     unknown_cassia "i KNEW it! something was odd about you."
 
-    unknown_cassia "you really aren't PLACEHOLDER are you?"
+    unknown_cassia "you really aren't ***** are you?"
 
     player "..."
 
@@ -1523,18 +1557,34 @@ label forest_2:
     "the girl uncrumples a scroll and holds it to your face for you to read"
 
     "the scroll reads..."
+    
+    scene scroll 
 
     "you still can't read."
+
+    scene forest_clearing
+    show cassia 
 
     player "i can't read."
 
     "the girl crumples the scroll back up and tosses it over her shoulder and rolls her eyes"
 
-    unknown_cassia "it says that YOU are YOU. you know?"
+    unknown_cassia "it says that \"you\" aren't you. you know?"
 
-    unknown_cassia "some guy gave this to me, didn't trust it at first but now seeing you..."
+    menu: 
+        "so many you's":
+            player "you said you like 10 times what are you going on about?"
 
-    unknown_cassia "starting to think it's actually real."
+    if trust_level >= 2:
+
+        unknown_cassia "brennan gave this to me, didn't trust it at first but now seeing you..."
+
+        unknown_cassia "starting to think it's actually real."
+    
+    else: 
+        unknown_cassia "a guy you might know gave this to me. said you were a goner."
+
+        unknown_cassia "thought he was joking at first but now seeing you..."
 
     menu:
         "who are you?":
@@ -1543,35 +1593,39 @@ label forest_2:
             jump who_am_i
 
 label who_are_you:
-    unknown_cassia "number one rule of an adventurer is to NOT give out information for free"
+    unknown_cassia "number one rule of an adventurer is to NOT give out information for free."
 
     unknown_cassia "what makes you think i can trust you?"
 
     menu:
-        "i have money":
+        "i have money.":
             jump i_have_money
-        "tell the truth":
+        "tell the truth.":
             jump tell_the_truth
 
 label who_am_i:
-    unknown_cassia "YOU? what makes you think i know who you are if YOU don't even know who you are"
+    unknown_cassia "YOU? what makes you think i know who you are if YOU don't even know who you are?"
 
-    player "i mean, who was \"i\""
+    player "i mean, who was \"i\"."
 
-    "the girl scrunches her face, annoyed"
+    "the girl scrunches her face, annoyed."
 
     unknown_cassia "now why would i tell you anything?"
 
     menu:
-        "i have money":
+        "i have money.":
             jump i_have_money
-        "tell the truth":
+        "tell the truth.":
             jump tell_the_truth
 
 label tell_the_truth:
     player "i don't remember anything."
 
+    "she stands there unimpressed."
+
     player "i need help."
+
+    unknown_cassia "and that's a me problem how?"
 
     player "please?"
 
@@ -1590,13 +1644,15 @@ label i_have_money:
 
     "the girl's face lights up almost instantly"
 
-    unknown_cassia "WOAH YOU'RE LOADED"
+    unknown_cassia "WOAH YOU'RE LOADED!"
 
     "the girl snatches the pouch quicker before you can react" #she could probably run away with the money but also wants to know whats up with mc 
 
     player "hey-!"
 
-    cassia "i'm cassia nice to meet you by the way i have a 101-100 win lose score against you right now"
+    cassia "i'm cassia nice to meet you by the way i have a 101-100 win lose score against you right now."
+
+    cassia "well since it's \"you\" and not you i guess i have a 1-0 score."
 
     player "what?"
 
@@ -1615,23 +1671,32 @@ label travelling:
 
     "cassia sits down in one of the wooden chairs and starts counting the coins in her pouch of money"
 
-    cassia "with this i might be able to finally get a sip of that mad honey kekekekkeke" #HAHAH KEKEKEKEKEKE
+    cassia "with this i might be able to finally bail a certain hibernating guy out of debt kekekeke." #HAHAH KEKEKEKEKEKE
 
-    player "answer my question"
+    player "answer my question."
 
-    "cassia sighs"
+    "cassia sighs."
 
-    cassia "alright PLACEHOLDER"
+    cassia "alright *****,"
 
-    cassia "mad honey is said to give you the powers that only gods can weild."
+    cassia "mad honey is said to give you the powers that only gods can wield."
 
     cassia "information is limited, if the general public found out?"
 
     cassia "the whole system would collapse."
 
-    cassia "what's up with you PLACEHOLDER?"
+    cassia "what's up with you *****?"
 
-    player "yeah... i can't hear my own name, it just sounds like muffled and i can't make out anything."
+    menu:
+        "i can't hear my own name.":
+            player "yeah... i can't hear my own name, it just sounds like muffled and i can't make out anything."
+
+        "what's my name?":
+            player "tell me my name."
+
+            cassia "*****?"
+
+            player "i can't hear nadda."
 
     cassia "so you can't hear your name at all?"
 
@@ -1639,15 +1704,15 @@ label travelling:
 
     "cassia thinks for a moment, before a smug grin slowly appears on her face."
 
-    cassia "hey PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER"
+    cassia "hey ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** *****!"
 
-    "you stare at her, unimpressed"
+    "you stare at her, unimpressed."
 
-    cassia "oh~ PLACEHOLDER"
+    cassia "oh~ *****"
 
     "you push her away from you." 
 
-    if trust_level < 3:
+    if trust_level <= 2:
         player "i've been meaning to ask"
 
         menu: 
@@ -1663,25 +1728,37 @@ label travelling:
 
         player "..."
 
-        cassia "you and your friend group were like super close. which is why i found it quite odd when you suddenly stopped hanging out with them as much."
+        cassia "we were like super close. which is why i found it quite odd when you didn't tell us you were coming back?"
 
-        player "i didn't stop. i just... i was sent on a quest or the hunt, heard of it before?"
+        menu: 
+            "why weren't you with everyone earlier?":
+                player "how come at my door, everyone was there but you?"
+
+                cassia "not my fault! blame the stupid bear, i was dealing with some... let's say not so lovely company that may or may not have put a bounty on my head."
+
+                player "?!"
+
+                cassia "so i guess he didn't tell you everything everything like he said he would."
+
+        player "could you tell me a bit about me more?"
+
+        player "i was sent on a quest or the hunt, heard of it before?"
 
         cassia "oh yeah that."
 
         cassia "the information is all hush hush you know?"
 
-        cassia "i don't really know why but it's all for some mad honey resource."
+        cassia "i don't really know why, no one does, but it's all for some mad honey resource."
 
         player "yeah brennan filled me in."
 
         cassia "i'm surprised he doesn't resent you or something."
 
-        cassia "especially after hearing what you did back then."
+        cassia "especially after the stunt you pulled."
 
         player "and that was...?"
 
-        cassia "you volunteered behind his back."
+        cassia "you went behind his back and basically died."
 
         player "oh... right."
 
@@ -1712,9 +1789,15 @@ label travelling:
 label discussion:
     player "do you have any idea what happened to me? or what quest i went on" 
 
-    cassia "hmmmm...i don't know"
+    cassia "i only know that you had to go in search of something."
 
-    cassia "you just...disappeared"
+    cassia "annie, lou, maryanne, and brennan kept a good hush hush about it."
+
+    cassia "said they didn't want me involved because i already had a criminal history and it could land me in more hot water with what they were planning."
+
+    cassia "i ran a few errands tho, grabbed stuff from out of town and all that."
+
+    cassi "but as far as i know you just... disappeared"
 
     player "...i'm sorry"
 
@@ -1722,13 +1805,23 @@ label discussion:
 
     cassia "it's okay, i mean, it wasn't you"
 
-    cassia "i think the only people that know about the quest is the ones that sent you on it"
+    cassia "i think the only people that know about everything is the rest of the party."
 
-    cassia "...brennan and your party"
+    cassia "wish i could help ya but i was already in hot water at the time so i couldn't know."
 
-    player "yeah thats what i figured...i don't think brennan is going to tell me anytime soon though"
+    menu:
+        "i doubt brennan is going to tell me anything.":
+        
+        cassia "yeah mr. grump face isn't the biggest fan of you right now huh?"
+
+    cassia "we should just consider going to the night market, those shady guys know everything."
+
+    "cassia leads you through the forest, a series of twists and turns you wouldn't be able to remember even if you tried."
+
+    jump night_market 
 
 label night_market: 
+    scene bg nightmarket 
     cassia "we might be able to find out more if we stay here."
 
     cassia "this place isn't... the nicest towards newbies."
@@ -2073,7 +2166,7 @@ label childhood_photo:
 
     "you look down to see your hands are also that of a childs."
 
-    brennan "PLACEHOLDER come here!"
+    brennan "***** come here!"
 
     "that voice sounded like brennan's except a lot younger."
 
@@ -2296,7 +2389,7 @@ label lou:
 
     lou "???"
 
-    lou "oh PLACEHOLDER."
+    lou "oh *****."
 
     player "i remember!"
 
@@ -2346,7 +2439,7 @@ label maryanne:
 
     maryanne "no you aren't."
 
-    maryanne "you aren't PLACEHOLDER."
+    maryanne "you aren't *****."
 
     player "yeah i know, but i'm remembering who i was now."
 
@@ -2386,7 +2479,7 @@ label cassia:
 
     "the trees shook as a gust of wind blew."
 
-    cassia "PLACEHOLDER, i'm glad you came here i was jsut about to come find you."
+    cassia "*****, i'm glad you came here i was jsut about to come find you."
 
     player "cassia i rem-"
 
@@ -2499,7 +2592,7 @@ label part_9:
 
     player "why do you say it as if it's not?"
 
-    v "you cannot say PLACEHOLDER."
+    v "you cannot say *****."
 
     og "why not."
 
@@ -2515,7 +2608,7 @@ label part_9:
 
     og "i spent all this time watching and waiting."
 
-    v "calm down PLACEHOLDER you are going to throw everything you worked so hard for away."
+    v "calm down ***** you are going to throw everything you worked so hard for away."
 
     og "i don't care. you don't understand. this isn't just another life for me."
 
@@ -2673,7 +2766,7 @@ label part_10:
         hide og 
         #show flip of images of the hunt 
 
-        og "my name is PLACEHOLDER."
+        og "my name is *****."
 
         og "you might be under the impression that that's your name."
 
@@ -2940,7 +3033,7 @@ label og_death:
     
     og "ugh i was so stupid."
 
-    "you see PLACEHOLDER gesture towards the body of the other person."
+    "you see ***** gesture towards the body of the other person."
 
     og "that thing took pity on me."
 
@@ -2984,6 +3077,54 @@ label og_death_pt3:
 
     "you look at him confused."
 
+    menu:
+        "go back to the world of the living.":
+            jump og_death_pt4
+        "stay.":
+            jump ending1
+
+label ending1: 
+    player "no. i want to stay!"
+
+    og "???"
+
+    "are you sure you want to stay?"
+    
+    menu:
+        "stay.":
+            player "i need to find out more about me. i can't just live your life."
+
+        "leave.":
+            "the shooting pain returns to your head."
+
+            player "AUGH!"
+
+            og "head to kallisto!"
+
+            jump og_death_pt4
+    
+    og "..."
+
+    og "alright, i guess we can see what we can do from here."
+
+    og "is your brain alright?"
+
+    menu: 
+        "yeah it's fine now.":
+            player "yeah i think i'm okay now."
+
+        "nah still hurts.":
+            player "still hurts."
+
+    og "we can figure it out."
+
+    "you follow the other you, not sure where you are going but you were going to find out answers."
+
+    "plus who needs to know the rest of a story when you can write your own."
+
+    return 
+
+label og_death_pt4:
     og "they'll know what you mean!"
 
     og "and please for the love of all that is good please-"
@@ -3155,7 +3296,7 @@ label tell_truth:
 
     you "i-"
 
-    you "i'm not PLACEHOLDER!" #maybe go back and use wattsons kinetic text tags to make text more interesting here
+    you "i'm not *****!" #maybe go back and use wattsons kinetic text tags to make text more interesting here
 
     annie "..."
 
@@ -3242,7 +3383,7 @@ label hide_and_watch:
 
     evil1 "how could you speak about your parents that way."
 
-    brennan "i didn't steal for no good reason and i didn't get PLACEHOLDER killed!"
+    brennan "i didn't steal for no good reason and i didn't get ***** killed!"
 
     "you watch brennan struggle against his restraints."
 
@@ -3258,7 +3399,48 @@ label hide_and_watch:
 
     brennan "come on pops, we all know you're a liar."
 
-#put later 
+    evil1 "i just want what's best for you."
+
+    brennan "correction, you WANTED what was best for me."
+
+    brennan "now you've turned into... this."
+
+    brennan "just let me go."
+
+    evil2 "i think you are mistaken son."
+
+    evil1 "everyone, i'm sorry for the chit chat."
+
+    evil1 "we will get on with the event."
+
+    "from his pocket, he pulls out jar of honey."
+
+    "there was something about that honey that made it glow."
+
+    annie "is that-"
+
+    lou "it is."
+
+    "you start to feel sick."
+
+    "it's like your body remembers what your mind doesn't."
+
+    "you watch as brennan thrashes against the restraints."
+
+    brennan "hey, get that away from me!"
+
+    evil2 "but you were so ready to share it with your friend..."
+
+    evil2 "it's your turn our dear son."
+
+    "you watch brennans face morph into one of pure horror."
+
+    brennan "NO WAIT PLEASE-"
+
+    evil1 "you survived this long without it."
+
+    evil2 "now let's see what you become with it."
+
     menu: 
         "look away":
             "you can't."
@@ -3268,3 +3450,5 @@ label hide_and_watch:
 
         "shout for help, for anyone to stop it.":
             "nothing comes out."
+    
+    "you watch as they pry his jaw open."
