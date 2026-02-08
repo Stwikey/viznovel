@@ -16,7 +16,7 @@ define og = Character('*****') #keep as ***** because the goal isnt to find out 
 
 #npcs 
 define v = Character('voice', color='#a6b4d3')
-define npc1 = Character ('npc1') #an old man
+define npc1 = Character ('old man') #an old man
 define npc2 = Character ('Charles')
 define lil_boy = Character('fiz')
 define unknown = Character('???')
@@ -73,7 +73,7 @@ image brennan talking  = Transform("brennan talking.png", zoom = 0.7)
 image brennan scared = Transform("brennan scared.png", zoom = 0.7)
 
 label start:
-    scene bg gass_lands with fade
+    scene bg grass lands with fade
     menu:
         "where am i?":
             player "where am i?"
@@ -88,7 +88,7 @@ label start:
     "a notebook with messy scrawled on writing with symbols you can't seem to read." #yk like hyroglphs and stuff like that! 
 
     "without any other clues you must decide your next choice of action."
-    scene bg grass_lands
+    scene bg grass lands
 
     menu: 
         "look around and explore":
@@ -152,7 +152,7 @@ label sleep:
 
     "you feel yourself waking up."
 
-    scene bg grass_lands 
+    scene bg grass lands 
 
     menu:
         "try to dig for more clues":
@@ -273,7 +273,7 @@ label forest_end:
             jump village
 
 label village: 
-    scene grassy_lands
+    scene bg grass lands
     "after wandering around for a while you discover theres a village, finally people!"
 
     scene bg village
@@ -339,11 +339,11 @@ label freak:
 
     "you pick up the old man by the shoulders"
     
-    show npc1 shocked 
+    show npc1 
 
     npc1 "please calm down, i don't know what is wrong with you but..."
 
-    show npc1 angry scary looking 
+    show npc1 
 
     npc1 "you need to control yourself."
 
@@ -355,7 +355,7 @@ label freak:
         "right, got it.":
             player "right, got it."
 
-    show npc1 happy
+    show npc1
 
     npc1 "i'm glad we've come to an understanding!"
 
@@ -1108,7 +1108,7 @@ label part_5:
 
     menu: 
         "tell brennan the truth.":
-        player "i can't remember anything."
+            player "i can't remember anything."
 
     if trust_level >= 2: 
         brennan "..."
@@ -1811,8 +1811,7 @@ label discussion:
 
     menu:
         "i doubt brennan is going to tell me anything.":
-        
-        cassia "yeah mr. grump face isn't the biggest fan of you right now huh?"
+            cassia "yeah mr. grump face isn't the biggest fan of you right now huh?"
 
     cassia "we should just consider going to the night market, those shady guys know everything."
 
@@ -1822,6 +1821,7 @@ label discussion:
 
 label night_market: 
     scene bg nightmarket 
+    show cassia 
     cassia "we might be able to find out more if we stay here."
 
     cassia "this place isn't... the nicest towards newbies."
@@ -1841,6 +1841,7 @@ label night_market:
         "let's just ask them now.":
             jump daytime
 label daytime:
+    scene bg nightmarket
     "you continue to push forward even though the sun shines down."
 
     "the market is mostly empty except for a few vendors."
@@ -1946,18 +1947,20 @@ label nighttime:
 
     "a rune appears in front of you as the vendor begins his story. the magic feels... familliar."
 
-    unknown_brennan "the hunt... was controversial but it was us or them."
+    unknown_brennan "the hunt... was controversial but they were going to stop at nothing to get what they needed."
 
-    unknown_brennan "and if we chose them, they would've killed us."
-
-    show story scenes 
+    scene bg story1 
 
     unknown_brennan "we weren't always like this..."
 
     unknown_brennan "we didn't need it."
 
+    show evil1
+    show evil2
     unknown_brennan "but once they started, they couldn't live without it."
 
+    hide evil1
+    hide evil2
     unknown_brennan "the bees use specific flowers only found on the montune region."
 
     unknown_brennan "consuming even just a tablespoon leads to godlike powers, all of a sudden you feel stronger, wiser, you reaction time is lightning speed."
@@ -1988,7 +1991,7 @@ label nighttime:
 
     player "i still can't remember anything. nothing from the quest or mission or whatver it was."
 
-    "you can feel yourself growing angry."
+    "you can feel yourself growing angry." #DANIEL TIGER CORE LMAO 
 
     menu:
         "try to calm down.":
@@ -2040,7 +2043,7 @@ label part_7:
 
     "you close your eyes, drifting off to sleep."
     
-    show like mystery people here 
+    scene bg dream1
     v "even in death you are blessed."
 
     og "i miss them."
@@ -2065,6 +2068,7 @@ label part_7:
 
     annie "hello? come on and answer the door already!"
 
+    scene bg bedroom
     menu:
         "answer the door":
             jump door
@@ -2077,6 +2081,7 @@ label door:
 
     "i guess there's no hiding from this."
 
+    show annie 
     "you get up and open the door to find annie there."
 
     player "???"
@@ -3048,14 +3053,20 @@ label og_death_pt2:
 
     og "..."
 
-    og "it was going to make me watch you kill them."
+    og "it was going to make me watch you let him die."
+
+    menu:
+        "who die?":
+            og "..."
+
+            "he doesn't answer you."
 
     og "i have nothing against you, even if you are taking my life and acting as if it's your own."
 
     og "but i really do hate you."
 
     menu:
-        "i won't kill them.":
+        "i won't let anyone die.":
             jump og_death_pt3
         "i would never do something like that.":
             jump og_death_pt3
@@ -3383,9 +3394,13 @@ label hide_and_watch:
 
     evil1 "how could you speak about your parents that way."
 
+    evil2 "yes your oh so adoring parents."
+
     brennan "i didn't steal for no good reason and i didn't get ***** killed!"
 
-    "you watch brennan struggle against his restraints."
+    brennan "ALSO YOU BOTH SUCK!"
+
+    "you watch brennan struggle."
 
     brennan "you both sent him on a death mission! you knew he was going to go on my behalf!"
 
@@ -3395,13 +3410,15 @@ label hide_and_watch:
 
     evil1 "son you are speaking nonsense."
 
+    "person in crowd" "nono please let him continue talking i live for family drama!"
+
     evil1 "mad honey is not used freely. it is soley for the protection of the nation."
 
     brennan "come on pops, we all know you're a liar."
 
     evil1 "i just want what's best for you."
 
-    brennan "correction, you WANTED what was best for me."
+    brennan "correction, you WANTED what was best for you!"
 
     brennan "now you've turned into... this."
 
@@ -3409,7 +3426,7 @@ label hide_and_watch:
 
     evil2 "i think you are mistaken son."
 
-    evil1 "everyone, i'm sorry for the chit chat."
+    evil1 "everyone, i'm so sorry for the chit chat."
 
     evil1 "we will get on with the event."
 
@@ -3452,3 +3469,173 @@ label hide_and_watch:
             "nothing comes out."
     
     "you watch as they pry his jaw open."
+
+    "come on, you need to act."
+
+    menu:
+        "force yourself to move.":
+            "your fist clench."
+
+    jump attack_now
+
+label attack_now:
+    "you lunge at the man."
+
+    og "COME ON GO STOP THEM!"
+
+    "a voice rings through your ears and you feel stronger."
+
+    "you dash from the bushed at lightning speeds."
+
+    evil1 "!!!"
+
+    evil2 "what the-"
+
+    menu:
+        "kick him in the face.":
+            "you strike a kick at his face. the honey falling from his hand."
+
+        "slap him like one of those over dramatized tv shows.":
+            "you slap him while the crowd in the background gasps. the honey falls from his hand."
+
+    "person in crowd" "OH MY GOD RUN!"
+
+    "people start running in all different directions."
+
+    "brennan looks up at you with a grateful look on his face before shouting."
+
+    brennan "everyone listen! the honey is just so the wealthy stay weathly! they don't care about you or what you want!"
+
+    "person in crowd" "we already knew that!"
+
+    annie "???"
+
+    lou "then why are you still going along with it?"
+
+    "person in crowd" "i just wanted to be apart of something!"
+
+    menu:
+        "uhh you can come live at the village?":
+            "person in crowd" "oh actually?"
+        
+    "another voice perks up."
+
+    "like all of us?"
+
+    maryanne "sure?"
+
+    evil1 "even us?"
+
+    "he gestures towards himself and wagner."
+
+    menu: 
+        "maybe not you guys.":
+            you "maybe not you guys."
+
+            evil1 "hey that's not fair she made-"
+
+            evil2 "you need to calm down."
+
+        "sure?":
+            you "i guess we could make room?"
+
+            evil1 "WOO!!"
+
+            evil2 "but what happens to our castle? and like empire we've built."
+
+            evil1 "i guess we sell it on ebay?"
+
+            evil2 "yeah that works."
+
+    annie "so then what did we learn from this... mission?"
+    jump ending2
+
+label ending2:
+    menu:
+        "some people just need to be hit in the face.":
+            you "some people just need to be hit in the face."
+
+        "everything is meaningless, nothing matters in the end.":
+            you "everything is meaningless, nothing matters in the end."
+
+    annie "no. i really doubt that is the lesson."
+
+    "you look at brennan to check if he is okay."
+
+    brennan "what's got you so worried?"
+
+    menu:
+        "i'm sorry i replaced your friend.":
+            you "i'm sorry i replaced your friend."
+
+            brennan "..."
+
+            brennan "it's okay, he probably was laughing to himself about all of this."
+
+            "a voice rings through your head."
+
+            og "YOU BET I WAS!"
+
+            "brennan looks at you clueless. he seemed to not have noticed anything."
+
+            you "yeah he is."
+
+            brennan "we should rejoin the rest of the gang."
+
+            "he points towards everyone else talking."
+
+        "i should leave.":
+            you "i should leave."
+            
+            brennan "no please stay."
+
+            brennan "i know you aren't him, but i'd like to get to know you."
+
+            brennan "after all, you are apart of the party now."
+
+            "he points towards everyone else talking."
+
+    cassia "so is everyone just going to ignore the fact that they caused mass destruction and killed a bunch of people?"
+
+    "she points towards the formerly known villans in confusion."
+
+    menu: 
+        "the lion does not concern himself with the opinions of sheep":
+            you "the lion does not concern himself with the opinions of sheep"
+
+            "cassia hits you in the face."
+
+            you "OW?"
+
+            cassia "whatever i'm gonna tell lou to lock them up or something."
+
+            cassia "maybe that will clear the bounty on my head?"
+
+            "she laughs as she walks away."
+
+        "nah it's fine.":
+            you "nah it's fine."
+
+            you "this is the happily ever after, nothing can go wrong."
+
+            "cassia hits you in the face."
+
+            you "OW?"
+
+            cassia "whatever i'm gonna tell lou to lock them up or something."
+
+            cassia "maybe that will clear the bounty on my head?"
+
+            "she laughs as she walks away."
+
+    "you look up at the sky, there are still many unanswered questions."
+
+    "you look turn to look at your new friends."
+
+    "maybe they can help you find the answers."
+
+    scene black with fade
+
+    "until next time!"
+
+    return
