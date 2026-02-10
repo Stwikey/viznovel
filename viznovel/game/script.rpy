@@ -425,7 +425,7 @@ label part_2:
     show lil_boy happy 
     lil_boy "you better not."
 
-    show npc1 lightly scolding
+    show npc1 
     npc1 "okay fiz, leave the young adventurer alone. he has to rest as well."
     
     show lil_boy 
@@ -505,7 +505,6 @@ label check_drawers:
 
 #checks the photo of the adventuring party
 label photo:
-    scene bg photo
     "your fingers brush over the photo, removing a soft layer of dust"
 
     "the photo is of 6 members with a big burly man in the center." #fix details of photo
@@ -584,6 +583,7 @@ label check_bedroom:
 
 #look through the kitchen but find nothing    
 label check_kitchen:
+    scene bg kitchen
     "you enter the kitchen, feeling a sense of... nostalgia?"
 
     "there's the stove and sink and the table is set nicely"
@@ -608,6 +608,7 @@ label check_kitchen:
     jump search
 
 label part_3: 
+    scene bg bedroom
     "it's becoming late in the night."
     # MC sleeps but has dreams 
 
@@ -644,6 +645,8 @@ label part_3:
     "the voice fades away."
 
     "you wake up in a cold sweat." 
+
+    scene bg bedroom
 
     player "what was that?"
 
@@ -768,6 +771,8 @@ label part_4_messy:
 
     lou "let's just get on our way before it gets dark."
 
+    scene bg grass lands
+
     "you walk out of your house, as brennan and lou whisper from behind you."
 
     show brennan and lou 
@@ -791,6 +796,7 @@ label part_4_messy:
     jump ribs
 
 label part_3_clean:
+    scene bg bedroom
     unknown_brennan "*****! i was so worried."
 
     "you look at the group of people in front of you and them seem to be a slightly older version of the group from the photo."
@@ -845,6 +851,7 @@ label normal:
 
 # in this path player should learn more information that will help them make better choices in the future but not as much as messy search
 label detective: 
+    scene bg bedroom
     $ trust_level -= 1
     player "yeah the mission, what even was that task i mean it was so stupid, right?"
 
@@ -880,6 +887,8 @@ label detective:
 
     player "i'll treat you to a meal!"
 
+    scene bg grass lands
+
     "you march out in a random direction, hoping that parts of your memory would come back to remind you."
 
     brennan "so... what we feeling today *****?"
@@ -895,6 +904,7 @@ label detective:
 
 #goes to eat ribs but is sussed because it isn't a food MC would usually go for
 label ribs:
+    scene bg restaurant
     show annie at right 
     show maryanne at left
 
@@ -915,6 +925,7 @@ label ribs:
             jump thinking
 
 label cooly:
+    scene bg grass lands
     player "haha yeah! why don't we try something new today!"
 
     maryanne "...alright then?"
@@ -924,6 +935,7 @@ label cooly:
 
 #magically gets memory and trust level increases
 label thinking:
+    scene bg grass lands
     $ trust_level += 1
 
     "you start thinking frantically."
@@ -943,6 +955,7 @@ label thinking:
     jump goulash_restaurant
 
 label rib_restaurant:
+    scene bg restaurant
     "you and the group sit down in an old, beat down rib restaurant."
 
     "maybe thats why it was on sale."
@@ -966,6 +979,7 @@ label rib_restaurant:
             jump no_eat
 
 label eat:
+    scene bg restaurant
     $ trust_level -= 1
 
     "you dive into the ribs, eating it hungrily while ignoring the uncomfortable feeling in the back of your throat."
@@ -983,6 +997,7 @@ label eat:
             jump play_it_off
 
 label lie2:
+    scene bg restaurant
     $ trust_level -=1 
     player "haha! it must have been the hunt, i've changed a lot since then"
 
@@ -1003,6 +1018,7 @@ label lie2:
     jump part_5
 
 label play_it_off:
+    scene bg restaurant
     $ trust_level += 1
     player "haha! get PRANKED!"
 
@@ -1023,6 +1039,7 @@ label play_it_off:
     jump part_5
 
 label goulash_restaurant:
+    scene bg restaurant
     "you and the crew sits down in the goulash restaurant"
 
     player "five servings of the original goulash please"
@@ -1063,6 +1080,7 @@ label goulash_restaurant:
             jump part_5
 
 label part_5: 
+    scene bg grass lands
     "while walking on the way you can't help but pry for what happened."
 
     player "guys..."
@@ -1111,6 +1129,7 @@ label part_5:
             player "i can't remember anything."
 
     if trust_level >= 2: 
+        scene bg grass lands
         brennan "..."
 
         brennan "oh. that's why you haven't been all the way here."
@@ -1264,6 +1283,7 @@ label part_5:
 #broken trust brennen will be more snarky and angry (his heart guides him versus his head)
 #trustful brennan will be a lot more useful, he is trying his best to help you and will explain concepts in more detail ie. esstitally spelling out to the mc what is happening/happened
 label part_6: 
+    scene bg graveyard
     "as you arrive to the burial, a large mountain of dirt stood in front of you." 
 
     "the grave has a wooden cross stuck at the front, the grass around it well taken care of with fresh flowers planted near."
@@ -1521,6 +1541,7 @@ label stay:
     jump leave
 
 label leave:
+    scene bg bedroom
     "you quietly tiptoe through the house, something about the mornings makes you feel like you should be quiet."
 
     "you take one last glance behind you, before opening the door and getting hit in the face with a gust of fresh wind."
@@ -1528,13 +1549,12 @@ label leave:
     jump forest_2
 
 label forest_2:
+    scene bg forest
     "something pulls you towards the woods."
 
     "you walk in the direction of the forest, not sure what you are hoping to find, but hopefully something."
 
     if forestpick == True:
-        "you suddenly remember the girl you "
-
         player "that girl that was here before... I wonder who she was to \"me\""
 
     unknown_cassia "oh? i guess brennan was right huh?"
@@ -1558,11 +1578,8 @@ label forest_2:
 
     "the scroll reads..."
     
-    scene scroll 
-
     "you still can't read."
 
-    scene forest_clearing
     show cassia 
 
     player "i can't read."
@@ -1665,6 +1682,7 @@ label i_have_money:
     jump travelling
 
 label travelling:
+    scene bg night_market
     "cassia leads you to night market."
 
     "although, during the day it stands to be filled with less... obvious illegal activites."
@@ -1820,7 +1838,7 @@ label discussion:
     jump night_market 
 
 label night_market: 
-    scene bg nightmarket 
+    scene bg night_market 
     show cassia 
     cassia "we might be able to find out more if we stay here."
 
@@ -1841,7 +1859,7 @@ label night_market:
         "let's just ask them now.":
             jump daytime
 label daytime:
-    scene bg nightmarket
+    scene bg night_market
     "you continue to push forward even though the sun shines down."
 
     "the market is mostly empty except for a few vendors."
@@ -1883,6 +1901,7 @@ label daytime:
             jump nighttime
 
 label nighttime:
+    scene bg night_market
     "you come back with cassia at night, the market is filled with people, all concealing their identity."
 
     player "everyone looks like they have something to hide?"
@@ -3165,6 +3184,7 @@ label og_death_pt4:
     jump part_11
 
 label part_11:
+    scene bg bedroom
     "you return back to \"your\" house."
 
     "now that you know that you aren't whatever everyone keeps calling you."
