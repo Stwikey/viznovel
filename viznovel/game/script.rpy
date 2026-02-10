@@ -1616,13 +1616,19 @@ label forest_2:
     if forestpick == True:
         player "speak of the devil."
 
+    show cassia norm
+
     unknown_cassia "i KNEW it! something was odd about you."
 
     unknown_cassia "you really aren't ***** are you?"
 
     player "..."
 
+    show cassia sus
+
     unknown_cassia "stop pretending you don't know"
+
+    show document
 
     "the girl uncrumples a scroll and holds it to your face for you to read"
 
@@ -1630,7 +1636,7 @@ label forest_2:
     
     "you still can't read."
 
-    show cassia 
+    show cassia norm
 
     player "i can't read."
 
@@ -1644,11 +1650,16 @@ label forest_2:
 
     if trust_level >= 2:
 
+        show cassia norm
+
         unknown_cassia "brennan gave this to me, didn't trust it at first but now seeing you..."
 
         unknown_cassia "starting to think it's actually real."
     
     else: 
+
+        show cassia norm
+
         unknown_cassia "a guy you might know gave this to me. said you were a goner."
 
         unknown_cassia "thought he was joking at first but now seeing you..."
@@ -1660,6 +1671,7 @@ label forest_2:
             jump who_am_i
 
 label who_are_you:
+    show cassia norm
     unknown_cassia "number one rule of an adventurer is to NOT give out information for free."
 
     unknown_cassia "what makes you think i can trust you?"
@@ -1671,9 +1683,12 @@ label who_are_you:
             jump tell_the_truth
 
 label who_am_i:
+    show cassia happy
     unknown_cassia "YOU? what makes you think i know who you are if YOU don't even know who you are?"
 
     player "i mean, who was \"i\"."
+
+    show cassia sus
 
     "the girl scrunches her face, annoyed."
 
@@ -1688,6 +1703,8 @@ label who_am_i:
 label tell_the_truth:
     player "i don't remember anything."
 
+    show cassia sus
+
     "she stands there unimpressed."
 
     player "i need help."
@@ -1695,6 +1712,8 @@ label tell_the_truth:
     unknown_cassia "and that's a me problem how?"
 
     player "please?"
+
+    show cassia norm
 
     unknown_cassia "hmmm... i don't speak without a price."
 
@@ -1705,17 +1724,23 @@ label tell_the_truth:
             jump i_have_money
 
 label i_have_money:
+    show cassia norm
+
     "you pull out the pouch of gold coins still left in your pocket"
 
     player "is this enough?"
 
     "the girl's face lights up almost instantly"
 
+    show cassia happy
+
     unknown_cassia "WOAH YOU'RE LOADED!"
 
     "the girl snatches the pouch quicker before you can react" #she could probably run away with the money but also wants to know whats up with mc 
 
     player "hey-!"
+
+    show cassia norm
 
     cassia "i'm cassia nice to meet you by the way i have a 101-100 win lose score against you right now."
 
@@ -1729,6 +1754,8 @@ label i_have_money:
 
     "you follow cassia through the forest, not sure where you are going but you have a feeling you can trust her."
 
+    hide cassia with fade
+
     jump travelling
 
 label travelling:
@@ -1739,13 +1766,19 @@ label travelling:
 
     "cassia sits down in one of the wooden chairs and starts counting the coins in her pouch of money"
 
+    show cassia happy
+
     cassia "with this i might be able to finally bail a certain hibernating guy out of debt kekekeke." #HAHAH KEKEKEKEKEKE
 
     player "answer my question."
 
+    show cassia sus
+
     "cassia sighs."
 
     cassia "alright *****,"
+
+    show cassia norm
 
     cassia "mad honey is said to give you the powers that only gods can wield."
 
@@ -1771,6 +1804,8 @@ label travelling:
     player "yeah... its like static. i also can't read it either. or i guess read in general. all the writing looks like gibberish." #mc cant read just like me frfr 
 
     "cassia thinks for a moment, before a smug grin slowly appears on her face."
+
+    show cassia happy
 
     cassia "hey ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** *****!"
 
@@ -1855,7 +1890,10 @@ label travelling:
         jump part_7
 
 label discussion:
+    scene bg forest
     player "do you have any idea what happened to me? or what quest i went on" 
+
+    show cassia norm
 
     cassia "i only know that you had to go in search of something."
 
@@ -1869,7 +1907,7 @@ label discussion:
 
     player "...i'm sorry"
 
-    show cassia smile
+    show cassia norm
 
     cassia "it's okay, i mean, it wasn't you"
 
@@ -1885,14 +1923,18 @@ label discussion:
 
     "cassia leads you through the forest, a series of twists and turns you wouldn't be able to remember even if you tried."
 
+    hide cassia with fade
+
     jump night_market 
 
 label night_market: 
     scene bg night_market 
-    show cassia 
+    show cassia sus
     cassia "we might be able to find out more if we stay here."
 
     cassia "this place isn't... the nicest towards newbies."
+
+    show cassia norm
 
     cassia "just follow my lead yeah?"
 
@@ -1908,15 +1950,20 @@ label night_market:
 
         "let's just ask them now.":
             jump daytime
+
 label daytime:
     scene bg night_market
     "you continue to push forward even though the sun shines down."
 
     "the market is mostly empty except for a few vendors."
 
+    show cassia happy
+
     cassia "MARCUS MY MAN!"
 
     vendor1 "my name is garry."
+
+    show cassia sus
 
     cassia "oh what?"
 
@@ -1925,6 +1972,8 @@ label daytime:
     "you hear heavy foot steps behind you, a figure placing a hand on your shoulder."
 
     vendor2 "and who might you be..."
+
+    show cassia norm
 
     cassia "he's with me! we are trying to find out information about... the hunt."
 
@@ -2072,11 +2121,15 @@ label nighttime:
 label calmdown:
     "you breathe in and out."
 
+    show cassia sus
+
     cassia "are you okay?"
 
     player "i just..."
 
     "you continue to breathe but can't help what happens next."
+
+    hide cassia with fade
 
     jump gointoarage
 
@@ -2097,11 +2150,15 @@ label gointoarage:
 
     player "man he was right. i should just leave the village and start a new life."
 
+    show cassia sus
+
     cassia "..."
 
     cassia "we made good progress today though."
 
     cassia "we'll recover those memories one way or another."
+
+    hide cassia with fade
 
     "you part ways with cassia for the day and return back to \"your\" house."
 
