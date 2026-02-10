@@ -77,7 +77,7 @@ label start:
     menu:
         "where am i?":
             player "where am i?"
-        "who let me sleep on the ground?":
+        "who let me sleep on the gound?":
             player "who let me sleep on the ground?"
     
     "as you look around you realize that there isn't much of anything to give you clues on where you could be."
@@ -98,6 +98,7 @@ label start:
             jump sleep 
 
 label explore: 
+    scene bg grass lands
     "sleep is for the weak!"
 
     "you spring up and begin looking around"
@@ -117,7 +118,6 @@ label sleep:
     "you close your eyes and feel yourself drifting away"
 
     scene bg dream1 with fade
-    #show 
 
     "???" "stop! get away from me please, *****. this was just a misunderstanding!"
 
@@ -173,10 +173,10 @@ label sleep:
             jump village
 
 #MC meets a stranger in the forest, they act like they know you but you have no memory of them
-label forest:
+label forest: 
     # turn bg into some forest 
     $forestpick = True 
-    scene bg forest_clearing
+    scene bg forest clearing
     "you walk through the forest, unsure where you are travelling to."
 
     "you look around, hoping to identify some kind of landmark that can indetify this place."
@@ -207,15 +207,18 @@ label forest:
             jump silent
 
 label question:
-    show cassia confused 
+    scene bg forest clearing
+    show cassia sus 
     "a hint of suspicion flickers over the girl's face, too quick to notice."
 
-    show cassia happy
+    show cassia norm
     unknown_cassia "oh come on! are you seriously pretending to not know me? after all we've been through?"
 
     player "uhhh yeah, can you get off me now? i'm a busy man."
 
     "she steps back."
+
+    show cassia sus
 
     unknown_cassia "ah, I see how it is. this is one of your silly pranks."
 
@@ -242,11 +245,15 @@ label question:
 label silent:
     "..."
 
+    show cassia happy
+
     unknown "hey~ did you hear meee???"
 
     "you continue to stay silent, after all, your mom always told you not to talk to strangers."
 
     "or at least that's what you think your mom would have told you, if you remembered who your mom was or who you were."
+
+    show cassia sus
 
     "after a while, she grows frustrated and disappears in a flash."
 
@@ -259,6 +266,9 @@ label silent:
 label forest_end:
     #cut back to unknown
     scene black with fade
+
+    show cassia sus
+
     unknown_cassia "somethings off... ***** should've noticed when I tried to rob him earlier"
 
     unknown_cassia "his biceps have also gotten skinnier..."
@@ -292,18 +302,27 @@ label village:
         "freak out":
             jump freak 
     # both natural and freak out path lead to the same conclusion of the guy just brushing you off and you learn about ur characters lore
-label natural: 
-    player "haha yeah! it was difficult...? or easy...? you know, obviously because you've been expecting me"
 
+label natural: 
+    scene bg village 
+
+    player "haha yeah! it was difficult...? or easy...? you know, obviously because you've been expecting me"
+   
+    show npc 1
+   
     npc1 "you are always the prankster huh?"
     
     player "yep! you know me obviously! speaking of know... do you know where my friends are?"
+
+    show npc 1
 
     npc1 "friends? you never had friends."
 
     player "right! i hate all of you!"
 
     "the old man looks at you weird."
+
+    show npc 1
 
     npc1 "you do know i was joking right?"
 
@@ -316,25 +335,36 @@ label natural:
         "???":
             player "yeppers!"
 
+            show npc 1
+
             npc1 "yeppers?"
 
             player "haha just something i learned on the road!"
+
+            show npc 1
 
             npc1 "okay..."
 
     "there's something up with the people here..."
 
+    show npc 1
+
     npc1 "you seem to be acting weird, are you sure your okay?"
 
     player "yeah, just peachy."
     
+    show npc 1
+
     npc1 "we didn't expect you to return, to be quite honest."
+
+    show npc 1
 
     npc1 "*****, we are glad you have returned. really, we are."
 
     jump part_2
 
 label freak: 
+    scene bg village
     player "who are you how do you know me?"
 
     "you pick up the old man by the shoulders"
@@ -374,14 +404,14 @@ label part_2:
         "huh?":
             player "huh?"
 
-    show lil_boy happy
+    show fiz happy
     unknown "TELL ME EVERYTHING! did you get me the gift you promised? or did you forget about me?"
 
-    show lil_boy sad 
+    show fiz sad 
 
     "you stand still trying to piece together what is happening..."
 
-    #want lil boy to fade into the background while the player is thinking 
+    hide fiz with fade
 
     "the people in this village all seem to revere you as some unsung hero of their time."
 
@@ -397,14 +427,19 @@ label part_2:
 
     "elsewhere..."
 
+    show npc1
+
     npc1 "he seems... different charles."
 
     npc2 "you worry too much old man, he's probably scattered from the mission. after all, if he's back that means..."
 
+    show npc1
+
     npc1 "they won't be an issue anymore." 
 
     scene village with fade 
-    show lil_boy sad 
+    
+    show fiz sad 
 
     player "yeah, i'm sorry i'm just tired from... where i've been. because i go places. i'm sorry fiz."
 
@@ -422,19 +457,23 @@ label part_2:
 
     player "i'm sorry. i promise i won't scare you like that again."
 
-    show lil_boy happy 
+    show fiz happy 
     lil_boy "you better not."
 
     show npc1 
     npc1 "okay fiz, leave the young adventurer alone. he has to rest as well."
     
-    show lil_boy 
-    lil_boy "okay fine... but you better come visit me soon!"
+    show fiz sad 
+    lil_boy "okay fine..."
+    
+    show fiz happy
+    lil_boy "but you better come visit me soon!"
 
-    hide lil_boy
+    hide fiz
     jump home
 
     #MC returns back to "his" house 
+
 label home: 
     scene bg home with fade
     "At your home..."
@@ -455,6 +494,7 @@ label home:
 
 #MC finds a photo of "him" and a crew & documents, leaving the house to a mess
 label reckless: 
+    scene bg home
     $ messy = True
     $ trust_level -= 1
     "you search through the house, opening drawers halfhazardly and disregarding the orginal organization of the place." 
@@ -467,6 +507,7 @@ label reckless:
 
 #MC finds a photo of him and his crew, leaving the house clean
 label careful: 
+    scene bg home
     $trust_level += 1
     jump search
 
@@ -482,6 +523,7 @@ label search:
 
 #searching through the house (add more)
 label check_drawers:
+    scene bg home
     if messy:
         "you start by quickly rummaging through the drawers, sheets of papers flying out."
         
@@ -505,6 +547,7 @@ label check_drawers:
 
 #checks the photo of the adventuring party
 label photo:
+    show photo with fade
     "your fingers brush over the photo, removing a soft layer of dust"
 
     "the photo is of 6 members with a big burly man in the center." #fix details of photo
@@ -528,6 +571,8 @@ label photo:
     player "an adventuring party?"
 
     player "\"my\"... adventuring party?"
+    
+    hide photo with fade
 
     if messy:
         menu:
@@ -538,6 +583,7 @@ label photo:
 
 #checks the document of the quesst
 label document:
+    show document 
     "you pick up the document that had fallen on the floor."
 
     menu:
@@ -545,10 +591,13 @@ label document:
             jump read_document
 
 label read_document:
+    show document 
     #i want mission reveal during food time so it is revealed to both messy and clean, the messy and clean is important for brennans sus later on though
     "you look down at the document to find that it is all the same type of writing you could not read earlier."
 
     "maybe pocketing this for later will be benifical."
+
+    hide document with fade
     $ document = True 
     jump part_3
 
@@ -680,7 +729,7 @@ label part_3:
     # if player chose the sneaky looking then brennan will continue like nothing happened 
 
 label part_3_messy:
-    show brennan talking at right
+    show brennan talking
     unknown_brennan "*****! i-"
 
     show brennan normal
@@ -690,7 +739,7 @@ label part_3_messy:
     "brennan narrows his eyes, scanning the room"
 
     "he begins to mutter quietly under his breath"
-    show brennan talking at right 
+    show brennan talking 
     unknown_brennan "why is everything... everywhere?!"
     show brennan normal 
 
@@ -950,6 +999,7 @@ label thinking:
 
     "brennan smiles widely. he puts his arm around you."
 
+    show brennan talking
     brennan "now THAT'S the correct answer!"
 
     jump goulash_restaurant
