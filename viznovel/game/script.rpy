@@ -464,6 +464,7 @@ label part_2:
     show npc1 
     npc1 "okay fiz, leave the young adventurer alone. he has to rest as well."
     
+    hide npc1
     show fiz sad 
     lil_boy "okay fine..."
     
@@ -713,10 +714,7 @@ label part_3:
     "you rush to the door" 
 
     #figure out placement when all models are made 
-    show brennan normal at left
-    #show maryanne normal at middle 
-    show annie at right 
-    #show lou_normal at middle right 
+    show brennan normal 
 
     "opening it to find a group of people you recognize from the photo. this must have been your crew."
 
@@ -730,12 +728,16 @@ label part_3:
     # if player chose the sneaky looking then brennan will continue like nothing happened 
 
 label part_3_messy:
+    scene bg bedroom
     show brennan talking
+    scene bg bedroom
     unknown_brennan "*****! i-"
 
     show brennan normal
-
+    scene bg bedroom
+    show annie scared 
     unknown_annie "!"
+    hide annie scared 
 
     "brennan narrows his eyes, scanning the room"
 
@@ -825,21 +827,31 @@ label part_4_messy:
 
     "you walk out of your house, as brennan and lou whisper from behind you."
 
-    show lou at left 
-    show brennan at right
+    show brennan talking 
 
     brennan "there's something... wrong with *****."
 
+    hide brennan talking 
+    show lou 
     lou "i noticed as well but chalked it up to time."
 
+    hide lou
+    show brennan talking 
+
     brennan "i'm going to keep an eye on him, i think something messed with him during the hunt."
-
+    hide brennan talking 
+    show lou 
     lou "he wouldn't get hurt during the hunt though."
-
+    hide lou
+    show brennan talking 
     brennan "yeah but... something's wrong."
 
+    hide brennan talking 
+    show maryanne 
     maryanne "i'm hungry can we walk faster... ugh."
 
+    hide maryanne 
+    show brennan 
     brennan "yeah, ***** you decide."
 
     "brennan stares at you suspicously."
@@ -923,14 +935,21 @@ label detective:
 
     maryanne "glad that didn't get in your head or else you would've become even more intolerable than now."
 
-    show lou serious face
+    show lou 
     lou "but we all know what that mission really was."
+
+    hide lou 
+    show annie scared 
 
     annie "stop. let's just stop talking about it."
 
+    hide annie scared 
+    show lou 
+
     lou "face it. they were trying to kill him."
 
-    show brennan happy 
+    hide lou 
+    show brennan normal
     brennan "but~ he didn't die! and now we get to live the rest of our lives in peace."
 
     brennan "the history books are gonna remember us!"
@@ -1172,7 +1191,7 @@ label part_5:
 
     "brennan begins to walk next to you, allowing the rest of the group to walk ahead."
 
-    show brennan serious
+    show brennan talking
     brennan "i don't know what you faced, well... i have a rough idea. but i just want you to know you can talk to me, you know that right?"
 
     player "yeah, of course. i just..."
@@ -1207,7 +1226,7 @@ label part_5:
 
         brennan "so i guess you did \"die\" huh?"
 
-        show brennan getting upset 
+        show brennan normal
         menu:
             "i don't understand.":
                 player "i'm sorry, i don't understand."
@@ -1296,10 +1315,10 @@ label part_5:
 
         player "brennan please i can explain-"
 
-        show brennan upset tears in eyes 
+        show brennan scared
         brennan "stop... talking."
 
-        show brennan wiping away his tears
+        show brennan normal
         brennan "damn it, you even sound like him."
 
         brennan "listen, we can pretend everything is okay for one more day, but by tommorow your gone. you hear me?"
@@ -1352,7 +1371,7 @@ label part_6:
     "you glance at the signage only to be met with the same writing you could never read."
 
     "from the headstone you can deduct what your name should look like... but you still can't read it."
-
+    show maryanne
     maryanne "sorry we buried you, thought you wouldn't return."
 
     "lou hits maryanne on the shoulder."
@@ -1360,40 +1379,59 @@ label part_6:
     maryanne "hey he thought so too!"
 
     "she points a finger at you."
-
+    hide maryanne
+    show lou
     lou "sorry, it's just..."
-
+    hide lou
+    show annie
     annie "after we lost contact with you, we thought it was over. like for real."
 
     annie "of course there was never a body to bury but, we just wanted somewhere to visit."
 
+    hide annie 
+    show lou 
     lou "a place where we could go to."
-
+    hide lou 
+    show annie
     annie "so it looks a bit nicer than when you last saw it."
-
+    hide annie 
+    show brennan normal
     brennan "you know..."
 
     brennan "because you went on the hunt, and thought you would die. so you told us to fake burry you."
 
     "you aren't stupid, you could tell that brennan was spelling things out for you."
-
+    hide brennan normal 
+    show maryanne 
     maryanne "kekeke, you were all goofy with it too."
 
     maryanne "\"remember me as a super strong handsome guy... bleh\""
 
     "the party smiles at the memory."
+    hide maryanne 
+    show annie 
 
     annie "the hunt is stupid. there's too many dangers and we never even reap the rewards of the thing."
 
+    hide annie 
+    show brennan normal 
     brennan "i mean the payment isn't nothing."
 
+    hide brennan normal 
+    show annie 
     annie "yeah but it's nothing in comparison to you know... death?"
 
+    hide annie 
+    show lou 
     lou "hey! i sent ***** with the best possible route, statistically it was the highest it would've ever been."
-
+    
+    hide lou
+    show annie scared 
     annie "but maybe if i sent you with more food you wouldn't have come back so much slimmer."
 
-    show annie worried #this is where her like indecisivness leads to delayed action 
+    hide annie 
+
+    "they continue to bicker."
 
     brennan "the hunt is necessary." 
 
@@ -1403,6 +1441,7 @@ label part_6:
 
     if trust_level >= 2:
         # brennan will fully explain the hunt
+        show brennan talking
         brennan "it's controversial but what isn't?"
 
         brennan "i tried finding out what i could, but ever since... getting kicked. i can't really figure out much."
@@ -1411,11 +1450,12 @@ label part_6:
 
         brennan "all i know is that we weren't always like this..."
 
-        show viktor and wagner 
+        scene bg woods
+
+        show evil1 at left 
+        show evil2 at right
 
         brennan "we didn't need it."
-
-        show adventures finding the very first source of mad honey 
 
         brennan "but once they started, they couldn't live without it."
 
@@ -1427,31 +1467,41 @@ label part_6:
 
         brennan "but it changes how you think. makes you act irrationally and selfishly."
 
+        scene bg graveyard
+        show annie scared
         annie "and after that it's anyones guess." 
 
+        hide annie scared
+        show maryanne 
         maryanne "they say it's for our protection, so that we have a constant supply of food, water, etc. but we all know what that really means."
 
         lou "blackmail. they've hated us ever since didn't kick brennan out like they did."
 
+        hide maryanne 
+        show brennan normal 
         "brennan looks away. kicking at a rock."
     
     else: 
         #brennan refuses to explain the hunt. 
+        show brennan normal
         brennan "yeah we SHOULD all know it."
 
         "brennan stares at you. he has something he wants to say but is holding back."
    
-    show brennan upset 
+    show brennan normal 
     brennan "it isn't fair. the only reason you went is because you volunteered."
 
     lou "calm down brennan, we get it."
 
-    show brennan shouting 
+    show brennan talking
     brennan "no you don't!"
 
     brennan "***** DIDN'T HAVE TO GO!"
 
     brennan "HE CHOSE TO!"
+
+    hide brennan talking 
+    show annie scared 
 
     "annie slaps brennan in the face."
 
@@ -1465,8 +1515,14 @@ label part_6:
 
     annie "***** is here now and that's all that matters."
 
+    hide annie scared 
+    show brennan talking 
+
     if trust_level >= 2:
         brennan "yeah your right. sorry."
+
+        hide brennan talking 
+        show brennan normal
 
         annie "everything's gonna be okay."
 
@@ -1477,6 +1533,9 @@ label part_6:
     else:
         brennan "yeah, \"he's\" here."
 
+        hide brennan talking 
+        show brennan normal
+
         "the world seems to react."
 
         "you hear a voice, almost like a whisper in your ear."
@@ -1485,15 +1544,24 @@ label part_6:
 
     "the group stares silently at the makeshift grave for a moment until lou cuts through the silence."
 
+    scene bg graveyard
+    show lou 
     lou "let's return home, shall we? it's getting dark now." 
+
+    hide lou 
 
     "lou pats annie reassuringly on her back and they slowly start walking to the direction of the village." 
 
     "slowly, the rest of the group follows until only you and brennan remain."
 
+    show brennan talking 
+
     brennan "i..."
 
     brennan "i'm sorry."
+
+    hide brennan talking 
+    show brennan normal 
 
     menu:
         "no i understand it must be hard.":
@@ -1512,7 +1580,7 @@ label part_6:
 
         brennan "but then you decided to be the hero."
 
-        show brennan upset
+        show brennan talking
 
         brennan "i should've told you to take it back."
 
@@ -1526,6 +1594,8 @@ label part_6:
 
                 brennan "back to where i ran away from."
 
+    scene bg graveyard
+    show brennan scared 
     brennan "we tried our best to prepare you."
 
     brennan "maryanne stopped playing her little games, annie was running around the village gathering anything she could."
@@ -1540,7 +1610,6 @@ label part_6:
 
     brennan "i stole. i stole from the kingdom."
 
-    show flashback
     brennan "because we all knew you wouldn't survive. lou was losing his mind, maryanne was trying her hardest to pick up the slack."
 
     brennan "it's was stupid."
@@ -1551,25 +1620,26 @@ label part_6:
         brennan "because i caused it to happen."
 
     else:
+        hide brennan scared
+        show brennan talking 
         brennan "maybe that's why..."
 
         brennan "you aren't you."
 
-    hide brennan 
+    scene bg graveyard
 
     "he starts walking ahead. you walk next to him but don't speak."
     
     "you reach the village as brennan drops you off at your house."
 
+    show brennan talking 
     brennan "you live here by the way."
 
     if trust_level >= 2:
-        show brennan bashful 
 
         brennan "i didn't know if you would remember."
     
     else:
-        show brennan annoyed
 
         brennan "you wouldn've known if you remembered."
 
@@ -1646,6 +1716,8 @@ label forest_2:
     "the scroll reads..."
     
     "you still can't read."
+
+    hide document 
 
     show cassia norm
 
@@ -1914,7 +1986,7 @@ label discussion:
 
     cassia "i ran a few errands tho, grabbed stuff from out of town and all that."
 
-    cassi "but as far as i know you just... disappeared"
+    cassia "but as far as i know you just... disappeared"
 
     player "...i'm sorry"
 
@@ -1957,7 +2029,7 @@ label night_market:
 
     menu:
         "let's wait until nightfall.":
-            jump nightime
+            jump nighttime
 
         "let's just ask them now.":
             jump daytime
@@ -2057,6 +2129,8 @@ label nighttime:
     "you walk to the front of the booth to be meeted with another hooded figure."
 
     cassia "..."
+    
+    show unknown brennan 
 
     unknown_brennan "..."
 
@@ -2070,8 +2144,12 @@ label nighttime:
 
     unknown_brennan "thank you for the business. it'll be my last day here so you are lucky."
 
+    hide unknown brennan 
+    show cassia norm
     cassia "we want to know everything."
 
+    hide cassia norm
+    show unknown brennan 
     unknown_brennan "and i'll gladly tell you."
 
     "a rune appears in front of you as the vendor begins his story. the magic feels... familliar."
@@ -2084,8 +2162,8 @@ label nighttime:
 
     unknown_brennan "we didn't need it."
 
-    show evil1
-    show evil2
+    show evil1 at left 
+    show evil2 at right 
     unknown_brennan "but once they started, they couldn't live without it."
 
     hide evil1
@@ -2115,7 +2193,9 @@ label nighttime:
     cassia "thank you for your time."
 
     "you both walk away."
+    scene bg forest
 
+    show cassia norm 
     cassia "so the higher ups send some lab rat to go do their dirty work."
 
     player "i still can't remember anything. nothing from the quest or mission or whatver it was."
@@ -2130,6 +2210,7 @@ label nighttime:
             jump gointoarage
 
 label calmdown:
+    scene bg forest
     "you breathe in and out."
 
     show cassia sus
@@ -2145,6 +2226,7 @@ label calmdown:
     jump gointoarage
 
 label gointoarage:
+    scene bg forest
     "your body experiences hot flashes, as you can feel yourself physically grow."
 
     player "I JUST DON'T UNDERSTAND!"
@@ -2287,6 +2369,7 @@ label open_the_box:
     jump choices
 
 label choices:
+    scene bg bedroom
     menu:
         "look at the photo.":
             jump childhood_photo
@@ -2302,8 +2385,8 @@ label choices:
 
 label childhood_photo:
     "touching the photo, visions appear in your head."
+    scene bg open field
 
-    show expression happy
     "children run around the field."
 
     "you look down to see your hands are also that of a childs."
@@ -2347,8 +2430,8 @@ label childhood_photo:
     og "perfect!"
 
     "you feel yourself move through time. this time you are back in the village."
-
-    show brennan 
+    scene village 
+    show brennan normal 
     og "here... um. i have to leave on the quest in a bit but i wanted you to have this."
 
     brennan "why are you acting like you aren't coming back."
@@ -2796,8 +2879,6 @@ label help_other_you:
 
     og "now that he's finally taken care of."
 
-    show og happy 
-
     og "we have much to discuss."
 
     og "..."
@@ -2825,8 +2906,6 @@ label do_nothing:
 
     og "now that he's finally taken care of..."
 
-    show og scary face 
-
     og "aren't you just useless hm?"
 
     player "um... i'm sorry i just..."
@@ -2840,8 +2919,6 @@ label do_nothing:
 
 label appease: 
     og "hmm, yeah good point."
-
-    show og netural 
 
     og "well we have much to discuss"
 
@@ -2902,10 +2979,8 @@ label punch_og:
 
 label part_10: 
     if friendly_og == True:
-        show og happy
         og "i should probably tell you everything."
 
-        hide og 
         #show flip of images of the hunt 
 
         og "my name is *****."
@@ -2943,8 +3018,6 @@ label part_10:
 
     player "WHAT?"
 
-    show og nervous 
-
     og "haha enough about that though!"
 
     menu:
@@ -2967,8 +3040,6 @@ label leave_it:
 
     og "but if i didn't go, if i didn't volunteer."
 
-    show og tearing up 
-
     og "they would've picked brennan."
 
     og "he'll deny it."
@@ -2976,8 +3047,6 @@ label leave_it:
     og "he kept saying"
 
     og  "\"no way they'll choose any of us! maryanne doesn't train, annie's build like a twig, cassia has a criminal record, and lou is all brains no brawns\""
-
-    show brennan
 
     og "but we all knew."
 
