@@ -72,6 +72,21 @@ image brennan normal  = Transform("brennan normal.png", zoom = 0.7)
 image brennan talking  = Transform("brennan talking.png", zoom = 0.7)
 image brennan scared = Transform("brennan scared.png", zoom = 0.7)
 
+image annie = Transform("annie.png", zoom = 0.7)
+image annie scared = Transform("annie scared.png", zoom = 0.7)
+
+image lou = Transform("lou.png", zoom = 0.8)
+
+image unknown brennan = Transform("unknown brennan.png", zoom = 0.7)
+
+image evil1 = Transform("evil1.png", zoom = 0.7)
+image evil2 = Transform("evil2.png", zoom = 0.7)
+
+image v = Transform("v.png", zoom = 0.7)
+image og = Transform("og.png", zoom = 0.9)
+
+image trinkey = Transform("trinket.png", zoom = 0.7)
+
 label start:
     scene bg grass lands with fade
     menu:
@@ -903,7 +918,7 @@ label part_4_messy:
     maryanne "i'm hungry can we walk faster... ugh."
 
     hide maryanne 
-    show brennan 
+    show brennan normal 
     brennan "yeah, ***** you decide."
 
     "brennan stares at you suspicously."
@@ -1784,6 +1799,7 @@ label part_6:
         "i don't mean to forget.":
             player "i don't mean to for-"
 
+    show brennan talking 
     brennan "stop talking."
 
     if trust_level >= 2:
@@ -1801,8 +1817,11 @@ label part_6:
 
         brennan "lou would never let me do something that stupid."
 
+        show brennan normal 
+
         menu:
             "why would that be stupid?":
+                show brennan talking 
                 brennan "because then they would've took me back."
 
                 brennan "back to where i ran away from."
@@ -1827,10 +1846,14 @@ label part_6:
 
     brennan "it's was stupid."
 
+    show brennan normal 
+
     if trust_level >=2:
+        show brennan talking 
         brennan "but maybe thats why you don't remember."
 
         brennan "because i caused it to happen."
+        show brennan normal 
 
     else:
         hide brennan scared
@@ -1838,6 +1861,7 @@ label part_6:
         brennan "maybe that's why..."
 
         brennan "you aren't you."
+        show brennan normal 
 
     scene bg graveyard
 
@@ -1851,25 +1875,30 @@ label part_6:
     if trust_level >= 2:
 
         brennan "i didn't know if you would remember."
-    
+        show brennan normal 
+
     else:
 
         brennan "you wouldn've known if you remembered."
-
+        show brennan normal 
         menu:
             "...":
-
+                
+                show brennan talking 
                 brennan "whatever bye."
-        
+                show brennan normal 
+
             "bashing me won't bring my memories back.":
+                show brennan normal  
                 brennan "..."
 
+                show brennan talking 
                 brennan "whatever man."
 
-    scene black with fade 
+    scene black
     "you walk into your house and decide to rest for the night."
 
-    scene bg bedroom 
+    scene bg bedroom with fade 
     "you wake up, still groggy, to the sun shining in your face."
 
     menu:
@@ -2122,6 +2151,7 @@ label travelling:
     else:
         player "do you happened to know more about... the old me?"
 
+        show cassia norm 
         cassia "hmmm..."
 
         cassia "well you were really nice, a bit stupid like you are now but, in a more endearing way."
@@ -2134,10 +2164,13 @@ label travelling:
             "why weren't you with everyone earlier?":
                 player "how come at my door, everyone was there but you?"
 
-                cassia "not my fault! blame the stupid bear, i was dealing with some... let's say not so lovely company that may or may not have put a bounty on my head."
+                show cassia happy 
 
+                cassia "not my fault! blame the stupid bear, i was dealing with some... let's say not so lovely company that may or may not have put a bounty on my head."
+                
                 player "?!"
 
+                show cassia norm 
                 cassia "so i guess he didn't tell you everything everything like he said he would."
 
         player "could you tell me a bit about me more?"
@@ -2302,6 +2335,7 @@ label nighttime:
 
     player "everyone looks like they have something to hide?"
 
+    show cassia norm 
     cassia "that's because they do. you only do shady business here."
 
     cassia "there's a sign over there."
@@ -2343,6 +2377,8 @@ label nighttime:
     "you walk to the front of the booth to be meeted with another hooded figure."
 
     cassia "..."
+
+    hide cassia norm 
     
     show unknown brennan 
 
@@ -2390,9 +2426,15 @@ label nighttime:
 
     unknown_brennan "they say it's for our protection, so that we have a constant supply of food, water, etc. but we all know what that really means."
 
+    scene bg night_market
     player "..."
 
+    show cassia sus 
+
     cassia "so it's a suicide mission all for some honey?"
+
+    hide cassia sus 
+    show unknown brennan 
 
     unknown_brennan "they were eyeing someone for the job before..."
 
@@ -2400,10 +2442,18 @@ label nighttime:
 
     unknown_brennan  "...it was taken by someone else last minute."
 
+    hide unknown brennan 
+    show cassia sus 
+
     cassia "do you happen to know what happened on the latest hunt?"
+
+    hide cassia sus 
+    show unknown brennan 
 
     unknown_brennan "*chuckles*, god i wish i did. but the guy they sent on it doesn't remember a thing."
 
+    hide unknown brennan 
+    show cassia norm 
     cassia "thank you for your time."
 
     "you both walk away."
@@ -2478,27 +2528,54 @@ label part_7:
     "you close your eyes, drifting off to sleep."
     
     scene bg dream1 with fade 
+    show v 
     v "even in death you are blessed."
+
+    hide v 
+    show og 
 
     og "i miss them."
 
+    hide og 
+    show v
+
     v "that is known, but you cannot return."
 
+    hide v 
+    show og 
+
     og "i wish i could've said goodbye at the very least."
+
+    hide og 
+    show v
 
     v "maybe we can find a workaround."
 
     "the figure lifts something up to the other"
 
+    hide v 
+    show og 
+
     og "i can't. that would destroy them."
+
+    hide og 
+    show v 
 
     v "this is the best solution that i have..."
 
+    hide v 
+    show og 
+
     og "fine. but, how will they know?"
+
+    hide og 
+    show v
 
     v "they'll know."
 
     "BANG BANG BANG" 
+
+    hide v 
 
     annie "hello? come on and answer the door already!"
 
@@ -2540,6 +2617,7 @@ label door:
             jump stare_at_annie
 
 label give_money_to_annie:
+    show annie 
     annie "what the heck. i don't want that."
 
     player "???"
@@ -2580,7 +2658,7 @@ label door_pt2:
 label open_the_box:
     "opening the box you see a number of objects."
 
-    "photos of you when you were younger, a trinket, and a dirty rag."
+    "photos of you when you were younger and a trinket"
 
     jump choices
 
@@ -2592,9 +2670,6 @@ label choices:
 
         "look at the trinket.":
             jump trinket
-
-        "look at the dirty rag.":
-            jump dirty_rag
 
         "put the box away":
             jump part_8
@@ -2648,12 +2723,21 @@ label childhood_photo:
     "you feel yourself move through time. this time you are back in the village."
 
     scene bg village 
-    show brennan normal 
+    show og
     og "here... um. i have to leave on the quest in a bit but i wanted you to have this."
+
+    hide og 
+    show brennan talking 
 
     brennan "why are you acting like you aren't coming back."
 
+    hide brennan talking 
+    show og 
+
     og "you know the reality of this."
+
+    hide og 
+    show brennan scared 
 
     brennan "who cares what lou said!"
 
@@ -2661,11 +2745,17 @@ label childhood_photo:
 
     brennan "i can't believe you're giving up."
 
+    hide brennan scared 
+    show og 
+
     og "i'm not giving up. i just... i know myself well"
+
+    hide og 
+    show brennan talking 
 
     brennan "it's not fair."
 
-    hide brennan normal 
+    hide brennan talking 
     jump choices
 
 label trinket:
@@ -2788,6 +2878,8 @@ label annie:
 
     player "annie! annie!"
 
+    show annie 
+
     annie "???"
 
     annie "oh it's you."
@@ -2820,6 +2912,8 @@ label annie:
 
     player "alright."
 
+    hide annie 
+
     "you walk away."
 
     menu: 
@@ -2841,6 +2935,7 @@ label lou:
     
     "you run to see him walking presumably back to his house."
 
+    show lou 
     lou "???"
 
     lou "oh *****."
@@ -2854,6 +2949,8 @@ label lou:
     player "so brennan told you all?"
 
     lou "it's best you go talk to brennan."
+
+    hide lou 
 
     "you walk away."
 
@@ -2876,6 +2973,7 @@ label maryanne:
 
     player "maryanne!"
 
+    show maryanne 
     maryanne "..."
 
     player "hello?"
@@ -2914,6 +3012,8 @@ label maryanne:
 
     player "ah okay."
 
+    hide maryanne 
+
     menu:
         "talk to brennan.":
             jump brennan
@@ -2928,19 +3028,21 @@ label maryanne:
             jump cassia 
 
 label cassia:
-    scene bg village
+    scene bg forest
     "you run into the forest, the twigs hitting you in the face as you shout."
 
     player "CASSIA!"
 
     "the trees shook as a gust of wind blew."
 
+    show cassia sus 
     cassia "*****, i'm glad you came here i was jsut about to come find you."
 
     player "cassia i rem-"
 
     "she cuts you off"
 
+    show cassia normal 
     cassia "you have to find brennan."
 
     player "what?"
@@ -2952,6 +3054,8 @@ label cassia:
     cassia "no one's seen him since this morning."
 
     "you run back to the village"
+
+    scene bg village 
 
     menu:
         "find to brennan.":
@@ -3004,23 +3108,38 @@ label brennan:
 
     player "what... is... going on?"
 
-    #fade with black
+    scene black with fade 
 
     jump part_9
 
 label part_9: 
 
+    show v 
     v "i told you it would be too much."
+
+    hide v 
+    show og 
 
     og "..."
 
+    hide og 
+    show v
+
     v "he can't handle it."
+    hide v 
+    show og 
 
     og "..."
 
     og "but i need them to know."
 
+    hide og 
+    show v 
+
     v "you didn't NEED them to know"
+
+    hide v 
+    show og 
 
     og "I DID!"
 
@@ -3036,6 +3155,9 @@ label part_9:
 
     player "uh where even is here?"
 
+    hide og 
+    show v 
+
     v "the _____"
 
     player "???"
@@ -3046,11 +3168,19 @@ label part_9:
 
     v "they stay that way for a reason."
 
+    hide v 
+    show og 
+
     og "yeah which is why you can't hear \"your\" name."
 
     player "why do you say it as if it's not?"
 
+    hide og 
+    show v
     v "you cannot say *****."
+
+    hide v 
+    show og 
 
     og "why not."
 
@@ -3058,15 +3188,28 @@ label part_9:
 
     og "i can't do this, i can't do that. why? what's stopping me."
 
+    hide og 
+    show v
+
     v "..."
 
     v "i cannot say."
+
+    hide v
+
+    show og 
 
     og "exactly, you can't even tell me!"
 
     og "i spent all this time watching and waiting."
 
+    hide og 
+    show v 
+
     v "calm down ***** you are going to throw everything you worked so hard for away."
+
+    hide v 
+    show og 
 
     og "i don't care. you don't understand. this isn't just another life for me."
 
@@ -3084,7 +3227,13 @@ label part_9:
 
     player "what is going on?"
 
+    hide og 
+    show v 
+
     v "you cannot afford to say anything anymore."
+
+    hide v 
+    show og 
 
     og "i- you can't stop me!"
 
@@ -3098,6 +3247,8 @@ label part_9:
             jump do_nothing
 
 label help_other_you:
+    scene black 
+    show og 
     "you see the other you get pinned down, seemingly significantly weaker than the man on top of him."
 
     "you run and push him off."
@@ -3133,9 +3284,12 @@ label help_other_you:
     jump part_10
 
 label do_nothing:
+
     "you stand there and watch the struggle."
 
-    #figure out if a scene can be animated here
+    "you was as the other you lands a harsh kick to the other guys head."
+
+    show og 
 
     og "now that he's finally taken care of..."
 
@@ -3151,6 +3305,7 @@ label do_nothing:
             jump nothing
 
 label appease: 
+    show og 
     og "hmm, yeah good point."
 
     og "well we have much to discuss"
@@ -3158,6 +3313,7 @@ label appease:
     jump part_10
 
 label nothing:
+    show og 
     og "..."
 
     og "didn't know other me was such a loser."
@@ -3180,6 +3336,7 @@ label nothing:
             jump do_nothing_again
 
 label do_nothing_again:
+    show og 
     og "wow, i really must've chosen the wrong soul for this."
 
     og "and i thought you would have really begged for an opportunity like this."
@@ -3191,6 +3348,7 @@ label do_nothing_again:
     jump part_10
 
 label punch_og:
+    show og 
     "you aren't going to stand here and take this from this guy."
 
     "you raise your hand and punch him in the face."
@@ -3203,7 +3361,7 @@ label punch_og:
 
     player "???"
 
-    show og happy 
+    show og 
 
     og "man i tried being all tough and stuff but that isn't me."
 
@@ -3212,6 +3370,7 @@ label punch_og:
 
 label part_10: 
     if friendly_og == True:
+        show og 
         og "i should probably tell you everything."
 
         #show flip of images of the hunt 
@@ -3227,6 +3386,7 @@ label part_10:
         og "i'm not sure how long you'll be here, so i'll make this short."
 
     else: 
+        show og 
         og "i don't know how long you'll be here before they drag you back down."
 
         og "but at this rate..."
@@ -3235,6 +3395,7 @@ label part_10:
 
         og "after all you are... a lesser version."
 
+    show og 
     og "you should know by now that you, or whoever you think you are. that's not you."
 
     og "i'm sorry."
@@ -3261,11 +3422,12 @@ label part_10:
             jump leave_it
 
 label leave_it:
+    show og 
     og "i died on the hunt."
 
     og "i failed."
 
-    #show images of the hunt in the background 
+    scene bg story1
 
     og "i could tell from the looks on their faces when i volunteered, we all knew what that meant."
 
@@ -3283,6 +3445,10 @@ label leave_it:
 
     og "but we all knew."
 
+    scene black 
+
+    show og 
+
     og "they were going to choose him."
 
     og "and for some reason i'll never understand, he was going to let them?"
@@ -3295,27 +3461,42 @@ label leave_it:
 
     og "...he gave me mad honey before i left."
 
-    #flash to the scene 
-
+    scene bg village 
+    show og
     og "where did you get this from?"
+
+    hide og 
+    show brennan talking 
 
     brennan "don't worry about it."
 
     brennan "please just, return to the village?"
 
+    hide brennan talking 
+    show og 
+
     og "i-"
+
+    hide og 
+    show brennan scared 
 
     brennan "just say you will."
 
     brennan "even if you think it's a lie."
 
+    hide brennan scared 
+    show og 
+
     og "i'll return to you."
 
+    hide og 
+    show brennan scared 
     brennan "..."
 
     og "..."
 
-    #flash back to present 
+    scene black 
+    show og 
 
     og "i never did get the chance to return."
 
@@ -3553,6 +3734,8 @@ label ending1:
 
             jump og_death_pt4
     
+    show bg dream1
+    show og 
     og "..."
 
     og "alright, i guess we can see what we can do from here."
@@ -3579,8 +3762,9 @@ label og_death_pt4:
 
     og "and please for the love of all that is good please-"
 
-    #fade with black 
+    scene bg village with fade 
 
+    show annie scared 
     "you wake up lying on the floor, annie looking worriedly over you."
 
     annie "are you okay?"
@@ -3597,9 +3781,13 @@ label og_death_pt4:
 
     annie "!!!"
 
+    show annie 
+
     "you see her face become shocked before returning with a serious look."
 
     annie "i'll tell the others, you start taking what you need from your house."
+
+    hide annie 
 
     jump part_11
 
@@ -3679,9 +3867,15 @@ label part_11a:
 
     annie "ow!"
 
+    hide annie scared 
+    show maryanne 
+
     maryanne "no ones turning to the dark side, we'll be fine. he'll be fine."
 
     "you open you mouth to talk but annie shoots you a strange look."
+
+    hide maryanne 
+    show annie 
 
     annie "i didn't forget what brennan told me about you."
 
@@ -3701,7 +3895,11 @@ label stare:
 
     you "..."
 
+    hide annie 
+    show lou
+
     lou "can you guys stop staring at each other and get a move on?"
+    hide lou 
 
     jump part_12
 
@@ -3712,16 +3910,28 @@ label reintroduction:
 
     "you are caught off-guard. this isn't the annie you were used to."
 
+    hide annie 
+    show lou 
+
     lou "quit talking we have to start moving."
 
     jump part_12 
 
 label part_12:
+    scene bg forest
     "the group continues to travel, you don't really know where you are going so when you get ahead of the group you end up having to circle back awkwardly."
+
+    show maryanne 
 
     maryanne "this better be worth it, brennan better buy me like 100 games after this."
 
+    hide maryanne 
+    show cassia norm
+
     cassia "if he's still there to buy you the games."
+
+    hide cassia norm 
+    show lou 
 
     lou "knock it off. now isn't the time to argue."
 
@@ -3737,9 +3947,12 @@ label part_12:
             jump tell_lie 
 
 label tell_truth:
+    hide lou 
     you "guys before we go."
 
     "everyone pauses in their footsteps, lou seemingly annoyed."
+
+    show lou 
 
     lou "what did i say? we don't have time for this."
 
@@ -3749,6 +3962,8 @@ label tell_truth:
 
     you "i'm not *****!" #maybe go back and use wattsons kinetic text tags to make text more interesting here
 
+    hide lou
+    show annie 
     annie "..."
 
     annie "yeah."
@@ -3757,13 +3972,20 @@ label tell_truth:
     
     you "oh."
 
+    hide annie 
+    show lou
+
     lou "that's what you stopped us for?"
 
     lou "get over yourself, brennan's in trouble let's get back to moving."
 
+    hide lou 
+
     "the group continues moving leaving you standing there a bit shocked and embarssed."
 
     "cassia approaches you"
+
+    show cassia happy 
 
     cassia "what's your name now?"
 
@@ -3771,12 +3993,11 @@ label tell_truth:
 
     cassia "nice to meet yout [name]."
 
-    #fade with black
-
     jump part_13
 
     
 label tell_lie:
+    hide lou 
     "a shooting pain goes through your head."
 
     you "stupid whatever his name is."
@@ -3810,11 +4031,17 @@ label part_13:
             jump attack_now
 
 label hide_and_watch:
+    hide evil1 
+    hide evil2 
+    show brennan scared 
     brennan "i already told you what i know!"
 
+    show evil1 
     evil1 "there isn't much you could tell us that we wouldn't already know..."
 
-    evil1 "your majesty..."
+    hide evil1
+    show evil2 
+    evil2 "your majesty..."
 
     lou "what?"
 
@@ -3824,29 +4051,56 @@ label hide_and_watch:
 
     evil2 "cowards way out."
 
+    hide evil2 
+    show brennan scared 
+
     brennan "..."
+
+    hide brennan scared 
+    show evil1 
 
     evil1 "you steal from the capital, you get your so called \"best friend\" killed, so now why are you still trying to hard to deny your path?"
 
+    hide evil1 
+    show evil2
     evil2 "your... destiny."
 
+    hide evil2 
+    show brennan talking 
     brennan "because you both are evil."
+
+    hide brennan talking 
+    show evil1
 
     evil1 "how could you speak about your parents that way."
 
+    hide evil1
+    show evil2
+
     evil2 "yes your oh so adoring parents."
+
+    hide evil2
+    show brennan talking 
 
     brennan "i didn't steal for no good reason and i didn't get ***** killed!"
 
     brennan "ALSO YOU BOTH SUCK!"
 
+    show brennan normal 
+
     "you watch brennan struggle."
+
+    show brennan talking 
 
     brennan "you both sent him on a death mission! you knew he was going to go on my behalf!"
 
     brennan "you just couldn't stand the fact that someone might rival your power without the use of mad honey!"
 
+    show brennan normal 
     "the crowd of people gasp."
+
+    hide brennan normal 
+    show evil1
 
     evil1 "son you are speaking nonsense."
 
@@ -3854,9 +4108,18 @@ label hide_and_watch:
 
     evil1 "mad honey is not used freely. it is soley for the protection of the nation."
 
+    hide evil1 
+    show brennan talking 
+
     brennan "come on pops, we all know you're a liar."
 
+    hide brennan talking 
+    show evil1
+
     evil1 "i just want what's best for you."
+
+    hide evil1 
+    show brennan talking 
 
     brennan "correction, you WANTED what was best for you!"
 
@@ -3864,7 +4127,13 @@ label hide_and_watch:
 
     brennan "just let me go."
 
+    hide brennan talking 
+    show evil 2
+
     evil2 "i think you are mistaken son."
+
+    hide evil2 
+    show evil1
 
     evil1 "everyone, i'm so sorry for the chit chat."
 
@@ -3884,19 +4153,37 @@ label hide_and_watch:
 
     "you watch as brennan thrashes against the restraints."
 
+    hide evil1 
+    show brennan scared 
+
     brennan "hey, get that away from me!"
+
+    hide brennan scared 
+    show evil2 
 
     evil2 "but you were so ready to share it with your friend..."
 
     evil2 "it's your turn our dear son."
 
+    hide evil2
+    show brennan scared 
+
     "you watch brennans face morph into one of pure horror."
 
     brennan "NO WAIT PLEASE-"
 
+    hide brennan scared 
+    show evil1 
+
     evil1 "you survived this long without it."
 
+    hide evil1 
+    show evil2
+
     evil2 "now let's see what you become with it."
+
+    hide evil2 
+    show brennan scared 
 
     menu: 
         "look away":
@@ -3919,7 +4206,7 @@ label hide_and_watch:
     jump attack_now
 
 label attack_now:
-    "you lunge at the man."
+    "you lunge at the man." 
 
     og "COME ON GO STOP THEM!"
 
@@ -3927,7 +4214,12 @@ label attack_now:
 
     "you dash from the bushed at lightning speeds."
 
+    show evil1 
+
     evil1 "!!!"
+
+    hide evil1 
+    show evil2
 
     evil2 "what the-"
 
@@ -3942,27 +4234,45 @@ label attack_now:
 
     "people start running in all different directions."
 
+    scene kallisto 
+    show brennan normal 
+
     "brennan looks up at you with a grateful look on his face before shouting."
+
+    show brennan talking 
 
     brennan "everyone listen! the honey is just so the wealthy stay weathly! they don't care about you or what you want!"
 
     "person in crowd" "we already knew that!"
 
+    hide brennan talking 
+    show annie 
     annie "???"
+
+    hide annie 
+    show lou 
 
     lou "then why are you still going along with it?"
 
     "person in crowd" "i just wanted to be apart of something!"
 
+    hide lou 
+
     menu:
         "uhh you can come live at the village?":
             "person in crowd" "oh actually?"
-        
+    
     "another voice perks up."
 
     "like all of us?"
 
+    show maryanne happy 
+
     maryanne "sure?"
+
+    hide maryanne happy 
+
+    show evil1 
 
     evil1 "even us?"
 
@@ -3972,7 +4282,10 @@ label attack_now:
         "maybe not you guys.":
             you "maybe not you guys."
 
-            evil1 "hey that's not fair she made-"
+            evil1 "hey that's not fair they made-"
+            
+            hide evil1
+            show evil2
 
             evil2 "you need to calm down."
 
@@ -3981,12 +4294,22 @@ label attack_now:
 
             evil1 "WOO!!"
 
+            hide evil1
+            show evil2
+
             evil2 "but what happens to our castle? and like empire we've built."
+
+            hide evil2 
+            show evil1
 
             evil1 "i guess we sell it on ebay?"
 
+            hide evil1 
+            show evil2
             evil2 "yeah that works."
 
+    hide evil2 
+    show annie 
     annie "so then what did we learn from this... mission?"
     jump ending2
 
@@ -4002,15 +4325,22 @@ label ending2:
 
     "you look at brennan to check if he is okay."
 
+    hide annie 
+    show brennan normal 
+
     brennan "what's got you so worried?"
 
     menu:
         "i'm sorry i replaced your friend.":
             you "i'm sorry i replaced your friend."
 
+            show brennan talking 
+
             brennan "..."
 
             brennan "it's okay, he probably was laughing to himself about all of this."
+
+            show brennan normal 
 
             "a voice rings through your head."
 
@@ -4020,12 +4350,18 @@ label ending2:
 
             you "yeah he is."
 
+            show brennan talking 
+
             brennan "we should rejoin the rest of the gang."
+
+            show brennan normal 
 
             "he points towards everyone else talking."
 
         "i should leave.":
             you "i should leave."
+
+            show brennan talking 
             
             brennan "no please stay."
 
@@ -4033,8 +4369,11 @@ label ending2:
 
             brennan "after all, you are apart of the party now."
 
+            show brennan normal 
+
             "he points towards everyone else talking."
 
+    show cassia sus 
     cassia "so is everyone just going to ignore the fact that they caused mass destruction and killed a bunch of people?"
 
     "she points towards the formerly known villans in confusion."
@@ -4043,6 +4382,7 @@ label ending2:
         "the lion does not concern himself with the opinions of sheep":
             you "the lion does not concern himself with the opinions of sheep"
 
+            show cassia norm 
             "cassia hits you in the face."
 
             you "OW?"
@@ -4054,12 +4394,14 @@ label ending2:
             "she laughs as she walks away."
 
         "nah it's fine.":
+            show cassia sus 
             you "nah it's fine."
 
             you "this is the happily ever after, nothing can go wrong."
 
             "cassia hits you in the face."
 
+            show cassia norm 
             you "OW?"
 
             cassia "whatever i'm gonna tell lou to lock them up or something."
@@ -4068,6 +4410,8 @@ label ending2:
 
             "she laughs as she walks away."
 
+    hide cassia norm 
+    hide cassia sus 
     "you look up at the sky, there are still many unanswered questions."
 
     "you look turn to look at your new friends."
