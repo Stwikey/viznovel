@@ -60,10 +60,10 @@ define lou = Character('lou')
 define cassia = Character('cassia')
 #idk relationship to mc, the thief that tries to rob mc in the beginning (cypher from hsr vibes)
 #unknown labels 
-define unknown_brennan = Character('???',color = '#e9535311')
-define unknown_maryanne = Character('???',color = '#784cd811')
-define unknown_annie = Character('???',color = '#3bb91f11')
-define unknown_lou = Character('???',color = '#b11f1f11')
+define unknown_brennan = Character('???',color = '#ffb30011')
+define unknown_maryanne = Character('???',color = '#5100ff11')
+define unknown_annie = Character('???',color = '#2fff0011')
+define unknown_lou = Character('???',color = '#ff000011')
 define unknown_cassia = Character('???')
 
 #character images
@@ -273,7 +273,7 @@ label forest_end:
 
     unknown_cassia "his biceps have also gotten skinnier..."
 
-    scene bg forest_clearing
+    scene bg forest clearing
     player "that was... interesting."
     menu: 
         "find clues on who you are.":
@@ -308,13 +308,13 @@ label natural:
 
     player "haha yeah! it was difficult...? or easy...? you know, obviously because you've been expecting me"
    
-    show npc 1
+    show npc1
    
     npc1 "you are always the prankster huh?"
     
     player "yep! you know me obviously! speaking of know... do you know where my friends are?"
 
-    show npc 1
+    show npc1
 
     npc1 "friends? you never had friends."
 
@@ -322,7 +322,7 @@ label natural:
 
     "the old man looks at you weird."
 
-    show npc 1
+    show npc1
 
     npc1 "you do know i was joking right?"
 
@@ -335,29 +335,29 @@ label natural:
         "???":
             player "yeppers!"
 
-            show npc 1
+            show npc1
 
             npc1 "yeppers?"
 
             player "haha just something i learned on the road!"
 
-            show npc 1
+            show npc1
 
             npc1 "okay..."
 
     "there's something up with the people here..."
 
-    show npc 1
+    show npc1
 
     npc1 "you seem to be acting weird, are you sure your okay?"
 
     player "yeah, just peachy."
     
-    show npc 1
+    show npc1
 
     npc1 "we didn't expect you to return, to be quite honest."
 
-    show npc 1
+    show npc1
 
     npc1 "*****, we are glad you have returned. really, we are."
 
@@ -437,7 +437,7 @@ label part_2:
 
     npc1 "they won't be an issue anymore." 
 
-    scene village with fade 
+    scene bg village with fade 
     
     show fiz sad 
 
@@ -460,6 +460,7 @@ label part_2:
     show fiz happy 
     lil_boy "you better not."
 
+    hide fiz happy
     show npc1 
     npc1 "okay fiz, leave the young adventurer alone. he has to rest as well."
     
@@ -714,7 +715,7 @@ label part_3:
     #figure out placement when all models are made 
     show brennan normal at left
     #show maryanne normal at middle 
-    show annie normal at right 
+    show annie at right 
     #show lou_normal at middle right 
 
     "opening it to find a group of people you recognize from the photo. this must have been your crew."
@@ -824,7 +825,8 @@ label part_4_messy:
 
     "you walk out of your house, as brennan and lou whisper from behind you."
 
-    show brennan and lou 
+    show lou at left 
+    show brennan at right
 
     brennan "there's something... wrong with *****."
 
@@ -882,13 +884,22 @@ label normal:
 
     player "ummm..."
 
+    show brennan normal
+
     brennan "oh i see you're just trying to get out of paying for that dinner you owe us!"
+
+    hide brennan normal
+    
+    show annie 
 
     annie "not cool! we helped you prepare for that mission, it's not our fault they said we couldn't follow. god knows lou would've just to make sure you survived."
 
+    hide annie
+    show lou
+    
     lou "it's not because i care about you, i just..."
 
-    show lou looking not into your eyes 
+    show lou
     
     lou "...want to make sure we get the reward!"
 
