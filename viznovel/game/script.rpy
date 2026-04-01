@@ -17,10 +17,10 @@ define og = Character('*****') #keep as ***** because the goal isnt to find out 
 #npcs 
 define v = Character('voice', color='#a6b4d3')
 define npc1 = Character ('old man') #an old man
-define npc2 = Character ('Charles')
+define npc2 = Character ('charles')
 define lil_boy = Character('fiz')
 define unknown = Character('???')
-define server = Character ('Server')
+define server = Character ('server')
 
 #variables
 default messy = False
@@ -34,8 +34,8 @@ default took_nothing = False
 default forestpick = False
 
 #evil guys 
-define evil1 = Character ('Viktor')
-define evil2 = Character('Wagner')
+define evil1 = Character ('viktor')
+define evil2 = Character('wagner')
 
 #constants
 define fade = Fade(0.5, 0.0, 0.5)
@@ -77,15 +77,18 @@ image annie scared = Transform("annie scared.png", zoom = 0.7)
 
 image lou = Transform("lou.png", zoom = 0.8)
 
+image maryanne = Transform("maryanne.png", zoom = 0.6)
+image maryanne happy = Transform("maryanne happy.png", zoom = 0.6)
+
 image unknown brennan = Transform("unknown brennan.png", zoom = 0.7)
 
 image evil1 = Transform("evil1.png", zoom = 0.7)
 image evil2 = Transform("evil2.png", zoom = 0.7)
 
 image v = Transform("v.png", zoom = 0.7)
-image og = Transform("og.png", zoom = 0.9)
+image og = Transform("og.png", zoom = 0.8)
 
-image trinkey = Transform("trinket.png", zoom = 0.7)
+image trinket = Transform("trinket.png", zoom = 0.6)
 
 label start:
     scene bg grass lands with fade
@@ -330,6 +333,7 @@ label village:
 
 label natural: 
     scene bg village 
+    show npc1
 
     player "haha yeah! it was difficult...? or easy...? you know, obviously because you've been expecting me"
    
@@ -426,8 +430,6 @@ label part_2:
 
     "you stand still trying to piece together what is happening..."
 
-    hide fiz with fade
-
     "the people in this village all seem to revere you as some unsung hero of their time."
 
     "but that old guy from earlier, he seems to have it out for you? or maybe he's here to help."
@@ -442,13 +444,9 @@ label part_2:
 
     "elsewhere..."
 
-    show npc1
-
     npc1 "he seems... different charles."
 
     npc2 "you worry too much old man, he's probably scattered from the mission. after all, if he's back that means..."
-
-    show npc1
 
     npc1 "they won't be an issue anymore." 
 
@@ -1078,8 +1076,6 @@ label detective:
 #goes to eat ribs but is sussed because it isn't a food MC would usually go for
 label ribs:
     scene bg restaurant
-    show annie at right 
-    show maryanne at left
 
     player "hmmm.. how about some ribs today?"
 
@@ -1106,7 +1102,6 @@ label ribs:
             jump thinking
 
 label cooly:
-    scene bg grass lands
     player "haha yeah! why don't we try something new today!"
 
     show maryanne 
@@ -1282,6 +1277,8 @@ label goulash_restaurant:
     show brennan normal 
 
     player "haha... yeah, um i'm just not comfortable with talking about it right now."
+
+    hide brennan normal
 
     show annie scared
     annie "yeah... it's just-"
@@ -3042,7 +3039,7 @@ label cassia:
 
     "she cuts you off"
 
-    show cassia normal 
+    show cassia norm
     cassia "you have to find brennan."
 
     player "what?"
@@ -4234,7 +4231,7 @@ label attack_now:
 
     "people start running in all different directions."
 
-    scene kallisto 
+    scene bg kallisto 
     show brennan normal 
 
     "brennan looks up at you with a grateful look on his face before shouting."
@@ -4373,6 +4370,7 @@ label ending2:
 
             "he points towards everyone else talking."
 
+    hide brennan normal
     show cassia sus 
     cassia "so is everyone just going to ignore the fact that they caused mass destruction and killed a bunch of people?"
 
